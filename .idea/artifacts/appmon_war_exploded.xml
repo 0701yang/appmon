@@ -6,6 +6,28 @@
         <element id="directory" name="classes">
           <element id="module-output" name="appmon" />
         </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="Maven: com.hynnet:oracle-driver-ojdbc6:12.1.0.1" />
+          <element id="library" level="project" name="Maven: com.alibaba:druid:1.0.20" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-aop:4.3.0.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-aspects:4.3.0.RELEASE" />
+          <element id="library" level="project" name="Maven: org.aspectj:aspectjweaver:1.8.9" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-beans:4.3.0.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-context:4.3.0.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-context-support:4.3.0.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-core:4.3.0.RELEASE" />
+          <element id="library" level="project" name="Maven: commons-logging:commons-logging:1.2" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-dao:2.0.8" />
+          <element id="library" level="project" name="Maven: aopalliance:aopalliance:1.0" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-expression:4.3.0.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-jdbc:4.3.0.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-mock:2.0.8" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-orm:4.3.0.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-test:4.3.0.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-tx:4.3.0.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-web:4.3.0.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-webmvc:4.3.0.RELEASE" />
+        </element>
       </element>
       <element id="directory" name="META-INF">
         <element id="file-copy" path="$PROJECT_DIR$/target/appmon/META-INF/MANIFEST.MF" />
