@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.shsnc.dao.PrivilegeMapper" >
+  <resultMap id="BaseResultMap" type="com.shsnc.model.user.Privilege" >
+    <id column="ID" property="id" jdbcType="DECIMAL" />
+    <result column="URL" property="url" jdbcType="VARCHAR" />
+    <result column="NAME" property="name" jdbcType="VARCHAR" />
+    <result column="PARENTID" property="parentid" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, URL, NAME, PARENTID
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from ZCJ_SHSNC_PRIVILEGE
+    where ID = #{id,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from ZCJ_SHSNC_PRIVILEGE
+    where ID = #{id,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="com.shsnc.model.user.Privilege" >
+    insert into ZCJ_SHSNC_PRIVILEGE (ID, URL, NAME, 
+      PARENTID)
+    values (#{id,jdbcType=DECIMAL}, #{url,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{parentid,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.shsnc.model.user.Privilege" >
+    insert into ZCJ_SHSNC_PRIVILEGE
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="url != null" >
+        URL,
+      </if>
+      <if test="name != null" >
+        NAME,
+      </if>
+      <if test="parentid != null" >
+        PARENTID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=DECIMAL},
+      </if>
+      <if test="url != null" >
+        #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="parentid != null" >
+        #{parentid,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shsnc.model.user.Privilege" >
+    update ZCJ_SHSNC_PRIVILEGE
+    <set >
+      <if test="url != null" >
+        URL = #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        NAME = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="parentid != null" >
+        PARENTID = #{parentid,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shsnc.model.user.Privilege" >
+    update ZCJ_SHSNC_PRIVILEGE
+    set URL = #{url,jdbcType=VARCHAR},
+      NAME = #{name,jdbcType=VARCHAR},
+      PARENTID = #{parentid,jdbcType=DECIMAL}
+    where ID = #{id,jdbcType=DECIMAL}
+  </update>
+</mapper>

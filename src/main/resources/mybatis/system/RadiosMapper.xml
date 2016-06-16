@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.shsnc.dao.RadiosMapper" >
+  <resultMap id="BaseResultMap" type="com.shsnc.model.user.Radios" >
+    <id column="ID" property="id" jdbcType="DECIMAL" />
+    <result column="NAME" property="name" jdbcType="VARCHAR" />
+    <result column="VALUE" property="value" jdbcType="VARCHAR" />
+    <result column="SYSTEM" property="system" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, NAME, VALUE, SYSTEM
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from ZCJ_SHSNC_RADIOS
+    where ID = #{id,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from ZCJ_SHSNC_RADIOS
+    where ID = #{id,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="com.shsnc.model.user.Radios" >
+    insert into ZCJ_SHSNC_RADIOS (ID, NAME, VALUE, 
+      SYSTEM)
+    values (#{id,jdbcType=DECIMAL}, #{name,jdbcType=VARCHAR}, #{value,jdbcType=VARCHAR}, 
+      #{system,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.shsnc.model.user.Radios" >
+    insert into ZCJ_SHSNC_RADIOS
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="name != null" >
+        NAME,
+      </if>
+      <if test="value != null" >
+        VALUE,
+      </if>
+      <if test="system != null" >
+        SYSTEM,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=DECIMAL},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="value != null" >
+        #{value,jdbcType=VARCHAR},
+      </if>
+      <if test="system != null" >
+        #{system,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shsnc.model.user.Radios" >
+    update ZCJ_SHSNC_RADIOS
+    <set >
+      <if test="name != null" >
+        NAME = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="value != null" >
+        VALUE = #{value,jdbcType=VARCHAR},
+      </if>
+      <if test="system != null" >
+        SYSTEM = #{system,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shsnc.model.user.Radios" >
+    update ZCJ_SHSNC_RADIOS
+    set NAME = #{name,jdbcType=VARCHAR},
+      VALUE = #{value,jdbcType=VARCHAR},
+      SYSTEM = #{system,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=DECIMAL}
+  </update>
+</mapper>
