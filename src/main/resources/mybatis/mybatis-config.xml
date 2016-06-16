@@ -10,9 +10,26 @@
     </settings>
 
     <typeAliases>
+        <typeAlias type="com.shsnc.entity.system.User" alias="User"/>
+        <typeAlias type="com.shsnc.entity.system.Role" alias="Role"/>
+        <typeAlias type="com.shsnc.entity.system.Radios" alias="Radios"/>
+        <typeAlias type="com.shsnc.entity.system.Privilege" alias="Privilege"/>
+        <typeAlias type="com.shsnc.entity.system.Department" alias="Department"/>
 
+        <typeAlias type="com.shsnc.entity.system.RolePrivilegeKey" alias="RolePrivilegeKey"/>
+        <typeAlias type="com.shsnc.entity.system.UserRoleKey" alias="UserRoleKey"/>
 
+        <typeAlias type="com.shsnc.util.PageData" alias="pd"/>
+        <!-- 分页 -->
+        <typeAlias type="com.fh.entity.Page" alias="Page"/>
     </typeAliases>
+
+    <plugins>
+        <plugin interceptor="com.fh.plugin.PagePlugin">
+            <property name="dialect" value="oracle"/>
+            <property name="pageSqlId" value=".*listPage.*"/>
+        </plugin>
+    </plugins>
 
 
 </configuration>
