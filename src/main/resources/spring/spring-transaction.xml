@@ -21,24 +21,29 @@
 
     <tx:advice id="txAdvice" transaction-manager="transactionManager">
         <tx:attributes>
-            <tx:method name="delete*" propagation="REQUIRED" read-only="false"
-                       rollback-for="java.lang.Exception"/>
-            <tx:method name="insert*" propagation="REQUIRED" read-only="false"
-                       rollback-for="java.lang.Exception" />
-            <tx:method name="update*" propagation="REQUIRED" read-only="false"
-                       rollback-for="java.lang.Exception" />
-            <tx:method name="save*" propagation="REQUIRED" read-only="false"
-                       rollback-for="java.lang.Exception" />
+            <tx:method name="delete*" propagation="REQUIRED" read-only="false" rollback-for="java.lang.Exception"/>
+            <tx:method name="insert*" propagation="REQUIRED" read-only="false" rollback-for="java.lang.Exception"/>
+            <tx:method name="update*" propagation="REQUIRED" read-only="false" rollback-for="java.lang.Exception"/>
+            <tx:method name="save*" propagation="REQUIRED" read-only="false" rollback-for="java.lang.Exception"/>
         </tx:attributes>
     </tx:advice>
 
     <aop:aspectj-autoproxy proxy-target-class="true"/>
-
     <!-- 事物处理 -->
     <aop:config>
-        <aop:pointcut id="pc" expression="execution(* com.shsnc.service..*(..))" />
-        <aop:advisor pointcut-ref="pc" advice-ref="txAdvice" />
+        <aop:pointcut id="pc" expression="execution(* com.shsnc.service..*(..))"/>
+        <aop:advisor pointcut-ref="pc" advice-ref="txAdvice"/>
     </aop:config>
+
+    <!-- 事物处理 -->
+    <!--<aop:config>-->
+    <!--<aop:aspect id="dataSourceAspect" ref="dataSourceInterceptor">-->
+    <!--<aop:pointcut id="one" expression="execution(* com.shsnc.service..*(..))" />-->
+    <!--<aop:pointcut id="two" expression="execution(* com.shsnc.service..*.*(..))" />-->
+    <!--<aop:before pointcut-ref="one" method="setdataSourceOne" />-->
+    <!--<aop:before pointcut-ref="two" method="setdataSourceTwo" />-->
+    <!--</aop:aspect>-->
+    <!--</aop:config>-->
 
 
 </beans>
