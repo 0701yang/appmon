@@ -1,36 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.shsnc.dao.RolePrivilegeMapper" >
-  <resultMap id="BaseResultMap" type="com.shsnc.model.user.RolePrivilegeKey" >
+  <resultMap id="BaseResultMap" type="RolePrivilegeKey" >
     <id column="PRIVILEGEID" property="privilegeid" jdbcType="DECIMAL" />
     <id column="ROLEID" property="roleid" jdbcType="DECIMAL" />
   </resultMap>
-  <delete id="deleteByPrimaryKey" parameterType="com.shsnc.model.user.RolePrivilegeKey" >
-    delete from ZCJ_SHSNC_ROLE_PRIVILEGE
-    where PRIVILEGEID = #{privilegeid,jdbcType=DECIMAL}
-      and ROLEID = #{roleid,jdbcType=DECIMAL}
-  </delete>
-  <insert id="insert" parameterType="com.shsnc.model.user.RolePrivilegeKey" >
-    insert into ZCJ_SHSNC_ROLE_PRIVILEGE (PRIVILEGEID, ROLEID)
-    values (#{privilegeid,jdbcType=DECIMAL}, #{roleid,jdbcType=DECIMAL})
-  </insert>
-  <insert id="insertSelective" parameterType="com.shsnc.model.user.RolePrivilegeKey" >
-    insert into ZCJ_SHSNC_ROLE_PRIVILEGE
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="privilegeid != null" >
-        PRIVILEGEID,
-      </if>
-      <if test="roleid != null" >
-        ROLEID,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="privilegeid != null" >
-        #{privilegeid,jdbcType=DECIMAL},
-      </if>
-      <if test="roleid != null" >
-        #{roleid,jdbcType=DECIMAL},
-      </if>
-    </trim>
-  </insert>
+
 </mapper>
