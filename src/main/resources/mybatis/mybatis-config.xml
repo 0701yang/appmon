@@ -24,12 +24,6 @@
         <typeAlias type="com.shsnc.entity.Page" alias="Page"/>
     </typeAliases>
 
-    <!--<plugins>-->
-        <!--<plugin interceptor="com.shsnc.plugin.PagePlugin">-->
-            <!--<property name="dialect" value="oracle"/>-->
-            <!--<property name="pageSqlId" value=".*listPage.*"/>-->
-        <!--</plugin>-->
-    <!--</plugins>-->
 
 
 </configuration>

@@ -7,6 +7,8 @@
           <element id="module-output" name="appmon" />
         </element>
         <element id="directory" name="lib">
+          <element id="library" level="project" name="Maven: jsptags:pager-taglib:2.0" />
+          <element id="library" level="project" name="Maven: com.github.miemiedev:mybatis-paginator:1.2.17" />
           <element id="library" level="project" name="Maven: com.hynnet:oracle-driver-ojdbc6:12.1.0.1" />
           <element id="library" level="project" name="Maven: com.alibaba:druid:1.0.20" />
           <element id="library" level="project" name="Maven: log4j:log4j:1.2.17" />

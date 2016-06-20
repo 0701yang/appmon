@@ -3,7 +3,6 @@ package com.shsnc.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
-import com.shsnc.entity.Page;
 import com.shsnc.util.PageData;
 import com.shsnc.util.UuidUtil;
 import org.springframework.web.context.request.RequestContextHolder;
@@ -47,12 +46,12 @@ public class BaseController {
 		return UuidUtil.get32UUID();
 	}
 	
-	/**
-	 * 得到分页列表的信息 
-	 */
-	public Page getPage(){
-		
-		return new Page();
-	}
+//	/**
+//	 * 得到分页列表的信息
+//	 */
+//	public Page getPage(){
+//
+//		return new Page();
+//	}
 
 }

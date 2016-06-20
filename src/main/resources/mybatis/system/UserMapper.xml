@@ -15,10 +15,11 @@
         <result column="IP" property="ip" jdbcType="VARCHAR"/>
         <result column="BZ" property="bz" jdbcType="VARCHAR"/>
     </resultMap>
-    <select id="listAllUser" resultMap="BaseResultMap" >
+    <select id="listAllUser" resultType="pd" parameterType="page">
     select
       *
     from ZCJ_SHSNC_USER
   </select>
+
 
 </mapper>

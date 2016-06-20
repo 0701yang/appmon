@@ -2,6 +2,6 @@
 <body>
 <h2>Hello World!</h2>
 
-<a href="/user/list" >aaaaaaaa</a>
+<a href="/user/listUsers" >aaaaaaaa</a>
 </body>
 </html>
