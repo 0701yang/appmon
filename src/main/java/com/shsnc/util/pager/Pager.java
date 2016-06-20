@@ -1,4 +1,4 @@
-package com.shsnc.entity;
+package com.shsnc.util.pager;
 
 
 import java.util.List;

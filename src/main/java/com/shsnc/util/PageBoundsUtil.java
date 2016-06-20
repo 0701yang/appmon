@@ -1,8 +1,8 @@
 package com.shsnc.util;
 
-import com.github.miemiedev.mybatis.paginator.dialect.SybaseDialect;
 import com.github.miemiedev.mybatis.paginator.domain.Order;
 import com.github.miemiedev.mybatis.paginator.domain.PageBounds;
+import com.shsnc.util.pager.SystemContext;
 
 /**
  * 再次封装PageBounds分页对象

@@ -1,7 +1,7 @@
 package com.shsnc.service.dao;
 
 import com.github.miemiedev.mybatis.paginator.domain.PageBounds;
-import com.shsnc.entity.Pager;
+import com.shsnc.util.pager.Pager;
 import com.shsnc.entity.system.User;
 import com.shsnc.util.PageBoundsUtil;
 import org.mybatis.spring.SqlSessionTemplate;

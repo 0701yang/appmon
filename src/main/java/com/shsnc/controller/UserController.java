@@ -1,10 +1,8 @@
 package com.shsnc.controller;
 
-import com.shsnc.entity.Page;
-import com.shsnc.entity.Pager;
+import com.shsnc.util.pager.Pager;
 import com.shsnc.entity.system.User;
 import com.shsnc.service.dao.UserService;
-import com.shsnc.util.PageData;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;

@@ -1,4 +1,4 @@
-package com.shsnc.util;
+package com.shsnc.util.pager;
 
 
 /**
