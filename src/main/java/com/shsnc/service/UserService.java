@@ -1,4 +1,4 @@
-package com.shsnc.service.dao;
+package com.shsnc.service;
 
 import com.github.miemiedev.mybatis.paginator.domain.PageBounds;
 import com.shsnc.util.pager.Pager;
@@ -10,9 +10,6 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.util.List;
 
-/**
- * Created by zhangliling on 16/6/20.
- */
 @Service("userService")
 public class UserService {
 
@@ -20,7 +17,11 @@ public class UserService {
     @Resource(name = "sqlSessionTemplate")
     private SqlSessionTemplate sqlSessionTemplate;
 
-
+    /**
+     * 查询所有的用户信息
+     * @return
+     * @throws Exception
+     */
     public Pager<User> findUser() throws Exception{
         int count = 4;
         PageBounds pageBounds = PageBoundsUtil.pageBoundsOrderExtend("id.desc");
