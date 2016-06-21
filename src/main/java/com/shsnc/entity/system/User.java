@@ -13,7 +13,7 @@ public class User {
 
     private String telephone;
 
-    private Long departmentid;
+    private String rolename;
 
     private String fullname;
 
@@ -67,12 +67,12 @@ public class User {
         this.telephone = telephone == null ? null : telephone.trim();
     }
 
-    public Long getDepartmentid() {
-        return departmentid;
+    public String getRolename() {
+        return rolename;
     }
 
-    public void setDepartmentid(Long departmentid) {
-        this.departmentid = departmentid;
+    public void setRolename(String rolename) {
+        this.rolename = rolename == null ? null : rolename.trim();
     }
 
     public String getFullname() {

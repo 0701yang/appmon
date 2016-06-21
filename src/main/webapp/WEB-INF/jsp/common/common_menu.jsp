@@ -12,7 +12,7 @@
                     </a>
                     <ul class="dropdown-menu pull-left">
                         <li class="dropdown-submenu">
-                            <a href=":;"><i class="icon-settings"></i>系统管理 </a>
+                            <a href="javascript:;"><i class="icon-settings"></i>系统管理 </a>
                             <ul class="dropdown-menu">
                                 <li class="dropdown-submenu">
                                     <a href="/user/listUsers" target="mainFrame">用户管理 </a>
