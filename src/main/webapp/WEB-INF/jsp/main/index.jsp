@@ -14,22 +14,7 @@
     <jsp:include page="../common/common_menu.jsp"/>
 </div>
 <div class="page-container">
-    <div class="page-head">
-        <div class="container">
-            <div class="page-title">
-                <h1>Dashboard
-                    <small>statistics & reports</small>
-                </h1>
-            </div>
-        </div>
-    </div>
-    <div class="page-content">
-        <div class="row">
-            <div class="col-md-12 col-sm-12">
-                <iframe name="mainFrame" id="mainFrame" frameborder="0" src="#" style="margin:0 auto;width:100%;height:100%;"></iframe>
-            </div>
-        </div>
-    </div>
+    <iframe name="mainFrame" id="mainFrame" frameborder="0" src="#" style="margin:0 auto;width:100%;height:100%;"></iframe>
 </div>
 <jsp:include page="../common/common_foot.jsp"/>
 <jsp:include page="../common/common_js.jsp"/>
@@ -45,8 +30,9 @@
     loginFrame();
     window.onresize = function () {
         loginFrame();
-    };
-
+    }
+</script>
+<script>
     jQuery(document).ready(function () {
         Metronic.init(); // init metronic core componets
         Layout.init(); // init layout
