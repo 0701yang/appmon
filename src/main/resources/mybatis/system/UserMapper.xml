@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="UserMapper">
-    <resultMap id="BaseResultMap" type="User">
+    <resultMap id="User" type="User">
         <id column="ID" property="id" jdbcType="DECIMAL"/>
         <result column="USERNAME" property="username" jdbcType="VARCHAR"/>
         <result column="PASSWORD" property="password" jdbcType="VARCHAR"/>
@@ -15,7 +15,7 @@
         <result column="IP" property="ip" jdbcType="VARCHAR"/>
         <result column="BZ" property="bz" jdbcType="VARCHAR"/>
     </resultMap>
-    <select id="listAllUser" resultType="pd" parameterType="page">
+    <select id="listAllUser" resultMap="User">
     select
       *
     from ZCJ_SHSNC_USER

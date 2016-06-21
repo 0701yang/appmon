@@ -1,7 +1,2 @@
-<html>
-<body>
-<h2>Hello World!</h2>
-
-<a href="/user/listUsers" >aaaaaaaa</a>
-</body>
-</html>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<jsp:forward page="/user/index"/>

@@ -1,5 +1,4 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<% String path = request.getContextPath();%>
 <div class="page-header-menu">
     <div class="container">
         <div class="hor-menu ">
@@ -11,24 +10,24 @@
                     <a data-hover="megamenu-dropdown" data-close-others="true" data-toggle="dropdown" href="javascript:;" class="dropdown-toggle">
                         基础模块 <i class="fa fa-angle-down"></i>
                     </a>
-                    <ul class="dropdown-menu" style="min-width: 710px">
+                    <ul class="dropdown-menu" style="min-width: 127px">
                         <li>
                             <div class="mega-menu-content">
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-12">
                                         <ul class="mega-menu-submenu">
                                             <li>
-                                                <a href="ecommerce_index.html" class="iconify">
+                                                <a href="#" class="iconify">
                                                     <i class="icon-home"></i>
                                                     系统管理 </a>
                                             </li>
                                             <li>
-                                                <a href="ecommerce_orders.html" class="iconify">
+                                                <a href="#" class="iconify">
                                                     <i class="icon-basket"></i>
                                                     操作审计 </a>
                                             </li>
                                             <li>
-                                                <a href="ecommerce_orders_view.html" class="iconify">
+                                                <a href="#" class="iconify">
                                                     <i class="icon-tag"></i>
                                                     信息看板 </a>
                                             </li>

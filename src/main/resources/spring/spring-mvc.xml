@@ -15,6 +15,6 @@
     </bean>
 
     <!-- 对静态资源文件的访问  restful-->
-    <mvc:resources mapping="/Metronic/**" location=",/Metronic/" />
+    <mvc:resources mapping="/Metronic/**" location="/Metronic/" />
 
 </beans>

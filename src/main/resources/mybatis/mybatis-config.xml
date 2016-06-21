@@ -19,11 +19,7 @@
         <typeAlias type="com.shsnc.entity.system.RolePrivilegeKey" alias="RolePrivilegeKey"/>
         <typeAlias type="com.shsnc.entity.system.UserRoleKey" alias="UserRoleKey"/>
 
+
         <typeAlias type="com.shsnc.util.PageData" alias="pd"/>
-        <!-- 分页 -->
-        <typeAlias type="com.shsnc.entity.Page" alias="Page"/>
     </typeAliases>
-
-
-
 </configuration>

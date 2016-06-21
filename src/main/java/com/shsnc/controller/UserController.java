@@ -27,7 +27,17 @@ public class UserController extends BaseController {
 	@Resource(name="roleService")
 	private RoleService roleService;
 
-
+	/**
+	 * 主页
+	 * @return
+	 * @throws Exception
+     */
+	@RequestMapping(value = "/index")
+	public  ModelAndView index() throws Exception{
+		ModelAndView mv = this.getModelAndView();
+		mv.setViewName("main/index");
+		return  mv;
+	}
 
 	/**
 	 * 查询所有的用户信息
