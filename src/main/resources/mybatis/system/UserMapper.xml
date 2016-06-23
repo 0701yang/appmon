@@ -19,6 +19,7 @@
         <association property="role" column="ROLEID" javaType="Role">
             <id column="ID" property="id" jdbcType="VARCHAR"/>
             <result column="NAME" property="name" jdbcType="VARCHAR"/>
+            <result column="DESCRIPTION" property="description" jdbcType="VARCHAR"/>
         </association>
     </resultMap>
 
@@ -77,9 +78,9 @@
     <!--添加用户-->
     <!--当为select语句时：flushCache默认为false，表示任何时候语句被调用，都不会去清空本地缓存和二级缓存。useCache默认为true，表示会将本条语句的结果进行二级缓存。-->
     <!--当为insert、update、delete语句时：flushCache默认为true，表示任何时候语句被调用，都会导致本地缓存和二级缓存被清空。useCache属性在该情况下没有。-->
-    <insert id="save" parameterType="com.shsnc.entity.system.User">
+    <insert id="save" parameterType="User" >
             INSERT INTO ZCJ_SHSNC_USER (
-                ID, USERNAME, PASSWORD, EMAIL, TELEPHONE, FULLNAME, STATUS, CREATEDATE, LASTDATE, IP, BZ, ROLEID)
+                ID, USERNAME, PASSWORD, EMAIL, TELEPHONE, FULLNAME, STATUS, CREATEDATE, LASTDATE, IP, BZ, ROLEID            )
             VALUES (
                 #{id},
                 #{username},

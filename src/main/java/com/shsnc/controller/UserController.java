@@ -105,17 +105,6 @@ public class UserController extends BaseController {
         user.setTelephone(pd.getString("telephone"));
         user.setRoleid(pd.getString("roleid"));
 
-//        user.setLastdate(new Date());
-//        user.setIp(null);
-//        user.setStatus(null);
-
-
-//        pd.put("id", this.get32UUID());	  //ID
-//        pd.put("createdate" , new Date());//创建时间
-//        pd.put("lastdate", "");			  //最后登录时间
-//        pd.put("ip", "");				//IP
-//        pd.put("status", "0");					//状态
-//        pd.put("password", new SimpleHash("SHA-1", pd.getString("username"), pd.getString("password")).toString());
 
         if(userService.findByUId(pd).getDatas().size() == 0 ){
 //            if(Jurisdiction.buttonJurisdiction(menuUrl, "add")){

@@ -29,12 +29,7 @@ public class User {
 
     private Role role;
 
-    public Role getRole() {
-        return role;
-    }
-
-    public void setRole(Role role) {
-        this.role = role ;
+    public User() {
     }
 
     public String getId() {
@@ -42,7 +37,7 @@ public class User {
     }
 
     public void setId(String id) {
-        this.id = id == null ? null : id.trim();
+        this.id = id;
     }
 
     public String getUsername() {
@@ -50,7 +45,7 @@ public class User {
     }
 
     public void setUsername(String username) {
-        this.username = username == null ? null : username.trim();
+        this.username = username;
     }
 
     public String getPassword() {
@@ -58,7 +53,7 @@ public class User {
     }
 
     public void setPassword(String password) {
-        this.password = password == null ? null : password.trim();
+        this.password = password;
     }
 
     public String getEmail() {
@@ -66,7 +61,7 @@ public class User {
     }
 
     public void setEmail(String email) {
-        this.email = email == null ? null : email.trim();
+        this.email = email;
     }
 
     public String getTelephone() {
@@ -74,7 +69,7 @@ public class User {
     }
 
     public void setTelephone(String telephone) {
-        this.telephone = telephone == null ? null : telephone.trim();
+        this.telephone = telephone;
     }
 
     public String getFullname() {
@@ -82,7 +77,7 @@ public class User {
     }
 
     public void setFullname(String fullname) {
-        this.fullname = fullname == null ? null : fullname.trim();
+        this.fullname = fullname;
     }
 
     public String getStatus() {
@@ -90,7 +85,7 @@ public class User {
     }
 
     public void setStatus(String status) {
-        this.status = status == null ? null : status.trim();
+        this.status = status;
     }
 
     public Date getCreatedate() {
@@ -98,7 +93,7 @@ public class User {
     }
 
     public void setCreatedate(Date createdate) {
-        this.createdate = createdate == null ? null : createdate;
+        this.createdate = createdate;
     }
 
     public Date getLastdate() {
@@ -106,7 +101,7 @@ public class User {
     }
 
     public void setLastdate(Date lastdate) {
-        this.lastdate = lastdate == null ? null : lastdate;
+        this.lastdate = lastdate;
     }
 
     public String getIp() {
@@ -114,7 +109,7 @@ public class User {
     }
 
     public void setIp(String ip) {
-        this.ip = ip == null ? null : ip.trim();
+        this.ip = ip;
     }
 
     public String getBz() {
@@ -122,7 +117,7 @@ public class User {
     }
 
     public void setBz(String bz) {
-        this.bz = bz == null ? null : bz.trim();
+        this.bz = bz;
     }
 
     public String getRoleid() {
@@ -130,6 +125,14 @@ public class User {
     }
 
     public void setRoleid(String roleid) {
-        this.roleid = roleid == null ? null : roleid.trim();
+        this.roleid = roleid;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
     }
 }
