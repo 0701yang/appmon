@@ -2,8 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.shsnc.dao.RolePrivilegeMapper" >
   <resultMap id="BaseResultMap" type="RolePrivilegeKey" >
-    <id column="PRIVILEGEID" property="privilegeid" jdbcType="DECIMAL" />
-    <id column="ROLEID" property="roleid" jdbcType="DECIMAL" />
+    <id column="PRIVILEGEID" property="privilegeid" jdbcType="VARCHAR" />
+    <id column="ROLEID" property="roleid" jdbcType="VARCHAR" />
   </resultMap>
 
 </mapper>

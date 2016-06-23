@@ -28,16 +28,6 @@
         <url-pattern>/*</url-pattern>
     </filter-mapping>
 
-    <filter>
-        <filter-name>pagerFilter</filter-name>
-        <filter-class>com.shsnc.util.pager.SystemContextFilter</filter-class>
-    </filter>
-    <filter-mapping>
-        <filter-name>pagerFilter</filter-name>
-        <url-pattern>/*</url-pattern>
-    </filter-mapping>
-
-
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
@@ -50,6 +40,7 @@
             <param-name>contextConfigLocation</param-name>
             <param-value>classpath:spring/spring-mvc.xml</param-value>
         </init-param>
+        <load-on-startup>1</load-on-startup>
     </servlet>
     <servlet-mapping>
         <servlet-name>springmvc</servlet-name>
@@ -79,5 +70,17 @@
     </servlet-mapping>
     <!-- 连接池 启用Web监控统计功能   end-->
 
+    <filter>
+        <filter-name>pagerFilter</filter-name>
+        <filter-class>com.shsnc.util.pager.SystemContextFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>pagerFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <session-config>
+        <session-timeout>15</session-timeout>
+    </session-config>
 
 </web-app>

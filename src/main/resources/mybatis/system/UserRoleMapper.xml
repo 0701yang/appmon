@@ -2,8 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.shsnc.dao.UserRoleMapper" >
   <resultMap id="BaseResultMap" type="UserRoleKey" >
-    <id column="ROLEID" property="roleid" jdbcType="DECIMAL" />
-    <id column="USERID" property="userid" jdbcType="DECIMAL" />
+    <id column="ROLEID" property="roleid" jdbcType="VARCHAR" />
+    <id column="USERID" property="userid" jdbcType="VARCHAR" />
   </resultMap>
 
 </mapper>

@@ -1,23 +1,23 @@
 package com.shsnc.entity.system;
 
 public class UserRoleKey {
-    private Long roleid;
+    private String roleid;
 
-    private Long userid;
+    private String userid;
 
-    public Long getRoleid() {
+    public String getRoleid() {
         return roleid;
     }
 
-    public void setRoleid(Long roleid) {
-        this.roleid = roleid;
+    public void setRoleid(String roleid) {
+        this.roleid = roleid == null ? null : roleid.trim();
     }
 
-    public Long getUserid() {
+    public String getUserid() {
         return userid;
     }
 
-    public void setUserid(Long userid) {
-        this.userid = userid;
+    public void setUserid(String userid) {
+        this.userid = userid == null ? null : userid.trim();
     }
 }

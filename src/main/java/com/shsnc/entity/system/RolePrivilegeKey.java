@@ -1,23 +1,23 @@
 package com.shsnc.entity.system;
 
 public class RolePrivilegeKey {
-    private Long privilegeid;
+    private String privilegeid;
 
-    private Long roleid;
+    private String roleid;
 
-    public Long getPrivilegeid() {
+    public String getPrivilegeid() {
         return privilegeid;
     }
 
-    public void setPrivilegeid(Long privilegeid) {
-        this.privilegeid = privilegeid;
+    public void setPrivilegeid(String privilegeid) {
+        this.privilegeid = privilegeid == null ? null : privilegeid.trim();
     }
 
-    public Long getRoleid() {
+    public String getRoleid() {
         return roleid;
     }
 
-    public void setRoleid(Long roleid) {
-        this.roleid = roleid;
+    public void setRoleid(String roleid) {
+        this.roleid = roleid == null ? null : roleid.trim();
     }
 }

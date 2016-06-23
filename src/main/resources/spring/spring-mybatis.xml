@@ -18,10 +18,11 @@
                 </bean>
             </list>
         </property>
+
     </bean>
 
     <bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
-        <constructor-arg ref="sqlSessionFactory"/>
+        <constructor-arg ref="sqlSessionFactory" index="0"/>
     </bean>
 
 </beans>

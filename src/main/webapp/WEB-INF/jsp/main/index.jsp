@@ -14,7 +14,11 @@
     <jsp:include page="../common/common_menu.jsp"/>
 </div>
 <div class="page-container">
-    <iframe name="mainFrame" id="mainFrame" frameborder="0" src="#" style="margin:0 auto;width:100%;height:100%;"></iframe>
+    <div class="page-content">
+        <div class="container">
+            <iframe name="mainFrame" id="mainFrame" frameborder="0" src="#" style="margin:0 auto;width:100%;height:100%;"></iframe>
+        </div>
+    </div>
 </div>
 <jsp:include page="../common/common_foot.jsp"/>
 <jsp:include page="../common/common_js.jsp"/>
@@ -23,9 +27,10 @@
     <!--iframe宽度适应-->
     function loginFrame() {
         var mainFrame = document.getElementById("mainFrame");
-        var bheight = document.documentElement.clientHeight;
+        var bheight = document.documentElement.clientHeight;//可见区域高度
+        //alert(bheight);
         mainFrame.style.width = '100%';
-        mainFrame.style.height = (bheight - 51) + 'px';
+        mainFrame.style.height = (bheight+100) + 'px';
     }
     loginFrame();
     window.onresize = function () {

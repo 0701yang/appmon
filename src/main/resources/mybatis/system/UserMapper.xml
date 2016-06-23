@@ -1,25 +1,99 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="UserMapper">
-    <resultMap id="User" type="User">
-        <id column="ID" property="id" jdbcType="DECIMAL"/>
+    <!--<cache type="org.mybatis.caches.ehcache.LoggingEhcache" />-->
+
+    <resultMap id="u" type="User">
+        <id column="ID" property="id" jdbcType="VARCHAR"/>
         <result column="USERNAME" property="username" jdbcType="VARCHAR"/>
         <result column="PASSWORD" property="password" jdbcType="VARCHAR"/>
         <result column="EMAIL" property="email" jdbcType="VARCHAR"/>
         <result column="TELEPHONE" property="telephone" jdbcType="VARCHAR"/>
-        <result column="ROLENAME" property="rolename" jdbcType="VARCHAR"/>
         <result column="FULLNAME" property="fullname" jdbcType="VARCHAR"/>
-        <result column="STATUS" property="status" jdbcType="DECIMAL"/>
+        <result column="STATUS" property="status" jdbcType="VARCHAR"/>
         <result column="CREATEDATE" property="createdate" jdbcType="TIMESTAMP"/>
         <result column="LASTDATE" property="lastdate" jdbcType="TIMESTAMP"/>
         <result column="IP" property="ip" jdbcType="VARCHAR"/>
         <result column="BZ" property="bz" jdbcType="VARCHAR"/>
+        <result column="ROLEID" property="roleid" jdbcType="VARCHAR"/>
+        <association property="role" column="ROLEID" javaType="Role">
+            <id column="ID" property="id" jdbcType="VARCHAR"/>
+            <result column="NAME" property="name" jdbcType="VARCHAR"/>
+        </association>
     </resultMap>
-    <select id="listAllUser" resultMap="User">
-    select
-      *
-    from ZCJ_SHSNC_USER
-  </select>
 
+
+    <!--查询记录数-->
+    <select id="count" resultType="java.lang.Integer">
+        SELECT count(1)
+        FROM ZCJ_SHSNC_USER
+    </select>
+
+    <!--根据id查询记录数-->
+    <select id="countByName" resultType="java.lang.Integer" parameterType="java.lang.String">
+        SELECT count(1)
+        FROM ZCJ_SHSNC_USER
+        WHERE USERNAME = #{username}
+    </select>
+
+    <!--查询所有用户信息-->
+    <select id="listAllUser" resultMap="u">
+        SELECT
+            u.ID,
+            u.USERNAME,
+            u.PASSWORD,
+            u.EMAIL,
+            u.TELEPHONE,
+            r.NAME,
+            u.FULLNAME,
+            u.STATUS,
+            u.CREATEDATE,
+            u.LASTDATE,
+            u.IP,
+            u.BZ
+        FROM ZCJ_SHSNC_USER u LEFT JOIN ZCJ_SHSNC_ROLE r ON u.ROLEID = r.ID
+
+    </select>
+
+    <!--根据id查询记录-->
+    <select id="findByUId" resultMap="u" parameterType="java.lang.String">
+        SELECT
+            u.ID,
+            u.USERNAME,
+            u.PASSWORD,
+            u.EMAIL,
+            u.TELEPHONE,
+            r.NAME,
+            u.FULLNAME,
+            u.STATUS,
+            u.CREATEDATE,
+            u.LASTDATE,
+            u.IP,
+            u.BZ
+        FROM ZCJ_SHSNC_USER u LEFT JOIN ZCJ_SHSNC_ROLE r ON u.ROLEID = r.ID
+        WHERE u.USERNAME = #{username}
+    </select>
+
+    <!--添加用户-->
+    <!--当为select语句时：flushCache默认为false，表示任何时候语句被调用，都不会去清空本地缓存和二级缓存。useCache默认为true，表示会将本条语句的结果进行二级缓存。-->
+    <!--当为insert、update、delete语句时：flushCache默认为true，表示任何时候语句被调用，都会导致本地缓存和二级缓存被清空。useCache属性在该情况下没有。-->
+    <insert id="save" parameterType="com.shsnc.entity.system.User">
+            INSERT INTO ZCJ_SHSNC_USER (
+                ID, USERNAME, PASSWORD, EMAIL, TELEPHONE, FULLNAME, STATUS, CREATEDATE, LASTDATE, IP, BZ, ROLEID)
+            VALUES (
+                #{id},
+                #{username},
+                #{password},
+                #{email},
+                #{telephone},
+                #{fullname},
+                #{status},
+                #{createdate},
+                #{lastdate},
+                #{ip},
+                #{bz},
+                #{roleid}
+            )
+    </insert>
 
 </mapper>

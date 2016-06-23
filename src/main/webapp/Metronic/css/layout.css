@@ -2137,7 +2137,7 @@ Quick Sidebar Content
 
 .breadcrumb {
   background: none;
-  padding: 0 0 15px 0;
+  /*padding: 0 0 15px 0;*/
   margin: 0;
   color: #c5ccd5;
 }

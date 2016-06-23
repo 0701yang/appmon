@@ -1,18 +1,18 @@
 package com.shsnc.entity.system;
 
 public class Role {
-    private Long id;
+    private String id;
 
     private String name;
 
     private String description;
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setId(String id) {
+        this.id = id == null ? null : id.trim();
     }
 
     public String getName() {

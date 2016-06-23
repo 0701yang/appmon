@@ -1,16 +1,25 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="RoleMapper" >
-  <resultMap id="Role" type="Role" >
-    <id column="ID" property="id" jdbcType="DECIMAL" />
-    <result column="NAME" property="name" jdbcType="VARCHAR" />
-    <result column="DESCRIPTION" property="description" jdbcType="VARCHAR" />
-  </resultMap>
+<mapper namespace="RoleMapper">
+    <resultMap id="r" type="Role">
+        <id column="ID" property="id" jdbcType="VARCHAR"/>
+        <result column="NAME" property="name" jdbcType="VARCHAR"/>
+        <result column="DESCRIPTION" property="description" jdbcType="VARCHAR"/>
+    </resultMap>
 
-  <select id="listAllRole" resultMap="Role">
-    select
-    *
-    from ZCJ_SHSNC_ROLE
-  </select>
+    <!--查询记录数-->
+    <select id="count" resultType="java.lang.Integer">
+        SELECT count(1)
+        FROM ZCJ_SHSNC_ROLE
+    </select>
+
+    <!--查询所有角色信息-->
+    <select id="listAllRole" resultMap="r">
+        SELECT
+            R.ID,
+            R.NAME,
+            R.DESCRIPTION
+        FROM ZCJ_SHSNC_ROLE R
+    </select>
 
 </mapper>

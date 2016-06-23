@@ -6,7 +6,7 @@
                 <li class="active">
                     <a href="#">主页</a>
                 </li>
-                <li class="menu-dropdown mega-menu-dropdown active">
+                <li class="menu-dropdown mega-menu-dropdown">
                     <a data-hover="megamenu-dropdown" data-close-others="true" data-toggle="dropdown" href="javascript:;" class="dropdown-toggle">
                         基础模块 <i class="fa fa-angle-down"></i>
                     </a>
@@ -14,24 +14,14 @@
                         <li class="dropdown-submenu">
                             <a href="javascript:;"><i class="icon-settings"></i>系统管理 </a>
                             <ul class="dropdown-menu">
-                                <li class="dropdown-submenu">
-                                    <a href="/user/listUsers" target="mainFrame">用户管理 </a>
-                                    <ul class="dropdown-menu">
-                                        <li class="">
-                                            <a href="javascript:;">用户添加 </a>
-                                        </li>
-                                        <li class="">
-                                            <a href="javascript:;">用户修改 </a>
-                                        </li>
-                                    </ul>
+                                <li class=" ">
+                                    <a href="${pageContext.request.contextPath}/user/list" target="mainFrame">用户管理 </a>
                                 </li>
                                 <li class=" ">
-                                    <a href="#" target="mainFrame">
-                                        部门管理 </a>
+                                    <a href="${pageContext.request.contextPath}/role/list" target="mainFrame">角色管理 </a>
                                 </li>
                                 <li class=" ">
-                                    <a href="#" target="mainFrame">
-                                        岗位管理 </a>
+                                    <a href="${pageContext.request.contextPath}/privilege/list" target="mainFrame">权限管理 </a>
                                 </li>
                             </ul>
                         </li>

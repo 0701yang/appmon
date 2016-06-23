@@ -3,7 +3,7 @@ package com.shsnc.entity.system;
 import java.util.Date;
 
 public class User {
-    private Long id;
+    private String id;
 
     private String username;
 
@@ -13,11 +13,9 @@ public class User {
 
     private String telephone;
 
-    private String rolename;
-
     private String fullname;
 
-    private Short status;
+    private String status;
 
     private Date createdate;
 
@@ -27,12 +25,24 @@ public class User {
 
     private String bz;
 
-    public Long getId() {
+    private String roleid;
+
+    private Role role;
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role ;
+    }
+
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setId(String id) {
+        this.id = id == null ? null : id.trim();
     }
 
     public String getUsername() {
@@ -67,14 +77,6 @@ public class User {
         this.telephone = telephone == null ? null : telephone.trim();
     }
 
-    public String getRolename() {
-        return rolename;
-    }
-
-    public void setRolename(String rolename) {
-        this.rolename = rolename == null ? null : rolename.trim();
-    }
-
     public String getFullname() {
         return fullname;
     }
@@ -83,12 +85,12 @@ public class User {
         this.fullname = fullname == null ? null : fullname.trim();
     }
 
-    public Short getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(Short status) {
-        this.status = status;
+    public void setStatus(String status) {
+        this.status = status == null ? null : status.trim();
     }
 
     public Date getCreatedate() {
@@ -96,7 +98,7 @@ public class User {
     }
 
     public void setCreatedate(Date createdate) {
-        this.createdate = createdate;
+        this.createdate = createdate == null ? null : createdate;
     }
 
     public Date getLastdate() {
@@ -104,7 +106,7 @@ public class User {
     }
 
     public void setLastdate(Date lastdate) {
-        this.lastdate = lastdate;
+        this.lastdate = lastdate == null ? null : lastdate;
     }
 
     public String getIp() {
@@ -121,5 +123,13 @@ public class User {
 
     public void setBz(String bz) {
         this.bz = bz == null ? null : bz.trim();
+    }
+
+    public String getRoleid() {
+        return roleid;
+    }
+
+    public void setRoleid(String roleid) {
+        this.roleid = roleid == null ? null : roleid.trim();
     }
 }

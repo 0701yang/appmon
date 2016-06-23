@@ -1,20 +1,21 @@
 package com.shsnc.entity.system;
 
 public class Privilege {
-    private Long id;
+    private String id;
 
     private String url;
 
     private String name;
 
-    private Long parentid;
+    private String parentid;
 
-    public Long getId() {
+
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setId(String id) {
+        this.id = id == null ? null : id.trim();
     }
 
     public String getUrl() {
@@ -33,11 +34,11 @@ public class Privilege {
         this.name = name == null ? null : name.trim();
     }
 
-    public Long getParentid() {
+    public String getParentid() {
         return parentid;
     }
 
-    public void setParentid(Long parentid) {
-        this.parentid = parentid;
+    public void setParentid(String parentid) {
+        this.parentid = parentid == null ? null : parentid.trim();
     }
 }

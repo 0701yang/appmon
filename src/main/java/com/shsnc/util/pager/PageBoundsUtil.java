@@ -1,4 +1,4 @@
-package com.shsnc.util;
+package com.shsnc.util.pager;
 
 import com.github.miemiedev.mybatis.paginator.domain.Order;
 import com.github.miemiedev.mybatis.paginator.domain.PageBounds;
