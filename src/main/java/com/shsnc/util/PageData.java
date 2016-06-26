@@ -29,7 +29,7 @@ public class PageData extends HashMap implements Map{
 			Object valueObj = entry.getValue(); 
 			if(null == valueObj){ 
 				value = ""; 
-			}else if(valueObj instanceof String[]){ 
+			}else if(valueObj instanceof String[]){ //这个对象是否是这个特定类或者是它的子类的一个实例
 				String[] values = (String[])valueObj;
 				for(int i=0;i<values.length;i++){ 
 					 value = values[i] + ",";

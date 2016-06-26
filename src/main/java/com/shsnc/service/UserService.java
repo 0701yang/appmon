@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
-import java.util.Objects;
 
 @Service("userService")
 public class UserService {
@@ -39,12 +38,25 @@ public class UserService {
      * @return
      * @throws Exception
      */
-    public Pager<User> findByUId(PageData pd) throws Exception {
+    public Pager<User> findByName(PageData pd) throws Exception {
         PageBounds pageBounds = PageBoundsUtil.pageBoundsOrderExtend("ID.ASC");
-        List<User> list = sqlSessionTemplate.selectList("UserMapper.findByUId", pd.getString("username"), pageBounds);
+        List<User> list = sqlSessionTemplate.selectList("UserMapper.findByName", pd.getString("username"), pageBounds);
         int count = sqlSessionTemplate.selectOne("UserMapper.countByName",pd.getString("username"));
         Pager<User> pages = new Pager<User>(count, list);
+        return pages;
+    }
 
+    /**
+     *  根据id查询用户信息
+     * @param id
+     * @return
+     * @throws Exception
+     */
+    public Pager<User> findById(String id) throws Exception {
+        PageBounds pageBounds = PageBoundsUtil.pageBoundsOrderExtend("ID.ASC");
+        List<User> list = sqlSessionTemplate.selectList("UserMapper.findById", id, pageBounds);
+        int count = sqlSessionTemplate.selectOne("UserMapper.countById",id);
+        Pager<User> pages = new Pager<User>(count, list);
         return pages;
     }
 
@@ -56,6 +68,24 @@ public class UserService {
      */
     public void save(User user) throws Exception {
          sqlSessionTemplate.insert("UserMapper.save", user);
+    }
+
+    /**
+     * 删除
+     * @param id
+     * @throws Exception
+     */
+    public void del(String id) throws Exception{
+        sqlSessionTemplate.delete("UserMapper.del",id);
+    }
+
+    /**
+     * 修改
+     * @param user
+     * @throws Exception
+     */
+    public void edit(User user) throws Exception{
+        sqlSessionTemplate.delete("UserMapper.edit",user);
     }
 
 }

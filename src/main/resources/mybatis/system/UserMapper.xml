@@ -23,18 +23,24 @@
         </association>
     </resultMap>
 
-
     <!--查询记录数-->
     <select id="count" resultType="java.lang.Integer">
         SELECT count(1)
         FROM ZCJ_SHSNC_USER
     </select>
 
-    <!--根据id查询记录数-->
+    <!--根据name查询记录数-->
     <select id="countByName" resultType="java.lang.Integer" parameterType="java.lang.String">
         SELECT count(1)
         FROM ZCJ_SHSNC_USER
         WHERE USERNAME = #{username}
+    </select>
+
+    <!--根据id查询记录数-->
+    <select id="countById" resultType="java.lang.Integer" parameterType="java.lang.String">
+        SELECT count(1)
+        FROM ZCJ_SHSNC_USER
+        WHERE ID = #{id}
     </select>
 
     <!--查询所有用户信息-->
@@ -56,8 +62,8 @@
 
     </select>
 
-    <!--根据id查询记录-->
-    <select id="findByUId" resultMap="u" parameterType="java.lang.String">
+    <!--根据name查询记录-->
+    <select id="findByName" resultMap="u" parameterType="java.lang.String">
         SELECT
             u.ID,
             u.USERNAME,
@@ -70,31 +76,77 @@
             u.CREATEDATE,
             u.LASTDATE,
             u.IP,
-            u.BZ
+            u.BZ,
+            u.ROLEID
         FROM ZCJ_SHSNC_USER u LEFT JOIN ZCJ_SHSNC_ROLE r ON u.ROLEID = r.ID
         WHERE u.USERNAME = #{username}
+    </select>
+
+    <!--根据id查询记录-->
+    <select id="findById" resultMap="u" parameterType="java.lang.String">
+        SELECT
+            u.ID,
+            u.USERNAME,
+            u.PASSWORD,
+            u.EMAIL,
+            u.TELEPHONE,
+            r.NAME,
+            u.FULLNAME,
+            u.STATUS,
+            u.CREATEDATE,
+            u.LASTDATE,
+            u.IP,
+            u.BZ,
+            u.ROLEID
+        FROM ZCJ_SHSNC_USER u LEFT JOIN ZCJ_SHSNC_ROLE r ON u.ROLEID = r.ID
+        WHERE u.ID = #{id}
     </select>
 
     <!--添加用户-->
     <!--当为select语句时：flushCache默认为false，表示任何时候语句被调用，都不会去清空本地缓存和二级缓存。useCache默认为true，表示会将本条语句的结果进行二级缓存。-->
     <!--当为insert、update、delete语句时：flushCache默认为true，表示任何时候语句被调用，都会导致本地缓存和二级缓存被清空。useCache属性在该情况下没有。-->
-    <insert id="save" parameterType="User" >
-            INSERT INTO ZCJ_SHSNC_USER (
-                ID, USERNAME, PASSWORD, EMAIL, TELEPHONE, FULLNAME, STATUS, CREATEDATE, LASTDATE, IP, BZ, ROLEID            )
-            VALUES (
-                #{id},
-                #{username},
-                #{password},
-                #{email},
-                #{telephone},
-                #{fullname},
-                #{status},
-                #{createdate},
-                #{lastdate},
-                #{ip},
-                #{bz},
-                #{roleid}
-            )
+    <insert id="save" parameterType="User">
+        INSERT INTO ZCJ_SHSNC_USER (
+            ID, USERNAME, PASSWORD, EMAIL, TELEPHONE, FULLNAME, STATUS, CREATEDATE, LASTDATE, IP, BZ, ROLEID)
+        VALUES (
+            #{id},
+            #{username},
+            #{password},
+            #{email},
+            #{telephone},
+            #{fullname},
+            #{status},
+            #{createdate},
+            #{lastdate},
+            #{ip},
+            #{bz},
+            #{roleid}
+        )
     </insert>
+
+    <!--删除-->
+    <delete id="del" parameterType="java.lang.String">
+        DELETE FROM ZCJ_SHSNC_USER
+        WHERE ID = #{id}
+    </delete>
+
+    <!--修改数据-->
+    <update id="edit" parameterType="User">
+        UPDATE ZCJ_SHSNC_USER u
+        SET u.USERNAME = #{username},
+        <if test="PASSWORD != null and PASSWORD !='' ">
+            u.PASSWORD = #{password},
+        </if>
+        u.ROLEID = #{roleid},
+        u.BZ = #{bz},
+        u.CREATEDATE = #{CREATEDATE},
+        u.EMAIL=#{EMAIL},
+        u.FULLNAME=#{FULLNAME},
+        u.IP=#{IP},
+        u.LASTDATE=#{LASTDATE},
+        u.STATUS=#{STATUS},
+        u.TELEPHONE=#{TELEPHONE}
+        WHERE u.ID = #{id}
+    </update>
 
 </mapper>

@@ -17,6 +17,7 @@ import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 
@@ -83,18 +84,16 @@ public class UserController extends BaseController {
 
     /**
      * 保存用户
-     * @param out
+     * @param
      * @return
      * @throws Exception
      */
     @RequestMapping(value="/save")
-    public ModelAndView save(PrintWriter out) throws Exception{
+    public ModelAndView save() throws Exception{
         ModelAndView mv = this.getModelAndView();
         PageData pd = new PageData();
         pd = this.getPageData();
-
         User user = new User();
-
         user.setId(this.get32UUID());
         user.setUsername(pd.getString("username"));
         user.setBz(pd.getString("bz"));
@@ -105,8 +104,7 @@ public class UserController extends BaseController {
         user.setTelephone(pd.getString("telephone"));
         user.setRoleid(pd.getString("roleid"));
 
-
-        if(userService.findByUId(pd).getDatas().size() == 0 ){
+        if(userService.findByName(pd).getDatas().size() == 0 ){
 //            if(Jurisdiction.buttonJurisdiction(menuUrl, "add")){
 //                userService.saveU(pd);
 //            } //判断新增权限
@@ -120,10 +118,78 @@ public class UserController extends BaseController {
         return mv;
     }
 
+    /**
+     * 删除
+     * @param
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping(value="/del")
+    public ModelAndView del() throws Exception{
+        ModelAndView mv = this.getModelAndView();
+        PageData pd = new PageData();
+        try{
+            pd = this.getPageData();
+            //if(Jurisdiction.buttonJurisdiction(menuUrl, "del")){userService.deleteU(pd);}
+            userService.del(pd.getString("id"));
+        } catch(Exception e){
+           // logger.error(e.toString(), e);
+        }
+        mv.setViewName("redirect:list");
+        return mv;
+    }
+
+    /**
+     * 去修改页面
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping(value="/toEdit")
+    public ModelAndView toEdit() throws Exception{
+        ModelAndView mv = this.getModelAndView();
+        PageData pd =this.getPageData();
+
+        Pager<Role> roleList = roleService.findRole();	//列出所有二级角色
+        Pager<User> user =userService.findById(pd.getString("id"));		//根据ID读取
+        pd.put("fullname" , user.getDatas().get(0).getFullname());
+        pd.put("email" , user.getDatas().get(0).getEmail());
+        pd.put("telephone" , user.getDatas().get(0).getTelephone());
+        pd.put("bz" , user.getDatas().get(0).getBz());
+        pd.put("username" , user.getDatas().get(0).getUsername());
+        pd.put("password" , user.getDatas().get(0).getPassword());
+        pd.put("telephone" , user.getDatas().get(0).getTelephone());
+        pd.put("roleid" , user.getDatas().get(0).getRoleid());
+
+        mv.setViewName("system/user/add");
+        mv.addObject("msg", "edit");
+        mv.addObject("pd", pd);
+        mv.addObject("roleList", roleList);
+
+        return mv;
+    }
 
 
+    /**
+     * 修改
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping(value="/edit")
+    public ModelAndView edit() throws Exception{
+        ModelAndView mv = this.getModelAndView();
+        PageData pd = new PageData();
+        pd = this.getPageData();
+        if(pd.getString("PASSWORD") != null && !"".equals(pd.getString("PASSWORD"))){
+            pd.put("PASSWORD", new SimpleHash("SHA-1", pd.getString("USERNAME"), pd.getString("PASSWORD")).toString());
+        }
+        //if(Jurisdiction.buttonJurisdiction(menuUrl, "edit")){userService.editU(pd);}
+        Pager<User> pu = userService.findById(pd.getString("id"));
+        userService.edit(pu.getDatas().get(0));
+        mv.addObject("msg","success");
+        mv.setViewName("redirect:list");
+        return mv;
 
-
+    }
 
 
 
@@ -142,7 +208,7 @@ public class UserController extends BaseController {
         PageData pd = new PageData();
         try {
             pd = this.getPageData();
-            if (userService.findByUId(pd).getDatas().size() != 0) {
+            if (userService.findByName(pd).getDatas().size() != 0) {
                 errInfo = "error";
             }
         } catch (Exception e) {

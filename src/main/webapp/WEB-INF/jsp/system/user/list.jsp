@@ -85,7 +85,7 @@
                             <td>${user.bz}</td>
                             <td>
                                 <a class="btn btn-icon-only btn-circle red"
-                                   href="${pageContext.request.contextPath}/user/edit?id=${user.id}"
+                                   href="${pageContext.request.contextPath}/user/toEdit?id=${user.id}"
                                    data-toggle="tooltip" data-placement="top" title="编辑" target="mainFrame"><i class="fa fa-edit"></i> </a>
                                 <a class="btn btn-icon-only btn-circle purple"
                                    href="${pageContext.request.contextPath}/user/del?id=${user.id} "

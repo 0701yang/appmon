@@ -51,8 +51,7 @@
                                     <select class="form-control" name="roleid" id="role_id">
                                         <option value="">请选择职位...</option>
                                         <c:forEach items="${roleList.datas}" var="role">
-                                            <option value="${role.id}">
-                                                <c:if test="${role.id == pd.id}">selected</c:if>
+                                            <option value="${role.id}"  <c:if test="${role.id == pd.roleid}">selected</c:if> >
                                                 ${role.name}
                                             </option>
                                         </c:forEach>
