@@ -134,18 +134,18 @@
     <update id="edit" parameterType="User">
         UPDATE ZCJ_SHSNC_USER u
         SET u.USERNAME = #{username},
-        <if test="PASSWORD != null and PASSWORD !='' ">
+        <if test="password != null and password !='' ">
             u.PASSWORD = #{password},
         </if>
         u.ROLEID = #{roleid},
         u.BZ = #{bz},
-        u.CREATEDATE = #{CREATEDATE},
-        u.EMAIL=#{EMAIL},
-        u.FULLNAME=#{FULLNAME},
-        u.IP=#{IP},
-        u.LASTDATE=#{LASTDATE},
-        u.STATUS=#{STATUS},
-        u.TELEPHONE=#{TELEPHONE}
+        u.CREATEDATE = #{createdate},
+        u.EMAIL=#{email},
+        u.FULLNAME=#{fullname},
+        u.IP=#{ip},
+        u.LASTDATE=#{lastdate},
+        u.STATUS=#{status},
+        u.TELEPHONE=#{telephone}
         WHERE u.ID = #{id}
     </update>
 

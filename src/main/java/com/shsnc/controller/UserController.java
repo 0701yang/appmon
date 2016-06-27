@@ -4,20 +4,18 @@ import com.shsnc.entity.system.Role;
 import com.shsnc.entity.system.User;
 import com.shsnc.service.RoleService;
 import com.shsnc.service.UserService;
-import com.shsnc.util.PageData;
 import com.shsnc.util.pager.Pager;
 import org.apache.shiro.crypto.hash.SimpleHash;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
-import java.io.PrintWriter;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 
@@ -71,12 +69,11 @@ public class UserController extends BaseController {
     @RequestMapping(value = "/add")
     public ModelAndView add() throws Exception {
         ModelAndView mv = this.getModelAndView();
-        PageData pd = this.getPageData();
         Pager<Role> roleList = roleService.findRole();    //准备数据
 
         mv.setViewName("system/user/add");
         mv.addObject("msg", "save");
-        mv.addObject("pd", pd);
+
         mv.addObject("roleList", roleList);
 
         return mv;
@@ -89,22 +86,14 @@ public class UserController extends BaseController {
      * @throws Exception
      */
     @RequestMapping(value="/save")
-    public ModelAndView save() throws Exception{
+    public ModelAndView save(@ModelAttribute("user") User user) throws Exception{
         ModelAndView mv = this.getModelAndView();
-        PageData pd = new PageData();
-        pd = this.getPageData();
-        User user = new User();
-        user.setId(this.get32UUID());
-        user.setUsername(pd.getString("username"));
-        user.setBz(pd.getString("bz"));
-        user.setCreatedate(new Date());
-        user.setEmail(pd.getString("email"));
-        user.setFullname(pd.getString("fullname"));
-        user.setPassword(new SimpleHash("SHA-1" , pd.getString("username"),pd.getString("password")).toString());
-        user.setTelephone(pd.getString("telephone"));
-        user.setRoleid(pd.getString("roleid"));
 
-        if(userService.findByName(pd).getDatas().size() == 0 ){
+        user.setId(this.get32UUID());
+        user.setCreatedate(new Date());
+        user.setPassword(new SimpleHash("SHA-1" , user.getUsername(),user.getPassword()).toString());
+
+        if(userService.findByName(user.getUsername()).getDatas().size() == 0 ){
 //            if(Jurisdiction.buttonJurisdiction(menuUrl, "add")){
 //                userService.saveU(pd);
 //            } //判断新增权限
@@ -125,13 +114,11 @@ public class UserController extends BaseController {
      * @throws Exception
      */
     @RequestMapping(value="/del")
-    public ModelAndView del() throws Exception{
+    public ModelAndView del(@RequestParam("id") String id) throws Exception{
         ModelAndView mv = this.getModelAndView();
-        PageData pd = new PageData();
         try{
-            pd = this.getPageData();
             //if(Jurisdiction.buttonJurisdiction(menuUrl, "del")){userService.deleteU(pd);}
-            userService.del(pd.getString("id"));
+            userService.del(id);
         } catch(Exception e){
            // logger.error(e.toString(), e);
         }
@@ -145,24 +132,16 @@ public class UserController extends BaseController {
      * @throws Exception
      */
     @RequestMapping(value="/toEdit")
-    public ModelAndView toEdit() throws Exception{
+    public ModelAndView toEdit(@RequestParam("id") String id) throws Exception{
         ModelAndView mv = this.getModelAndView();
-        PageData pd =this.getPageData();
 
         Pager<Role> roleList = roleService.findRole();	//列出所有二级角色
-        Pager<User> user =userService.findById(pd.getString("id"));		//根据ID读取
-        pd.put("fullname" , user.getDatas().get(0).getFullname());
-        pd.put("email" , user.getDatas().get(0).getEmail());
-        pd.put("telephone" , user.getDatas().get(0).getTelephone());
-        pd.put("bz" , user.getDatas().get(0).getBz());
-        pd.put("username" , user.getDatas().get(0).getUsername());
-        pd.put("password" , user.getDatas().get(0).getPassword());
-        pd.put("telephone" , user.getDatas().get(0).getTelephone());
-        pd.put("roleid" , user.getDatas().get(0).getRoleid());
+        Pager<User> userPager =userService.findById(id);		//根据ID读取
+        User user = userPager.getDatas().get(0);
 
         mv.setViewName("system/user/add");
         mv.addObject("msg", "edit");
-        mv.addObject("pd", pd);
+        mv.addObject("user", user);
         mv.addObject("roleList", roleList);
 
         return mv;
@@ -175,16 +154,33 @@ public class UserController extends BaseController {
      * @throws Exception
      */
     @RequestMapping(value="/edit")
-    public ModelAndView edit() throws Exception{
+    public ModelAndView edit(@ModelAttribute("user") User user) throws Exception{
         ModelAndView mv = this.getModelAndView();
-        PageData pd = new PageData();
-        pd = this.getPageData();
-        if(pd.getString("PASSWORD") != null && !"".equals(pd.getString("PASSWORD"))){
-            pd.put("PASSWORD", new SimpleHash("SHA-1", pd.getString("USERNAME"), pd.getString("PASSWORD")).toString());
+
+        if (user.getPassword()!=null && !"".equals(user.getPassword())){
+            user.setPassword(new SimpleHash("SHA-1",user.getUsername(),user.getPassword()).toString());
         }
         //if(Jurisdiction.buttonJurisdiction(menuUrl, "edit")){userService.editU(pd);}
-        Pager<User> pu = userService.findById(pd.getString("id"));
-        userService.edit(pu.getDatas().get(0));
+        userService.edit(user);
+        mv.addObject("msg","success");
+        mv.setViewName("redirect:list");
+        return mv;
+
+    }
+
+    /**
+     * 初始化密码
+     * @param id
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping(value="/initPassword")
+    public ModelAndView initPassword(@RequestParam("id") String id) throws Exception{
+        ModelAndView mv = this.getModelAndView();
+        Pager<User> uid = userService.findById(id);
+        User user = uid.getDatas().get(0);
+        user.setPassword("111");
+        userService.edit(user);
         mv.addObject("msg","success");
         mv.setViewName("redirect:list");
         return mv;
@@ -202,13 +198,11 @@ public class UserController extends BaseController {
      */
     @RequestMapping(value = "/hasU")
     @ResponseBody
-    public Object hasU() {
+    public Object hasU(@RequestParam("username") String username) {
         Map<String, String> map = new HashMap<String, String>();
         String errInfo = "success";
-        PageData pd = new PageData();
         try {
-            pd = this.getPageData();
-            if (userService.findByName(pd).getDatas().size() != 0) {
+            if (userService.findByName(username).getDatas().size() != 0) {
                 errInfo = "error";
             }
         } catch (Exception e) {

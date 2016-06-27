@@ -2,7 +2,6 @@ package com.shsnc.service;
 
 import com.github.miemiedev.mybatis.paginator.domain.PageBounds;
 import com.shsnc.entity.system.User;
-import com.shsnc.util.PageData;
 import com.shsnc.util.pager.PageBoundsUtil;
 import com.shsnc.util.pager.Pager;
 import org.mybatis.spring.SqlSessionTemplate;
@@ -34,14 +33,14 @@ public class UserService {
 
     /**
      * 根据name查询用户信息
-     * @param pd
+     * @param name
      * @return
      * @throws Exception
      */
-    public Pager<User> findByName(PageData pd) throws Exception {
+    public Pager<User> findByName(String name) throws Exception {
         PageBounds pageBounds = PageBoundsUtil.pageBoundsOrderExtend("ID.ASC");
-        List<User> list = sqlSessionTemplate.selectList("UserMapper.findByName", pd.getString("username"), pageBounds);
-        int count = sqlSessionTemplate.selectOne("UserMapper.countByName",pd.getString("username"));
+        List<User> list = sqlSessionTemplate.selectList("UserMapper.findByName", name, pageBounds);
+        int count = sqlSessionTemplate.selectOne("UserMapper.countByName",name);
         Pager<User> pages = new Pager<User>(count, list);
         return pages;
     }

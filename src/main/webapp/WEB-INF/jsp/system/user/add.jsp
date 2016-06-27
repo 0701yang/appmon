@@ -40,7 +40,7 @@
                 <div class="portlet-body form">
                     <!-- 开始表单-->
                     <form id="userForm" class="form-horizontal" method="post"  action="/user/${msg}">
-                        <input type="hidden" name="id" id="user_id" value="${pd.id }"/>
+                        <input type="hidden" name="id" id="user_id" value="${user.id }"/>
                         <div class="form-body">
                             <div class="form-group">
                                 <label class="control-label col-md-3" for="role_id">
@@ -51,7 +51,7 @@
                                     <select class="form-control" name="roleid" id="role_id">
                                         <option value="">请选择职位...</option>
                                         <c:forEach items="${roleList.datas}" var="role">
-                                            <option value="${role.id}"  <c:if test="${role.id == pd.roleid}">selected</c:if> >
+                                            <option value="${role.id}"  <c:if test="${role.id == user.roleid}">selected</c:if> >
                                                 ${role.name}
                                             </option>
                                         </c:forEach>
@@ -64,7 +64,7 @@
                                     <span class="required"> * </span>
                                 </label>
                                 <div class="col-md-4">
-                                    <input type="text" name="fullname" id="name" value="${pd.fullname}" class="form-control" placeholder="姓名">
+                                    <input type="text" name="fullname" id="name" value="${user.fullname}" class="form-control" placeholder="姓名">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -73,7 +73,7 @@
                                     <span class="required"> * </span>
                                 </label>
                                 <div class="col-md-4">
-                                    <input type="text" name="email" id="email" value="${pd.email}" class="form-control" placeholder="电子邮件地址">
+                                    <input type="text" name="email" id="email" value="${user.email}" class="form-control" placeholder="电子邮件地址">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -82,7 +82,7 @@
                                     <span class="required"> * </span>
                                 </label>
                                 <div class="col-md-4">
-                                    <input type="text" name="telephone" id="telephone" value="${pd.telephone}" class="form-control" placeholder="联系电话">
+                                    <input type="text" name="telephone" id="telephone" value="${user.telephone}" class="form-control" placeholder="联系电话">
                                 </div>
                             </div>
 
@@ -92,7 +92,7 @@
                                     <span class="required">  </span>
                                 </label>
                                 <div class="col-md-4">
-                                    <input type="text" name="bz" id="bz" value="${pd.bz}" class="form-control" placeholder="备注">
+                                    <input type="text" name="bz" id="bz" value="${user.bz}" class="form-control" placeholder="备注">
                                 </div>
                             </div>
 
@@ -103,7 +103,7 @@
                                     <span class="required"> * </span>
                                 </label>
                                 <div class="col-md-4">
-                                    <input type="text" name="username" id="loginname" value="${pd.username}" class="form-control" placeholder="登入用户名">
+                                    <input type="text" name="username" id="loginname" value="${user.username}" class="form-control" placeholder="登入用户名">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -112,7 +112,7 @@
                                     <span class="required"> * </span>
                                 </label>
                                 <div class="col-md-4">
-                                    <input type="password" name="password" id="password" value="${pd.password}" class="form-control" placeholder="密码">
+                                    <input type="password" name="password" id="password" value="${user.password}" class="form-control" placeholder="密码">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -121,7 +121,7 @@
                                     <span class="required"> * </span>
                                 </label>
                                 <div class="col-md-4">
-                                    <input type="password" name="rpassword" id="re_password" value="${pd.rpassword}" class="form-control" placeholder="再次输入密码">
+                                    <input type="password" name="rpassword" id="re_password" value="" class="form-control" placeholder="再次输入密码">
                                 </div>
                             </div>
                         </div>

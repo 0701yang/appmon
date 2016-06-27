@@ -19,13 +19,9 @@
         <typeAlias type="com.shsnc.entity.system.Radios" alias="Radios"/>
         <typeAlias type="com.shsnc.entity.system.Privilege" alias="Privilege"/>
         <typeAlias type="com.shsnc.entity.system.Department" alias="Department"/>
-
         <typeAlias type="com.shsnc.entity.system.RolePrivilegeKey" alias="RolePrivilegeKey"/>
         <typeAlias type="com.shsnc.entity.system.UserRoleKey" alias="UserRoleKey"/>
-
         <typeAlias type="com.shsnc.util.pager.Pager" alias="pager"/>
-
-        <typeAlias type="com.shsnc.util.PageData" alias="pd"/>
     </typeAliases>
 
 
