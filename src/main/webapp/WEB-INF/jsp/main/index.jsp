@@ -16,7 +16,7 @@
 <div class="page-container">
     <div class="page-content">
         <div class="container">
-            <iframe name="mainFrame" id="mainFrame" frameborder="0" src="#" style="margin:0 auto;width:100%;height:100%;"></iframe>
+            <iframe name="mainFrame" id="mainFrame" frameborder="0" src="dashboard/index" style="margin:0 auto;width:100%;height:100%;"></iframe>
         </div>
     </div>
 </div>

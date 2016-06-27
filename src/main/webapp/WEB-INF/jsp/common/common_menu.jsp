@@ -3,7 +3,7 @@
     <div class="container">
         <div class="hor-menu ">
             <ul class="nav navbar-nav">
-                <li class="active">
+                <li>
                     <a href="#">主页</a>
                 </li>
                 <li class="menu-dropdown mega-menu-dropdown">
@@ -28,26 +28,12 @@
                     </ul>
                 </li>
                 <li class="menu-dropdown classic-menu-dropdown ">
-                    <a data-hover="megamenu-dropdown" data-close-others="true" data-toggle="dropdown" href="javascript:;">
-                        系统健康度指数动态监控 <i class="fa fa-angle-down"></i>
+                    <a data-hover="megamenu-dropdown" data-close-others="true" data-toggle="dropdown" href="#">
+                        系统健康度指数动态监控
                     </a>
-                    <ul class="dropdown-menu pull-left">
-                        <li class=" dropdown-submenu">
-                            <a href=":;"><i class="icon-briefcase"></i>系统健康度指数动态监控 </a>
-                            <ul class="dropdown-menu">
-                                <li class=" ">
-                                    <a href="#">
-                                        Basic Datatables </a>
-                                </li>
-                                <li class=" ">
-                                    <a href="#">
-                                        Tree Datatables </a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-
                 </li>
+
+
             </ul>
         </div>
     </div>
