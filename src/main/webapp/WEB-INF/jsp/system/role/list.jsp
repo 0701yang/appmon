@@ -40,13 +40,13 @@
                         <span class="caption-subject font-green-sharp bold uppercase">角色列表</span>
                     </div>
                     <div class="actions btn-set">
-                        <a type="botton" class="btn green-haze btn-circle" href="${pageContext.request.contextPath}/user/toAddUser">
+                        <a type="botton" class="btn green-haze btn-circle" href="${pageContext.request.contextPath}/role/add">
                             <i class="fa fa-check-circle"></i>
                             添加
                         </a>
                     </div>
                     <div class="actions btn-set">
-                        <a type="botton" class="btn green-haze btn-circle" href="${pageContext.request.contextPath}/user/list">
+                        <a type="botton" class="btn green-haze btn-circle" href="${pageContext.request.contextPath}/role/list">
                             <i class="fa fa-check-circle"></i>
                             刷新
                         </a>
@@ -71,7 +71,7 @@
                                 <td>${role.description}</td>
                                 <td>
                                     <a class="btn btn-icon-only btn-circle red"
-                                       href="${pageContext.request.contextPath}/role/edit?id=${role.id}"
+                                       href="${pageContext.request.contextPath}/role/toEdit?id=${role.id}"
                                        data-toggle="tooltip" data-placement="top" title="编辑" target="mainFrame"><i class="fa fa-edit"></i> </a>
                                     <a class="btn btn-icon-only btn-circle purple"
                                        href="${pageContext.request.contextPath}/role/del?id=${role.id} "
@@ -90,7 +90,7 @@
                         <c:if test="${roleList.total > 0}">
                             <jsp:include page="../../common/Page.jsp">
                                 <jsp:param value="${roleList.total }" name="totalRecord"/>
-                                <jsp:param value="listUsers" name="url"/>
+                                <jsp:param value="roleList" name="url"/>
                             </jsp:include>
                         </c:if>
                     </div>

@@ -13,6 +13,20 @@
         FROM ZCJ_SHSNC_ROLE
     </select>
 
+    <!--查询记录数根据name-->
+    <select id="countByName" resultType="java.lang.Integer">
+        SELECT count(1)
+        FROM ZCJ_SHSNC_ROLE r
+        WHERE NAME = #{name}
+    </select>
+
+    <!--根据id查询记录数-->
+    <select id="countById" resultType="java.lang.Integer" parameterType="java.lang.String">
+        SELECT count(1)
+        FROM ZCJ_SHSNC_ROLE
+        WHERE ID = #{id}
+    </select>
+
     <!--查询所有角色信息-->
     <select id="listAllRole" resultMap="r">
         SELECT
@@ -20,6 +34,48 @@
             R.NAME,
             R.DESCRIPTION
         FROM ZCJ_SHSNC_ROLE R
+    </select>
+    <!--保存角色-->
+    <insert id="save" parameterType="Role">
+        INSERT INTO ZCJ_SHSNC_ROLE (
+            ID,
+            NAME,
+            DESCRIPTION
+        ) VALUES (
+            #{id},
+            #{name},
+            #{description})
+    </insert>
+    <!--根据name查询-->
+    <select id="findByName">
+        SELECT *
+        FROM ZCJ_SHSNC_ROLE r
+        WHERE r.NAME = #{name}
+    </select>
+
+    <!--删除-->
+    <delete id="del" parameterType="java.lang.String">
+        DELETE FROM ZCJ_SHSNC_ROLE
+        WHERE ID = #{id}
+    </delete>
+
+    <!--修改数据-->
+    <update id="edit" parameterType="Role">
+        UPDATE ZCJ_SHSNC_ROLE r
+        SET
+            r.NAME        = #{name},
+            r.DESCRIPTION = #{description}
+        WHERE r.ID = #{id}
+    </update>
+
+    <!--根据id查询记录-->
+    <select id="findById" resultMap="r" parameterType="java.lang.String">
+        SELECT
+            r.ID,
+            r.NAME,
+            r.DESCRIPTION
+        FROM ZCJ_SHSNC_ROLE r
+        WHERE r.ID = #{id}
     </select>
 
 </mapper>

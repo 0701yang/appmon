@@ -87,7 +87,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="control-label col-md-3" for="telephone">
+                                <label class="control-label col-md-3" for="bz">
                                     备注
                                     <span class="required">  </span>
                                 </label>
@@ -156,7 +156,7 @@
         if ($("#role_id").val() == "") {
             $("#role_id").tips({
                 side: 3,
-                msg: '选择岗位',
+                msg: '选择角色',
                 bg: '#AE81FF',
                 time: 2
             });

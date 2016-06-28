@@ -5,13 +5,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
- * Created by zhangliling on 16/6/27.
+ * 主页
  */
 @Controller
 @RequestMapping(value = "/dashboard")
 public class DashboardController extends BaseController{
+
     /**
-     * 主页
+     * 主页(显示健康度)
      *
      * @return
      * @throws Exception
@@ -19,6 +20,7 @@ public class DashboardController extends BaseController{
     @RequestMapping(value = "/index")
     public ModelAndView index() throws Exception {
         ModelAndView mv = this.getModelAndView();
+        //Todo 健康度的计算
         mv.setViewName("main/dashboard");
         return mv;
     }

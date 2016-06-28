@@ -20,31 +20,60 @@
                         <div id="tab_grey" class="tab-pane active">
                             <div class="row">
                                 <div class="col-md-12">
+                                    <h3>营业厅渠道</h3>
                                     <div class="row">
                                         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                                             <div class="dashboard-stat grey">
-                                                <a href="Weblogic/history">
-                                                    <div class="visual">
-                                                        <i class="fa fa-briefcase fa-icon-medium"></i>
+                                                <div class="visual">
+                                                    <i class="fa fa-bar-chart-o"></i>
+                                                </div>
+                                                <div class="details">
+                                                    <div class="number">
+                                                        <span class="uppercase font-lg font-red-flamingo">100分</span>
                                                     </div>
-                                                    <div class="details">
-                                                        <div class="number">
-                                                            <span class="uppercase font-lg font-red-flamingo">100分</span>
-                                                        </div>
-                                                        <div class="desc"> 营业厅渠道</div>
-                                                    </div>
-                                                </a>
-                                                <a class="more" href="javascript:;">
-                                                    CRM-App : <span class="uppercase font-lg font-red-flamingo ">100分</span>
-                                                    <i class="m-icon-swapright m-icon-white"></i>
-                                                </a>
-                                                <a class="more" href="javascript:;">
-                                                    OSB : <span class="uppercase font-lg font-red-flamingo">100分</span>
-                                                    <i class="m-icon-swapright m-icon-white"></i>
-                                                </a>
+                                                    <div class="desc"> CRM-APP : <a href="${pageContext.request.contextPath}/weblogic/findcrm">288</a></div>
+                                                </div>
                                             </div>
-                                        </div>
 
+
+                                            <%--<div class="dashboard-stat grey">--%>
+                                                <%--<div class="visual">--%>
+                                                    <%--<i class="fa fa-bar-chart-o"></i>--%>
+                                                <%--</div>--%>
+                                                <%--<div class="details">--%>
+                                                    <%--<div class="number">--%>
+                                                        <%--<span class="uppercase font-lg font-red-flamingo">100分</span>--%>
+                                                    <%--</div>--%>
+                                                    <%--<div class="desc"> HTTP : <a href="#">30</a></div>--%>
+                                                <%--</div>--%>
+                                            <%--</div>--%>
+
+                                            <div class="dashboard-stat grey">
+                                                <div class="visual">
+                                                    <i class="fa fa-bar-chart-o"></i>
+                                                </div>
+                                                <div class="details">
+                                                    <div class="number">
+                                                        <span class="uppercase font-lg font-red-flamingo">100分</span>
+                                                    </div>
+                                                    <div class="desc"> OSB : <a href="${pageContext.request.contextPath}/weblogic/findosb">48</a></div>
+                                                </div>
+                                            </div>
+
+                                            <%--<div class="dashboard-stat grey">--%>
+                                                <%--<div class="visual">--%>
+                                                    <%--<i class="fa fa-bar-chart-o"></i>--%>
+                                                <%--</div>--%>
+                                                <%--<div class="details">--%>
+                                                    <%--<div class="number">--%>
+                                                        <%--<span class="uppercase font-lg font-red-flamingo">100分</span>--%>
+                                                    <%--</div>--%>
+                                                    <%--<div class="desc"> 关键字错误 : </div>--%>
+                                                <%--</div>--%>
+                                            <%--</div>--%>
+
+
+                                        </div>
                                     </div>
                                 </div>
                             </div>

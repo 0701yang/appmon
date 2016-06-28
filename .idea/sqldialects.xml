@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="SqlDialectMappings">
-    <file url="mock:///UserMapper.xml" dialect="Oracle" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/mybatis/system/DepartmentMapper.xml" dialect="Oracle" />
     <file url="file://$PROJECT_DIR$/src/main/resources/mybatis/system/PrivilegeMapper.xml" dialect="Oracle" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/mybatis/system/RadiosMapper.xml" dialect="Oracle" />
     <file url="file://$PROJECT_DIR$/src/main/resources/mybatis/system/RoleMapper.xml" dialect="Oracle" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/mybatis/system/RolePrivilegeMapper.xml" dialect="Oracle" />
     <file url="file://$PROJECT_DIR$/src/main/resources/mybatis/system/UserMapper.xml" dialect="Oracle" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/mybatis/system/UserRoleMapper.xml" dialect="Oracle" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/mybatis/system/WlscrmServersMapper.xml" dialect="Oracle" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/mybatis/system/WlscrmThreadMapper.xml" dialect="Oracle" />
   </component>
 </project>

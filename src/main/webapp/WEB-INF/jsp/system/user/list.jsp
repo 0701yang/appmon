@@ -108,7 +108,6 @@
                         </jsp:include>
                     </c:if>
                 </div>
-
             </div>
         </div>
     </div>

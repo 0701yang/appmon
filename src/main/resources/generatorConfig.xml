@@ -49,6 +49,9 @@
         <table tableName="ZCJ_SHSNC_USER_ROLE" domainObjectName="UserRole" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
         <table tableName="ZCJ_SHSNC_ROLE_PRIVILEGE" domainObjectName="RolePrivilege" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
         <table tableName="ZCJ_SHSNC_RADIOS" domainObjectName="Radios" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
+        <table tableName="ZCJ_WLSCRM_SERVERS" domainObjectName="WLSCRMSERVERS" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
+        <table tableName="ZCJ_WLSCRM_THREAD" domainObjectName="WLSCRMTHREAD" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
+
 
     </context>
 </generatorConfiguration>

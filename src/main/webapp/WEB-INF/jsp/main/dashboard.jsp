@@ -23,7 +23,7 @@
                                     <div class="row">
                                         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                                             <div class="dashboard-stat grey">
-                                                <a href="Weblogic/history">
+                                                <a href="${pageContext.request.contextPath}/healthof/view">
                                                     <div class="visual">
                                                         <i class="fa fa-briefcase fa-icon-medium"></i>
                                                     </div>
@@ -42,6 +42,9 @@
                                                     OSB : <span class="uppercase font-lg font-red-flamingo">100分</span>
                                                     <i class="m-icon-swapright m-icon-white"></i>
                                                 </a>
+
+
+
                                             </div>
                                         </div>
                                         

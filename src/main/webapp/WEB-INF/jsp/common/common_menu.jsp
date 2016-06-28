@@ -4,7 +4,7 @@
         <div class="hor-menu ">
             <ul class="nav navbar-nav">
                 <li>
-                    <a href="#">主页</a>
+                    <a href="${pageContext.request.contextPath}/dashboard/index" target="mainFrame">主页</a>
                 </li>
                 <li class="menu-dropdown mega-menu-dropdown">
                     <a data-hover="megamenu-dropdown" data-close-others="true" data-toggle="dropdown" href="javascript:;" class="dropdown-toggle">
@@ -28,7 +28,7 @@
                     </ul>
                 </li>
                 <li class="menu-dropdown classic-menu-dropdown ">
-                    <a data-hover="megamenu-dropdown" data-close-others="true" data-toggle="dropdown" href="#">
+                    <a  href="${pageContext.request.contextPath}/dashboard/index" target="mainFrame">
                         系统健康度指数动态监控
                     </a>
                 </li>
