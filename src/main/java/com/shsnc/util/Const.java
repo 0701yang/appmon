@@ -1,5 +1,8 @@
 package com.shsnc.util;
 
+import java.util.Map;
+import java.util.TreeMap;
+
 /**
  * 项目名称：
  * @author:fh
@@ -31,7 +34,46 @@ public class Const {
 	public static final String[] MSG8 ={"CRM-APP-G9", "CRM-APP-G10"};
 	public static final String OSB8 = "esb-assistvoice";
 
+	//公共的map
+	public static Map<String,String> map(){
+		Map<String,String> map = new TreeMap<>();
+		map.put("msg1" , "营业厅渠道");
+		map.put("msg2" , "代理商渠道");
+		map.put("msg3" , "移动终端渠道");
+		map.put("msg4" , "短信渠道");
+		map.put("msg5" , "自助式语言渠道");
+		map.put("msg6" , "互联网渠道");
+		map.put("msg7" , "协助式渠道");
+		map.put("msg8" , "集团客户渠道");
+		return map;
+	}
 
+	//CRM的map集合
+	public static Map<String , String[]> maprcrm(){
+		Map<String,String[]> map = new TreeMap<>();
+		map.put("msg1" , MSG1);
+		map.put("msg2" , MSG2);
+		map.put("msg3" , MSG3);
+		map.put("msg4" , MSG4);
+		map.put("msg5" , MSG5);
+		map.put("msg6" , MSG6);
+		map.put("msg7" , MSG7);
+		map.put("msg8" , MSG8);
+		return map;
+	}
+	//OSB的集合
+	public static Map<String , String> maposb(){
+		Map<String,String> map = new TreeMap<>();
+		map.put("msg1" , OSB1);
+		map.put("msg2" , OSB2);
+		map.put("msg3" , OSB3);
+		map.put("msg4" , OSB4);
+		map.put("msg5" , OSB5);
+		map.put("msg6" , OSB6);
+		map.put("msg7" , OSB7);
+		map.put("msg8" , OSB8);
+		return map;
+	}
 
 	
 }

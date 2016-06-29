@@ -31,7 +31,7 @@
                                                     <div class="number">
                                                         <span class="uppercase font-lg font-red-flamingo">100分</span>
                                                     </div>
-                                                    <div class="desc"> CRM-APP : <a href="${pageContext.request.contextPath}/weblogic/findcrm">288</a></div>
+                                                    <div class="desc"> CRM-APP : <a href="${pageContext.request.contextPath}/weblogic/crm/${crm}">288</a></div>
                                                 </div>
                                             </div>
 
@@ -55,7 +55,7 @@
                                                     <div class="number">
                                                         <span class="uppercase font-lg font-red-flamingo">100分</span>
                                                     </div>
-                                                    <div class="desc"> OSB : <a href="${pageContext.request.contextPath}/weblogic/findosb">48</a></div>
+                                                    <div class="desc"> OSB : <a href="${pageContext.request.contextPath}/weblogic/osb/${crm}">48</a></div>
                                                 </div>
                                             </div>
 

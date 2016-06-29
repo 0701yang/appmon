@@ -5,6 +5,7 @@ import com.shsnc.service.ZcjWlscrmService;
 import com.shsnc.util.Const;
 import com.shsnc.util.pager.Pager;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -27,10 +28,11 @@ public class WeblogicController extends BaseController{
      * @return
      * @throws Exception
      */
-    @RequestMapping(value = "/msg1")
-    public ModelAndView msg1() throws Exception {
+    @RequestMapping(value = "/crm/{crm}")
+    public ModelAndView crm(@PathVariable("crm") String crm) throws Exception {
         ModelAndView mv = this.getModelAndView();
-        Pager<Bean> bean = zcjWlscrmService.findCrm(Const.MSG1);
+        String[] a =Const.maprcrm().get(crm);
+        Pager<Bean> bean = zcjWlscrmService.findCrm(a);
         mv.addObject("bean", bean);
         mv.addObject("list","findcrm");
         mv.setViewName("system/weblogic/list");
@@ -42,10 +44,11 @@ public class WeblogicController extends BaseController{
      * @return
      * @throws Exception
      */
-    @RequestMapping(value = "/osb1")
-    public ModelAndView osb1() throws Exception {
+    @RequestMapping(value = "/osb/{osb}")
+    public ModelAndView osb(@PathVariable("osb") String osb) throws Exception {
         ModelAndView mv = this.getModelAndView();
-        Pager<Bean> bean = zcjWlscrmService.findOsb(Const.OSB1);
+
+        Pager<Bean> bean = zcjWlscrmService.findOsb(Const.maposb().get(osb));
         mv.addObject("bean", bean);
         mv.addObject("list","findosb");
         mv.setViewName("system/weblogic/list");
