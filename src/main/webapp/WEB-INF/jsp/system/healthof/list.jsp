@@ -20,7 +20,7 @@
                         <div id="tab_grey" class="tab-pane active">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <h3>营业厅渠道</h3>
+                                    <h3>${msg}</h3>
                                     <div class="row">
                                         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                                             <div class="dashboard-stat grey">
@@ -34,7 +34,6 @@
                                                     <div class="desc"> CRM-APP : <a href="${pageContext.request.contextPath}/weblogic/findcrm">288</a></div>
                                                 </div>
                                             </div>
-
 
                                             <%--<div class="dashboard-stat grey">--%>
                                                 <%--<div class="visual">--%>

@@ -1,53 +1,37 @@
 package com.shsnc.util;
 
-import org.springframework.context.ApplicationContext;
 /**
  * 项目名称：
  * @author:fh
  * 
 */
 public class Const {
-	public static final String SESSION_SECURITY_CODE = "sessionSecCode";
-	public static final String SESSION_USER = "sessionUser";
-	public static final String SESSION_ROLE_RIGHTS = "sessionRoleRights";
-	public static final String SESSION_menuList = "menuList";			//当前菜单
-	public static final String SESSION_allmenuList = "allmenuList";		//全部菜单
-	public static final String SESSION_QX = "QX";
-	public static final String SESSION_userpds = "userpds";			
-	public static final String SESSION_USERROL = "USERROL";				//用户对象
-	public static final String SESSION_USERNAME = "USERNAME";			//用户名
-	public static final String TRUE = "T";
-	public static final String FALSE = "F";
-	public static final String LOGIN = "/login_toLogin.do";				//登录地址
-	public static final String SYSNAME = "admin/config/SYSNAME.txt";	//系统名称路径
-	public static final String PAGE	= "admin/config/PAGE.txt";			//分页条数配置路径
-	public static final String EMAIL = "admin/config/EMAIL.txt";		//邮箱服务器配置路径
-	public static final String SMS1 = "admin/config/SMS1.txt";			//短信账户配置路径1
-	public static final String SMS2 = "admin/config/SMS2.txt";			//短信账户配置路径2
-	public static final String FWATERM = "admin/config/FWATERM.txt";	//文字水印配置路径
-	public static final String IWATERM = "admin/config/IWATERM.txt";	//图片水印配置路径
-	public static final String WEIXIN	= "admin/config/WEIXIN.txt";	//微信配置路径
-	public static final String FILEPATHIMG = "uploadFiles/uploadImgs/";	//图片上传路径
-	public static final String FILEPATHFILE = "uploadFiles/file/";		//文件上传路径
-	public static final String FILEPATHTWODIMENSIONCODE = "uploadFiles/twoDimensionCode/"; //二维码存放路径
-	public static final String NO_INTERCEPTOR_PATH = ".*/((login)|(logout)|(code)|(app)|(weixin)|(static)|(main)|(websocket)).*";	//不对匹配该值的访问路径拦截（正则）
-	
-	
-	public static ApplicationContext WEB_APP_CONTEXT = null; //该值会在web容器启动时由WebAppContextListener初始化
-	
-	/**
-	 * APP Constants
-	 */
-	//app注册接口_请求协议参数)
-	public static final String[] APP_REGISTERED_PARAM_ARRAY = new String[]{"countries","uname","passwd","title","full_name","company_name","countries_code","area_code","telephone","mobile"};
-	public static final String[] APP_REGISTERED_VALUE_ARRAY = new String[]{"国籍","邮箱帐号","密码","称谓","名称","公司名称","国家编号","区号","电话","手机号"};
-	
-	//app根据用户名获取会员信息接口_请求协议中的参数
-	public static final String[] APP_GETAPPUSER_PARAM_ARRAY = new String[]{"USERNAME"};
-	public static final String[] APP_GETAPPUSER_VALUE_ARRAY = new String[]{"用户名"};
-	
+	//营业厅渠道
+	public static final String[] MSG1 = {"CRM-APP-G01", "CRM-APP-G02", "CRM-APP-G03", "CRM-APP-G04","CRM-APP-G36", "CRM-APP-G37", "CRM-APP-G38", "CRM-APP-G39"} ;
+	public static final String OSB1 = "esb-ownchannel";
+	//代理商渠道
+	public static final String[] MSG2 ={"CRM-APP-G05", "CRM-APP-G06", "CRM-APP-G07", "CRM-APP-G08","CRM-APP-G40", "CRM-APP-G41", "CRM-APP-G42", "CRM-APP-G43"} ;
+	public static final String OSB2 = "esb-socialchannel";
+	//集团客户经理渠道
+	public static final String[] MSG3 ={"CRM-APP-G05", "CRM-APP-G06", "CRM-APP-G07", "CRM-APP-G08"};
+	public static final String OSB3 = "esb-directsales";
+	//自助式语音渠道
+	public static final String[] MSG4 ={"CRM-APP-G12", "CRM-APP-G13", "CRM-APP-G14", "CRM-APP-G15"};
+	public static final String OSB4 = "esb-selfvoice";
+	//互联网渠道
+	public static final String[] MSG5 ={"CRM-APP-G12", "CRM-APP-G13", "CRM-APP-G14", "CRM-APP-G15"};
+	public static final String OSB5 = " esb-selfservice";
+	//短信渠道
+	public static final String[] MSG6 ={"CRM-APP-G12", "CRM-APP-G13", "CRM-APP-G14", "CRM-APP-G15"};
+	public static final String OSB6 = "esb-sms";
+	//移动终端渠道
+	public static final String[] MSG7 ={"CRM-APP-G17", "CRM-APP-G19", "CRM-APP-G24", "CRM-APP-G25", "CRM-APP-G26", "CRM-APP-G27", "CRM-APP-G28", "CRM-APP-G29", "CRM-APP-G30", "CRM-APP-G31", "CRM-APP-G32", "CRM-APP-G33", "CRM-APP-G34", "CRM-APP-G35"};
+	public static final String OSB7 = "esb-app";
+	//协助式语音渠道
+	public static final String[] MSG8 ={"CRM-APP-G9", "CRM-APP-G10"};
+	public static final String OSB8 = "esb-assistvoice";
 
-	
+
 
 	
 }

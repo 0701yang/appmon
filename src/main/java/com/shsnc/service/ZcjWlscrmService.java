@@ -21,10 +21,10 @@ public class ZcjWlscrmService {
      * @return
      * @throws Exception
      */
-    public Pager<Bean> findCrm() throws Exception {
+    public Pager<Bean> findCrm(String[] string) throws Exception {
         PageBounds pageBounds = PageBoundsUtil.pageBoundsOrderExtend("APP,MODULE,IP,PORT");
-        int count = sqlSessionTemplate.selectOne("WlscrmThreadMapper.countcrm");
-        List<Bean> list = sqlSessionTemplate.selectList("WlscrmThreadMapper.findHistoryCrm", null, pageBounds);
+        int count = sqlSessionTemplate.selectOne("WlscrmThreadMapper.countcrm",string);
+        List<Bean> list = sqlSessionTemplate.selectList("WlscrmThreadMapper.findHistoryCrm", string, pageBounds);
         Pager<Bean> pages = new Pager<Bean>(count, list);
 
         return pages;
@@ -35,10 +35,10 @@ public class ZcjWlscrmService {
      * @return
      * @throws Exception
      */
-    public Pager<Bean> findOsb() throws Exception {
+    public Pager<Bean> findOsb(String string) throws Exception {
         PageBounds pageBounds = PageBoundsUtil.pageBoundsOrderExtend("APP,MODULE,IP,PORT");
-        int count = sqlSessionTemplate.selectOne("WlscrmThreadMapper.countosb");
-        List<Bean> list = sqlSessionTemplate.selectList("WlscrmThreadMapper.findHistoryOsb", null, pageBounds);
+        int count = sqlSessionTemplate.selectOne("WlscrmThreadMapper.countosb",string);
+        List<Bean> list = sqlSessionTemplate.selectList("WlscrmThreadMapper.findHistoryOsb", string, pageBounds);
         Pager<Bean> pages = new Pager<Bean>(count, list);
 
         return pages;
