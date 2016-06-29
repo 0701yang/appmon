@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="WlscrmThreadMapper">
+
+    <resultMap id="BaseResultMap" type="WlscrmThread">
+        <id column="TIME" property="time" jdbcType="TIMESTAMP"/>
+        <id column="IP" property="ip" jdbcType="VARCHAR"/>
+        <id column="PORT" property="port" jdbcType="VARCHAR"/>
+        <result column="THREADTOTAL" property="threadtotal" jdbcType="DECIMAL"/>
+        <result column="THREADIDLE" property="threadidle" jdbcType="DECIMAL"/>
+        <result column="THREADSTANDBY" property="threadstandby" jdbcType="DECIMAL"/>
+        <result column="THREADRUN" property="threadrun" jdbcType="DECIMAL"/>
+    </resultMap>
+
+    <!--计数CRM-APP-->
+    <select id="countcrm" resultType="java.lang.Integer">
+        SELECT count(1)
+        FROM
+            ZCJ_WLSCRM_SERVERS svr,
+            ZCJ_WLSCRM_THREAD trd,
+            ZCJ_SHSNC_RADIOS rds
+        WHERE
+            svr.IP = trd.IP
+            AND svr.PORT = trd.PORT
+            AND rds.NAME = svr.APP
+            AND svr.APP
+                IN
+                (
+                    'CRM-APP-G01', 'CRM-APP-G02', 'CRM-APP-G03', 'CRM-APP-G04',
+                    'CRM-APP-G36', 'CRM-APP-G37', 'CRM-APP-G38', 'CRM-APP-G39'
+                )
+            AND svr.SERVER != 'AdminServer'
+            --         AND trd.TIME &gt;= to_date(to_char(sysdate - 1 / 24 / 60, 'yyyy-mm-dd hh24:mi:ss'), 'yyyy-mm-dd hh24:mi:ss')
+            --         AND trd.TIME &lt;= to_date(to_char(sysdate , 'yyyy-mm-dd hh24:mi:ss'), 'yyyy-mm-dd hh24:mi:ss')
+
+
+            AND trd.TIME &gt;= to_date('2015-10-30 11:59:00', 'yyyy-mm-dd hh24:mi:ss')
+            AND trd.TIME &lt;= to_date('2015-11-01 0:00:48', 'yyyy-mm-dd hh24:mi:ss')
+
+    </select>
+
+    <!--计数OSB-->
+    <select id="countosb" resultType="java.lang.Integer">
+        SELECT count(1)
+        FROM zcj_wlscrm_servers svr,
+            zcj_wlscrm_Thread trd,
+            zcj_shsnc_radios rds
+        WHERE svr.IP = trd.IP
+              AND svr.PORT = trd.PORT
+              AND rds.NAME = svr.APP
+              AND svr.MODULE = 'esb-ownchannel'
+              AND trd.TIME &gt;= to_date('2015-10-30 11:59:00', 'yyyy-mm-dd hh24:mi:ss')
+              AND trd.TIME &lt;= to_date('2015-11-01 0:00:48', 'yyyy-mm-dd hh24:mi:ss')
+
+    </select>
+
+    <!--查询CRM-APP的数据-->
+    <select id="findHistoryCrm" resultType="Bean">
+        SELECT
+            svr.APP,
+            svr.MODULE,
+            svr.THREADTHRESHOLD,
+            svr.IP,
+            svr.PORT,
+            svr.SERVER,
+            trd.THREADTOTAL,
+            trd.THREADIDLE,
+            trd.THREADRUN,
+            rds.VALUE,
+            rds.SYSTEM,
+            rds.NAME
+        FROM ZCJ_WLSCRM_SERVERS svr, ZCJ_WLSCRM_THREAD trd, ZCJ_SHSNC_RADIOS rds
+        WHERE svr.IP = trd.IP
+              AND svr.PORT = trd.PORT
+              AND rds.NAME = svr.APP
+              AND svr.APP IN
+                  ('CRM-APP-G01', 'CRM-APP-G02', 'CRM-APP-G03', 'CRM-APP-G04',
+                   'CRM-APP-G36', 'CRM-APP-G37', 'CRM-APP-G38', 'CRM-APP-G39')
+              AND svr.SERVER != 'AdminServer'
+              --         AND trd.TIME &gt;= to_date(to_char(sysdate - 1 / 24 / 60, 'yyyy-mm-dd hh24:mi:ss'), 'yyyy-mm-dd hh24:mi:ss')
+              --         AND trd.TIME &lt;= to_date(to_char(sysdate , 'yyyy-mm-dd hh24:mi:ss'), 'yyyy-mm-dd hh24:mi:ss')
+
+              AND trd.TIME &gt;= to_date('2015-10-30 11:59:00', 'yyyy-mm-dd hh24:mi:ss')
+              AND trd.TIME &lt;= to_date('2015-11-01 0:00:48', 'yyyy-mm-dd hh24:mi:ss')
+
+    </select>
+
+    <!--查询OSB的数据-->
+    <select id="findHistoryOsb" resultType="Bean">
+        SELECT
+            svr.APP,
+            svr.MODULE,
+            svr.THREADTHRESHOLD,
+            svr.IP,
+            svr.PORT,
+            svr.SERVER,
+            trd.THREADTOTAL,
+            trd.THREADIDLE,
+            trd.THREADRUN,
+            rds.VALUE,
+            rds.SYSTEM,
+            rds.NAME
+        FROM zcj_wlscrm_servers svr,
+            zcj_wlscrm_Thread trd,
+            zcj_shsnc_radios rds
+        WHERE svr.IP = trd.IP
+              AND svr.PORT = trd.PORT
+              AND rds.NAME = svr.APP
+              AND svr.MODULE = 'esb-ownchannel'
+              AND trd.TIME &gt;= to_date('2015-10-30 11:59:00', 'yyyy-mm-dd hh24:mi:ss')
+              AND trd.TIME &lt;= to_date('2015-11-01 0:00:48', 'yyyy-mm-dd hh24:mi:ss')
+    </select>
+
+
+</mapper>

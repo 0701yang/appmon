@@ -15,12 +15,21 @@
 
     </select>
     <!--查询所有权限信息-->
-    <select id="listAllPrivilege" resultMap="p" >
+    <select id="list" resultMap="p" >
         SELECT
             P.ID,
             P.NAME,
             P.URL
         FROM ZCJ_SHSNC_PRIVILEGE P
+    </select>
+
+    <select id="findAll" resultMap="p">
+        SELECT * FROM  ZCJ_SHSNC_PRIVILEGE p
+    </select>
+
+    <!--查询所有父权限-->
+    <select id="findTopList" resultMap="p">
+        SELECT * FROM ZCJ_SHSNC_PRIVILEGE p WHERE  p.PARENTID IS NULL
     </select>
 
 </mapper>

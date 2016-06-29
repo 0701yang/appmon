@@ -55,7 +55,7 @@
 
     <!--删除-->
     <delete id="del" parameterType="java.lang.String">
-        DELETE FROM ZCJ_SHSNC_ROLE
+        DELETE FROM ZCJ_SHSNC_ROLE r
         WHERE ID = #{id}
     </delete>
 
@@ -77,5 +77,7 @@
         FROM ZCJ_SHSNC_ROLE r
         WHERE r.ID = #{id}
     </select>
+
+
 
 </mapper>
