@@ -15,7 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class HealthOfController extends BaseController {
 
     /**
-     * 显示健康度页面(营业厅渠道)
+     * 显示健康度页面
      * @return
      * @throws Exception
      */
