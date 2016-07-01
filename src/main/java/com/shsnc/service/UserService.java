@@ -98,13 +98,6 @@ public class UserService {
         return u;
     }
 
-    /**
-     * 更新最后登入时间
-     * @param user
-     * @throws Exception
-     */
-    public void updateLastLogin(User user) throws  Exception{
-        sqlSessionTemplate.update("UserMapper.updateLastLogin",user);
-    }
+
 
 }
