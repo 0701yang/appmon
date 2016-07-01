@@ -25,6 +25,7 @@
           <file>file://$MODULE_DIR$/src/main/resources/spring/spring-transaction.xml</file>
           <file>file://$MODULE_DIR$/src/main/resources/spring/spring-dataSource-mon.xml</file>
           <file>file://$MODULE_DIR$/src/main/resources/spring/spring-dataSource-sd1.xml</file>
+          <file>file://$MODULE_DIR$/src/main/resources/spring/spring-shiro.xml</file>
         </fileset>
       </configuration>
     </facet>
@@ -39,6 +40,9 @@
       <sourceFolder url="file://$MODULE_DIR$/target/generated-sources/mybatis-generator" isTestSource="false" generated="true" />
       <excludeFolder url="file://$MODULE_DIR$/target/appmon" />
       <excludeFolder url="file://$MODULE_DIR$/target/classes" />
+      <excludeFolder url="file://$MODULE_DIR$/target/maven-archiver" />
+      <excludeFolder url="file://$MODULE_DIR$/target/surefire" />
+      <excludeFolder url="file://$MODULE_DIR$/target/surefire-reports" />
       <excludeFolder url="file://$MODULE_DIR$/target/test-classes" />
     </content>
     <orderEntry type="inheritedJdk" />

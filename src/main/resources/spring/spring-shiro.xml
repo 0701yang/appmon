@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+        <property name="realm" ref="ShiroRealm"/>
+    </bean>
+
+    <!-- 自定义的Realm 它为shiro提供所需的数据。-->
+    <bean id="ShiroRealm" class="com.shsnc.interceptor.shiro.ShiroRealm"/>
+
+    <!-- Shiro Filter -->
+    <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+        <property name="securityManager" ref="securityManager"/>
+
+        <property name="loginUrl" value="/"/>
+
+        <property name="successUrl" value="/main/index"/>
+
+        <property name="unauthorizedUrl" value="/login_toLogin"/>
+
+        <property name="filterChainDefinitions">
+<!--annon:可以匿名访问   authc:目录下的所有资源都需要经过认证后才可访问-->
+            <value>
+                /Metronic/** = anon
+                /login_login = anon
+                /** = authc
+            </value>
+        </property>
+    </bean>
+</beans>

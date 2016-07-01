@@ -86,11 +86,11 @@
                         </c:forEach>
                         </tbody>
                     </table>
-                    <div>
+                    <div class="row">
                         <c:if test="${roleList.total > 0}">
                             <jsp:include page="../../common/Page.jsp">
                                 <jsp:param value="${roleList.total }" name="totalRecord"/>
-                                <jsp:param value="roleList" name="url"/>
+                                <jsp:param value="list" name="url"/>
                             </jsp:include>
                         </c:if>
                     </div>

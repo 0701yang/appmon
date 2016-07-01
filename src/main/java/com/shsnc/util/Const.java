@@ -75,5 +75,12 @@ public class Const {
 		return map;
 	}
 
-	
+
+	public static final String NO_INTERCEPTOR_PATH = ".*/((login)|(logout)|(code)|(app)|(static)|(main)).*";	//不对匹配该值的访问路径拦截（正则）
+	public static final String SESSION_USER = "sessionUser";
+	public static final String LOGIN = "/login_toLogin.do";				//登录地址
+	public static final String SESSION_USERNAME = "USERNAME";			//用户名
+	public static final String SESSION_USERROL = "USERROL";				//用户对象
+	public static final String SESSION_ROLE_RIGHTS = "sessionRoleRights";
+
 }

@@ -13,29 +13,27 @@
     </resultMap>
 
     <!--计数CRM-APP-->
-    <select id="countcrm" resultType="java.lang.Integer" >
+    <select id="countcrm" resultType="java.lang.Integer">
         SELECT count(1)
         FROM
-            ZCJ_WLSCRM_SERVERS svr,
-            ZCJ_WLSCRM_THREAD trd,
-            ZCJ_SHSNC_RADIOS rds
+        ZCJ_WLSCRM_SERVERS svr,
+        ZCJ_WLSCRM_THREAD trd,
+        ZCJ_SHSNC_RADIOS rds
         WHERE
-            svr.IP = trd.IP
-            AND svr.PORT = trd.PORT
-            AND rds.NAME = svr.APP
-            AND svr.APP
-                IN
-                    <foreach collection="array" item="app" index="index" open="(" separator="," close=")">
-                        #{app}
-                    </foreach>
-            AND svr.SERVER != 'AdminServer'
-            --         AND trd.TIME &gt;= to_date(to_char(sysdate - 1 / 24 / 60, 'yyyy-mm-dd hh24:mi:ss'), 'yyyy-mm-dd hh24:mi:ss')
-            --         AND trd.TIME &lt;= to_date(to_char(sysdate , 'yyyy-mm-dd hh24:mi:ss'), 'yyyy-mm-dd hh24:mi:ss')
+        svr.IP = trd.IP
+        AND svr.PORT = trd.PORT
+        AND rds.NAME = svr.APP
+        AND svr.APP
+        IN
+        <foreach collection="array" item="app" index="index" open="(" separator="," close=")">
+            #{app}
+        </foreach>
+        AND svr.SERVER != 'AdminServer'
+        /*AND trd.TIME &gt;= to_date(to_char(sysdate - 1 / 24 / 60, 'yyyy-mm-dd hh24:mi:ss'), 'yyyy-mm-dd hh24:mi:ss')
+        AND trd.TIME &lt;= to_date(to_char(sysdate , 'yyyy-mm-dd hh24:mi:ss'), 'yyyy-mm-dd hh24:mi:ss')*/
 
-
-            AND trd.TIME &gt;= to_date('2015-10-30 11:59:00', 'yyyy-mm-dd hh24:mi:ss')
-            AND trd.TIME &lt;= to_date('2015-11-01 0:00:48', 'yyyy-mm-dd hh24:mi:ss')
-
+               AND trd.TIME &gt;= to_date('2015-10-30 11:59:00', 'yyyy-mm-dd hh24:mi:ss')
+                AND trd.TIME &lt;= to_date('2015-11-01 0:00:48', 'yyyy-mm-dd hh24:mi:ss')
     </select>
 
     <!--计数OSB-->
@@ -48,42 +46,44 @@
               AND svr.PORT = trd.PORT
               AND rds.NAME = svr.APP
               AND svr.MODULE = #{module}
+              /*AND trd.TIME &gt;= to_date(to_char(sysdate - 1 / 24 / 60, 'yyyy-mm-dd hh24:mi:ss'), 'yyyy-mm-dd hh24:mi:ss')
+              AND trd.TIME &lt;= to_date(to_char(sysdate , 'yyyy-mm-dd hh24:mi:ss'), 'yyyy-mm-dd hh24:mi:ss')
+*/
               AND trd.TIME &gt;= to_date('2015-10-30 11:59:00', 'yyyy-mm-dd hh24:mi:ss')
               AND trd.TIME &lt;= to_date('2015-11-01 0:00:48', 'yyyy-mm-dd hh24:mi:ss')
-
     </select>
 
     <!--查询CRM-APP的数据-->
-    <select id="findHistoryCrm" resultType="Bean" >
+    <select id="findHistoryCrm" resultType="Bean">
         SELECT
-            svr.APP,
-            svr.MODULE,
-            svr.THREADTHRESHOLD,
-            svr.IP,
-            svr.PORT,
-            svr.SERVER,
-            trd.THREADTOTAL,
-            trd.THREADIDLE,
-            trd.THREADRUN,
-            rds.VALUE,
-            rds.SYSTEM,
-            rds.NAME
+        svr.APP,
+        svr.MODULE,
+        svr.THREADTHRESHOLD,
+        svr.IP,
+        svr.PORT,
+        svr.SERVER,
+        trd.THREADTOTAL,
+        trd.THREADIDLE,
+        trd.THREADRUN,
+        rds.VALUE,
+        rds.SYSTEM,
+        rds.NAME
         FROM ZCJ_WLSCRM_SERVERS svr, ZCJ_WLSCRM_THREAD trd, ZCJ_SHSNC_RADIOS rds
         WHERE svr.IP = trd.IP
-              AND svr.PORT = trd.PORT
-              AND rds.NAME = svr.APP
-              AND svr.APP
-              IN
-                <foreach collection="array" item="app" index="index" open="(" separator="," close=")">
-                    #{app}
-                </foreach>
-              AND svr.SERVER != 'AdminServer'
-              --         AND trd.TIME &gt;= to_date(to_char(sysdate - 1 / 24 / 60, 'yyyy-mm-dd hh24:mi:ss'), 'yyyy-mm-dd hh24:mi:ss')
-              --         AND trd.TIME &lt;= to_date(to_char(sysdate , 'yyyy-mm-dd hh24:mi:ss'), 'yyyy-mm-dd hh24:mi:ss')
+        AND svr.PORT = trd.PORT
+        AND rds.NAME = svr.APP
+        AND svr.APP
+        IN
+        <foreach collection="array" item="app" index="index" open="(" separator="," close=")">
+            #{app}
+        </foreach>
+        AND svr.SERVER != 'AdminServer'
+        /*AND trd.TIME &gt;= to_date(to_char(sysdate - 1 / 24 / 60, 'yyyy-mm-dd hh24:mi:ss'), 'yyyy-mm-dd hh24:mi:ss')
+        AND trd.TIME &lt;= to_date(to_char(sysdate , 'yyyy-mm-dd hh24:mi:ss'), 'yyyy-mm-dd hh24:mi:ss')*/
 
-              AND trd.TIME &gt;= to_date('2015-10-30 11:59:00', 'yyyy-mm-dd hh24:mi:ss')
-              AND trd.TIME &lt;= to_date('2015-11-01 0:00:48', 'yyyy-mm-dd hh24:mi:ss')
 
+        AND trd.TIME &gt;= to_date('2015-10-30 11:59:00', 'yyyy-mm-dd hh24:mi:ss')
+        AND trd.TIME &lt;= to_date('2015-11-01 0:00:48', 'yyyy-mm-dd hh24:mi:ss')
     </select>
 
     <!--查询OSB的数据-->
@@ -108,9 +108,36 @@
               AND svr.PORT = trd.PORT
               AND rds.NAME = svr.APP
               AND svr.MODULE = #{module}
+              /*AND trd.TIME &gt;= to_date(to_char(sysdate - 1 / 24 / 60, 'yyyy-mm-dd hh24:mi:ss'), 'yyyy-mm-dd hh24:mi:ss')
+              AND trd.TIME &lt;= to_date(to_char(sysdate , 'yyyy-mm-dd hh24:mi:ss'), 'yyyy-mm-dd hh24:mi:ss')*/
+
+
               AND trd.TIME &gt;= to_date('2015-10-30 11:59:00', 'yyyy-mm-dd hh24:mi:ss')
               AND trd.TIME &lt;= to_date('2015-11-01 0:00:48', 'yyyy-mm-dd hh24:mi:ss')
     </select>
 
+    <!--历史信息-->
+    <select id="history" resultType="WlscrmThread" parameterType="java.util.Map">
+        SELECT *
+        FROM ZCJ_WLSCRM_THREAD t
+        WHERE t.IP = #{ip} AND t.PORT = #{port}
+        /*AND t.TIME &gt;= to_date(to_char(sysdate - 180 / 24 / 60, 'yyyy-mm-dd hh24:mi:ss'), 'yyyy-mm-dd hh24:mi:ss')
+        AND t.time &lt;= to_date(to_char(sysdate,'yyyy-mm-dd hh24:mi:ss'),'yyyy-mm-dd hh24:mi:ss')
+*/
 
+              AND t.TIME &gt;= to_date('2015-10-30 11:59:00', 'yyyy-mm-dd hh24:mi:ss')
+              AND t.TIME &lt;= to_date('2015-11-01 0:00:48', 'yyyy-mm-dd hh24:mi:ss')
+    </select>
+
+    <select id="countHistory" resultType="java.lang.Integer" parameterType="java.util.Map">
+        SELECT count(1)
+        FROM ZCJ_WLSCRM_THREAD t
+        WHERE t.IP = #{ip} AND t.PORT = #{port}
+             /* AND t.TIME &gt;= to_date(to_char(sysdate - 180 / 24 / 60, 'yyyy-mm-dd hh24:mi:ss'), 'yyyy-mm-dd hh24:mi:ss')
+              AND t.time &lt;= to_date(to_char(sysdate,'yyyy-mm-dd hh24:mi:ss'),'yyyy-mm-dd hh24:mi:ss')*/
+
+
+              AND t.TIME &gt;= to_date('2015-10-30 11:59:00', 'yyyy-mm-dd hh24:mi:ss')
+              AND t.TIME &lt;= to_date('2015-11-01 0:00:48', 'yyyy-mm-dd hh24:mi:ss')
+    </select>
 </mapper>

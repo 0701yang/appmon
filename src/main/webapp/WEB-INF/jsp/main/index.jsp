@@ -16,7 +16,7 @@
 <div class="page-container">
     <div class="page-content">
         <div class="container">
-            <iframe name="mainFrame" id="mainFrame" frameborder="0" src="dashboard/index" style="margin:0 auto;width:100%;height:100%;"></iframe>
+            <iframe name="mainFrame" id="mainFrame" src="dashboard/index" style="width: 100% ;height: 100% ;" frameborder="0"  marginheight="0" marginwidth="0"></iframe>
         </div>
     </div>
 </div>
@@ -30,7 +30,7 @@
         var bheight = document.documentElement.clientHeight;//可见区域高度
         //alert(bheight);
         mainFrame.style.width = '100%';
-        mainFrame.style.height = (bheight+100) + 'px';
+        mainFrame.style.height = (bheight-51) + 'px';
     }
     loginFrame();
     window.onresize = function () {

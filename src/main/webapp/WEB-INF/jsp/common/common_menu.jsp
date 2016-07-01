@@ -3,9 +3,9 @@
     <div class="container">
         <div class="hor-menu ">
             <ul class="nav navbar-nav">
-                <li>
-                    <a href="${pageContext.request.contextPath}/dashboard/index" target="mainFrame">主页</a>
-                </li>
+                <%--<li>--%>
+                    <%--<a href="${pageContext.request.contextPath}/dashboard/index" target="mainFrame">主页</a>--%>
+                <%--</li>--%>
                 <li class="menu-dropdown mega-menu-dropdown">
                     <a data-hover="megamenu-dropdown" data-close-others="true" data-toggle="dropdown" href="javascript:;" class="dropdown-toggle">
                         基础模块 <i class="fa fa-angle-down"></i>
@@ -20,11 +20,12 @@
                                 <li class=" ">
                                     <a href="${pageContext.request.contextPath}/role/list" target="mainFrame">角色管理 </a>
                                 </li>
-                                <li class=" ">
-                                    <a href="${pageContext.request.contextPath}/privilege/list" target="mainFrame">权限管理 </a>
-                                </li>
                             </ul>
                         </li>
+                        <li class="dropdown-submenu">
+                            <a href="druid/index.html" target="mainFrame"><i class="icon-settings"></i>数据库监控 </a>
+                        </li>
+
                     </ul>
                 </li>
                 <li class="menu-dropdown classic-menu-dropdown ">

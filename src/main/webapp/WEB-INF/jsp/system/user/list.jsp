@@ -100,7 +100,7 @@
                     </c:forEach>
                     </tbody>
                 </table>
-                <div>
+                <div class="row">
                     <c:if test="${userList.total > 0}">
                         <jsp:include page="../../common/Page.jsp">
                             <jsp:param value="${userList.total }" name="totalRecord"/>

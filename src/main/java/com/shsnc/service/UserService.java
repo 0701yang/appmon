@@ -84,7 +84,27 @@ public class UserService {
      * @throws Exception
      */
     public void edit(User user) throws Exception{
-        sqlSessionTemplate.delete("UserMapper.edit",user);
+        sqlSessionTemplate.update("UserMapper.edit",user);
+    }
+
+    /**
+     * 根据用户名和密码查询用户
+     * @param user
+     * @return
+     * @throws Exception
+     */
+    public User findByUserNameAndPassword(User user) throws Exception{
+        User u = sqlSessionTemplate.selectOne("UserMapper.findByUserNameAndPassword",user);
+        return u;
+    }
+
+    /**
+     * 更新最后登入时间
+     * @param user
+     * @throws Exception
+     */
+    public void updateLastLogin(User user) throws  Exception{
+        sqlSessionTemplate.update("UserMapper.updateLastLogin",user);
     }
 
 }

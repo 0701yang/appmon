@@ -149,4 +149,15 @@
         WHERE u.ID = #{id}
     </update>
 
+    <!--更新最后登入时间-->
+    <update id="updateLastLogin" parameterType="User">
+        UPDATE ZCJ_SHSNC_USER u set u.LASTDATE=#{lastdate}
+    </update>
+
+    <!--根据用户名和密码查询信息-->
+    <select id="findByUserNameAndPassword" parameterType="User">
+        SELECT * FROM  ZCJ_SHSNC_USER WHERE USERNAME = #{username} AND  PASSWORD = #{password}
+
+    </select>
+
 </mapper>
