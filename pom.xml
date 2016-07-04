@@ -298,7 +298,6 @@
             <version>1.0.0</version>
         </dependency>
 
-
         <!--mybatis 结束-->
         <!--缓存 开始-->
         <dependency>
@@ -307,6 +306,11 @@
             <version>2.6.11</version>
         </dependency>
         <!--缓存 结束-->
+        <dependency>
+            <groupId>pce</groupId>
+            <artifactId>pce</artifactId>
+            <version>1.0</version>
+        </dependency>
 
     </dependencies>
 
@@ -319,6 +323,7 @@
                 <artifactId>mybatis-generator-maven-plugin</artifactId>
                 <version>1.3.2</version>
             </plugin>
+
         </plugins>
 
     </build>

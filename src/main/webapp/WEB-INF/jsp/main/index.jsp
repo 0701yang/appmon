@@ -16,7 +16,7 @@
 <div class="page-container">
     <div class="page-content">
         <div class="container">
-            <iframe name="mainFrame" id="mainFrame" src="dashboard/index" style="width: 100% ;height: 100% ;" frameborder="0"  marginheight="0" marginwidth="0"></iframe>
+            <iframe name="mainFrame" id="mainFrame" src="${pageContext.request.contextPath}/dashboard/index" style="width: 100% ;height: 100% ;" frameborder="0"  marginheight="0" marginwidth="0"></iframe>
         </div>
     </div>
 </div>

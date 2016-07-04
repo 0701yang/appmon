@@ -40,6 +40,12 @@
                     <span class="caption-subject font-green-sharp bold uppercase">用户列表</span>
                 </div>
                 <div class="actions btn-set">
+                    <a type="botton" class="btn green-haze btn-circle" href="javascript:history.go(-1);">
+                        <i class="fa fa-check-circle"></i>
+                        返回
+                    </a>
+                </div>
+                <div class="actions btn-set">
                     <a type="botton" class="btn green-haze btn-circle" href="${pageContext.request.contextPath}/user/add">
                         <i class="fa fa-check-circle"></i>
                         添加

@@ -9,12 +9,12 @@
             <ul class="nav navbar-nav pull-right">
                 <li class="dropdown dropdown-user dropdown-dark">
                     <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                        <span class="username username-hide-on-mobile">登入名 </span>
+                        <span class="username username-hide-on-mobile">${user.fullname} </span>
                         <img alt="" class="img-circle" src="${pageContext.request.contextPath}/Metronic/img/avatar9.jpg"/>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-default">
                         <li>
-                            <a href="#">
+                            <a href="${pageContext.request.contextPath}/logout">
                                 <i class="icon-key"></i>
                                 登出
                             </a>

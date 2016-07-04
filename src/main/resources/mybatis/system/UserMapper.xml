@@ -36,13 +36,6 @@
         WHERE USERNAME = #{username}
     </select>
 
-    <!--根据id查询记录数-->
-    <select id="countById" resultType="java.lang.Integer" parameterType="java.lang.String">
-        SELECT count(1)
-        FROM ZCJ_SHSNC_USER
-        WHERE ID = #{id}
-    </select>
-
     <!--查询所有用户信息-->
     <select id="listAllUser" resultMap="u">
         SELECT

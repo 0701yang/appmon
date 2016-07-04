@@ -9,6 +9,15 @@ public class Privilege {
 
     private String parentid;
 
+    private String stats;
+
+    public String getStats() {
+        return stats;
+    }
+
+    public void setStats(String stats) {
+        this.stats = stats;
+    }
 
     public String getId() {
         return id;

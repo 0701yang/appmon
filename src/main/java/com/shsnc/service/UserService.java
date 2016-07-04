@@ -51,12 +51,8 @@ public class UserService {
      * @return
      * @throws Exception
      */
-    public Pager<User> findById(String id) throws Exception {
-        PageBounds pageBounds = PageBoundsUtil.pageBoundsOrderExtend("ID.ASC");
-        List<User> list = sqlSessionTemplate.selectList("UserMapper.findById", id, pageBounds);
-        int count = sqlSessionTemplate.selectOne("UserMapper.countById",id);
-        Pager<User> pages = new Pager<User>(count, list);
-        return pages;
+    public User findById(String id) throws Exception {
+        return sqlSessionTemplate.selectOne("UserMapper.findById", id);
     }
 
     /**

@@ -136,8 +136,7 @@ public class UserController extends BaseController {
         ModelAndView mv = this.getModelAndView();
 
         Pager<Role> roleList = roleService.findRole();	//列出所有二级角色
-        Pager<User> userPager =userService.findById(id);		//根据ID读取
-        User user = userPager.getDatas().get(0);
+        User user =userService.findById(id);		//根据ID读取
 
         mv.setViewName("system/user/add");
         mv.addObject("msg", "edit");
@@ -177,8 +176,7 @@ public class UserController extends BaseController {
     @RequestMapping(value="/initPassword")
     public ModelAndView initPassword(@RequestParam("id") String id) throws Exception{
         ModelAndView mv = this.getModelAndView();
-        Pager<User> uid = userService.findById(id);
-        User user = uid.getDatas().get(0);
+        User user = userService.findById(id);
         user.setPassword("111");
         userService.edit(user);
         mv.addObject("msg","success");
@@ -186,10 +184,6 @@ public class UserController extends BaseController {
         return mv;
 
     }
-
-
-
-
 
     /*************************************************************************************/
     /**

@@ -6,6 +6,7 @@
         <result column="URL" property="url" jdbcType="VARCHAR"/>
         <result column="NAME" property="name" jdbcType="VARCHAR"/>
         <result column="PARENTID" property="parentid" jdbcType="VARCHAR"/>
+        <result column="STATS" property="stats" jdbcType="VARCHAR"/>
     </resultMap>
 
     <!--查询记录数-->
@@ -15,21 +16,14 @@
 
     </select>
     <!--查询所有权限信息-->
-    <select id="list" resultMap="p" >
+    <select id="findAll" resultMap="p" >
         SELECT
             P.ID,
             P.NAME,
-            P.URL
-        FROM ZCJ_SHSNC_PRIVILEGE P
-    </select>
-
-    <select id="findAll" resultMap="p">
-        SELECT * FROM  ZCJ_SHSNC_PRIVILEGE p
-    </select>
-
-    <!--查询所有父权限-->
-    <select id="findTopList" resultMap="p">
-        SELECT * FROM ZCJ_SHSNC_PRIVILEGE p WHERE  p.PARENTID IS NULL
+            P.URL,
+            p.PARENTID,
+            p.STATS
+        FROM ZCJ_SHSNC_PRIVILEGE P ORDER BY p.ID ASC
     </select>
 
 </mapper>
