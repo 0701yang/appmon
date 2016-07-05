@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
-import javax.print.attribute.standard.PagesPerMinute;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -95,7 +94,7 @@ public class WeblogicController extends BaseController{
             Date date2 = sdf.parse(s);
             DateFormat dFormat = DateFormat.getTimeInstance();
             int threadrun = bean.getThreadrun().intValue();
-            Map<Object, Object> map = new HashMap<Object, Object>();
+            Map<Object, Object> map = new HashMap<>();
             map.put("time", dFormat.format(date2));
             map.put("threadrun", threadrun);
             list.add(map);

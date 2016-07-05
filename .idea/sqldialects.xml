@@ -8,6 +8,7 @@
     <file url="file://$PROJECT_DIR$/src/main/resources/mybatis/system/RolePrivilegeMapper.xml" dialect="Oracle" />
     <file url="file://$PROJECT_DIR$/src/main/resources/mybatis/system/UserMapper.xml" dialect="Oracle" />
     <file url="file://$PROJECT_DIR$/src/main/resources/mybatis/system/UserRoleMapper.xml" dialect="Oracle" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/mybatis/system/WlscrmMarkMapper.xml" dialect="Oracle" />
     <file url="file://$PROJECT_DIR$/src/main/resources/mybatis/system/WlscrmServersMapper.xml" dialect="Oracle" />
     <file url="file://$PROJECT_DIR$/src/main/resources/mybatis/system/WlscrmThreadMapper.xml" dialect="Oracle" />
   </component>

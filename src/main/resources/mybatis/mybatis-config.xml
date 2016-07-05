@@ -26,6 +26,8 @@
         <!--weblogic模块-->
         <typeAlias type="com.shsnc.entity.system.WlscrmServers" alias="WlscrmServers"/>
         <typeAlias type="com.shsnc.entity.system.WlscrmThread" alias="WlscrmThread"/>
+        <typeAlias type="com.shsnc.entity.system.WlscrmMark" alias="WlscrmMark"/>
+
         <!--结束-->
 
         <typeAlias type="com.shsnc.entity.system.Bean" alias="Bean"/>

@@ -20,7 +20,7 @@
                         <div id="tab_grey" class="tab-pane active">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <h3>${msg}</h3>
+                                    <h3>${count.name}</h3>
                                     <div class="row">
                                         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                                             <div class="dashboard-stat grey">
@@ -29,23 +29,11 @@
                                                 </div>
                                                 <div class="details">
                                                     <div class="number">
-                                                        <span class="uppercase font-lg font-red-flamingo">100分</span>
+                                                        <span class="uppercase font-lg font-red-flamingo">${count.crm}分</span>
                                                     </div>
-                                                    <div class="desc"> CRM-APP : <a href="${pageContext.request.contextPath}/weblogic/crm/${crm}">288</a></div>
+                                                    <div class="desc"> CRM-APP : <a href="${pageContext.request.contextPath}/weblogic/crm/${count.url}">288</a></div>
                                                 </div>
                                             </div>
-
-                                            <%--<div class="dashboard-stat grey">--%>
-                                                <%--<div class="visual">--%>
-                                                    <%--<i class="fa fa-bar-chart-o"></i>--%>
-                                                <%--</div>--%>
-                                                <%--<div class="details">--%>
-                                                    <%--<div class="number">--%>
-                                                        <%--<span class="uppercase font-lg font-red-flamingo">100分</span>--%>
-                                                    <%--</div>--%>
-                                                    <%--<div class="desc"> HTTP : <a href="#">30</a></div>--%>
-                                                <%--</div>--%>
-                                            <%--</div>--%>
 
                                             <div class="dashboard-stat grey">
                                                 <div class="visual">
@@ -53,24 +41,11 @@
                                                 </div>
                                                 <div class="details">
                                                     <div class="number">
-                                                        <span class="uppercase font-lg font-red-flamingo">100分</span>
+                                                        <span class="uppercase font-lg font-red-flamingo">${count.osb}分</span>
                                                     </div>
-                                                    <div class="desc"> OSB : <a href="${pageContext.request.contextPath}/weblogic/osb/${crm}">48</a></div>
+                                                    <div class="desc"> OSB : <a href="${pageContext.request.contextPath}/weblogic/osb/${count.url}">48</a></div>
                                                 </div>
                                             </div>
-
-                                            <%--<div class="dashboard-stat grey">--%>
-                                                <%--<div class="visual">--%>
-                                                    <%--<i class="fa fa-bar-chart-o"></i>--%>
-                                                <%--</div>--%>
-                                                <%--<div class="details">--%>
-                                                    <%--<div class="number">--%>
-                                                        <%--<span class="uppercase font-lg font-red-flamingo">100分</span>--%>
-                                                    <%--</div>--%>
-                                                    <%--<div class="desc"> 关键字错误 : </div>--%>
-                                                <%--</div>--%>
-                                            <%--</div>--%>
-
 
                                         </div>
                                     </div>
