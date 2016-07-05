@@ -187,7 +187,7 @@ public class GetKeyTool {
         Properties prop  = new Properties();
         String a = null;
         try {
-            prop.load(Thread.currentThread().getContextClassLoader().getResourceAsStream("/" + name + ".properties"));
+            prop.load(Thread.currentThread().getContextClassLoader().getResourceAsStream("/properties/" + name + ".properties"));
             a = prop.getProperty(key);
         }catch (IOException e){
             e.printStackTrace();

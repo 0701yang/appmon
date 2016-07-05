@@ -26,7 +26,7 @@ public class MemcacheController extends BaseController {
      * @return
      */
     @RequestMapping(value = "/list")
-    public ModelAndView login() {
+    public ModelAndView memcachelist() throws Exception{
         ModelAndView mv = this.getModelAndView();
         mv.setViewName("system/memcache/list");
         return mv;
@@ -40,7 +40,7 @@ public class MemcacheController extends BaseController {
      */
     @RequestMapping("/select")
     @ResponseBody
-    public List<String> server(@RequestParam(value = "server") String server) {
+    public List<String> server(@RequestParam(value = "server") String server) throws Exception{
         String[] servers = getKeyTool.getProperty("config", server).split(",");//获取配置文件value值
         List<String> stringList = new ArrayList<>();
         Collections.addAll(stringList, servers);//数组转换为list
@@ -54,8 +54,8 @@ public class MemcacheController extends BaseController {
      * @param key     key的值
      * @return
      */
-    @RequestMapping("/list")
-    public ModelAndView list(
+    @RequestMapping("/showlist")
+    public ModelAndView showlist(
             @RequestParam(value = "server") String server,
             @RequestParam(value = "hostip") String hostip,
             @RequestParam(value = "key") String key) throws Exception {

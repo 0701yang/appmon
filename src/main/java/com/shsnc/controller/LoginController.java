@@ -56,7 +56,7 @@ public class LoginController extends BaseController {
     @RequestMapping(value = "/login_login")
     @ResponseBody
     public Object login_login(@RequestParam("username") String username, @RequestParam("password") String password) throws Exception {
-        Map<String, String> map = new HashMap<String, String>();
+        Map<String, String> map = new HashMap<>();
         User user = new User();
         String errInfo = "";
         if (username != null && password != null) {

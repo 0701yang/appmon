@@ -27,7 +27,7 @@ public class WeblogicController extends BaseController{
     private ZcjWlscrmService zcjWlscrmService;
 
     /**
-     * 营业厅渠道CRM
+     * CRM
      * @return
      * @throws Exception
      */
@@ -43,7 +43,7 @@ public class WeblogicController extends BaseController{
     }
 
     /**
-     * 营业厅渠道OSB
+     * OSB
      * @return
      * @throws Exception
      */
