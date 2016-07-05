@@ -13,68 +13,66 @@
 <body>
 <div id="block">
     <div>
-        <div class="page-content">
-            <div class="page-head">
-                <div class="page-title">
-                    <h1>查询
-                        <small></small>
-                    </h1>
-                </div>
+        <div class="page-head">
+            <div class="page-title">
+                <h1>查询
+                    <small></small>
+                </h1>
             </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="portlet light">
-                        <div class="portlet-body form">
-                            <form name="form" id="crm_radios" class="form-horizontal form-row-sepe">
-                                <div class="form-body">
-                                    <div class="form-group">
-                                        <div class="col-md-2">
-                                            <label class="control-label" for="system">系统</label>
-                                            <select id="system" class="form-control input-medium select2me">
-                                                <option value="">Select...</option>
-                                                <option value="crm.server.list">老版营业厅</option>
-                                                <option value="scrm.server.list">新版营业厅</option>
-                                                <option value="ccs.server.list">合作渠道</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <label class="control-label" for="value">IP和端口</label>
-                                            <select id="value" class="form-control input-medium select2me">
-                                            </select>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <label class="control-label">
-                                                KEY值：
-                                                <span class="required"> * </span>
-                                            </label>
-                                            <input type="text" name="key" id="key" value="" class="form-control" placeholder="这里输入KEY" title="KEY" data-required="1"/>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <div style="padding-top: 27px">
-                                                <a type="submit" class="btn btn-default" onclick="sersearch();" href="#">查询</a>
-                                            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="portlet light">
+                    <div class="portlet-body form">
+                        <form name="form" id="crm_radios" class="form-horizontal form-row-sepe">
+                            <div class="form-body">
+                                <div class="form-group">
+                                    <div class="col-md-3">
+                                        <label class="control-label" for="system">系统</label>
+                                        <select id="system" class="form-control input-medium select2me">
+                                            <option value="">Select...</option>
+                                            <option value="crm.server.list">老版营业厅</option>
+                                            <option value="scrm.server.list">新版营业厅</option>
+                                            <option value="ccs.server.list">合作渠道</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label class="control-label" for="value">IP和端口</label>
+                                        <select id="value" class="form-control input-medium select2me">
+                                        </select>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label class="control-label">
+                                            KEY值：
+                                            <span class="required"> * </span>
+                                        </label>
+                                        <input type="text" name="key" id="key" value="" class="form-control" placeholder="这里输入KEY" title="KEY" data-required="1"/>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div style="padding-top: 27px">
+                                            <a type="submit" class="btn btn-default" onclick="sersearch();" href="#">查询</a>
                                         </div>
                                     </div>
                                 </div>
-                            </form>
-                        </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <!--开始 列表-->
-                    <div id="table"></div>
-                    <!--end 列表-->
-                </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <!--开始 列表-->
+                <div id="table"></div>
+                <!--end 列表-->
             </div>
-
         </div>
     </div>
 </div>
 <jsp:include page="../../common/common_js.jsp"/>
 <!--loading -->
 <script src="${pageContext.request.contextPath}/Metronic/js/spin.min.js"></script>
+<script src="${pageContext.request.contextPath}/Metronic/js/jquery/jquery.tips.js"></script>
 <%--下拉框查询--%>
 <script type="text/javascript">
     $(document).ready(
@@ -134,9 +132,9 @@
         $("#table").load('${pageContext.request.contextPath}/memcache/showlist',
                 {"server": server, "hostip": hostip, "key": keyname},
                 function (response, status, xhr) {
-            Metronic.unblockUI('#block');
-            $("#crm_weblogic_table").fadeIn('slow');
-        });
+                    Metronic.unblockUI('#block');
+                    $("#crm_weblogic_table").fadeIn('slow');
+                });
     }
 </script>
 

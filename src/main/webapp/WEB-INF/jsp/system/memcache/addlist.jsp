@@ -1,15 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
-<!--[if IE 8]><html lang="en" class="ie8 no-js"><![endif]-->
-<!--[if IE 9]><html lang="en" class="ie9 no-js"><![endif]-->
-<!--[if !IE]><!-->
-<html lang="en" class="no-js">
-<!--<![endif]-->
-<head>
-    <jsp:include page="../../common/common_css.jsp"/>
-</head>
-<body>
+
 <c:forEach items="${datas}" var="datas" varStatus="vs">
     <div class="portlet box blue-hoki">
         <div class="portlet-title">
@@ -41,7 +32,5 @@
         </div>
     </div>
 </c:forEach>
-<jsp:include page="../../common/common_js.jsp"/>
-</body>
-</html>
+
 
