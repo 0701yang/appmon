@@ -94,10 +94,10 @@
     </filter-mapping>
     <!-- Shiro filter end -->
 
-    <error-page>
-        <error-code>404</error-code>
-        <location>/404.jsp</location>
-    </error-page>
+    <!--<error-page>-->
+        <!--<error-code>404</error-code>-->
+        <!--<location>/404.jsp</location>-->
+    <!--</error-page>-->
 
     <session-config>
         <session-timeout>15</session-timeout>

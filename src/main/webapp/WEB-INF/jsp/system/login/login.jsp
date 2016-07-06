@@ -19,7 +19,7 @@
 <div class="menu-toggler sidebar-toggler"></div>
 <div class="content" id="loginbox">
     <!-- 开始登入表单 -->
-    <form class="login-form" action="user_login.action" method="post">
+    <form class="login-form" action="" method="post">
         <h3 class="form-title">登入您的账户</h3>
         <div class="form-group">
             <label class="control-label visible-ie8 visible-ie9">用户名</label>
@@ -59,14 +59,14 @@
             var password = $("#password").val();
             $.ajax({
                 type: "POST",
-                url: '/login_login',
-                data: {username : username , password : password},
+                url: "${pageContext.request.contextPath}/login_login",
+                data: {"username" : username , "password" : password},
                 dataType:'json',
                 cache: false,
                 success: function(data){
                     if("success" == data.result){
                         //saveCookie();//记住密码
-                        window.location.href="main/index";
+                        window.location.href="${pageContext.request.contextPath}/main/index";
                     }else if("usererror" == data.result){
                         $("#username").tips({
                             side : 1,

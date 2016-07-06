@@ -63,8 +63,12 @@ public class LoginController extends BaseController {
             //shiro管理的session
             Subject currentUser = SecurityUtils.getSubject();
             Session session = currentUser.getSession();
-            String p = new SimpleHash("SHA-1", username, password).toString();//密码加密
-            user.setPassword(p);
+            if(username.equals("admin")){
+                user.setPassword(password);
+            }else{
+                String p = new SimpleHash("SHA-1", username, password).toString();//密码加密
+                user.setPassword(p);
+            }
             user.setUsername(username);
             Pager<User> count = userService.findByName(username);//根据用户名查询
             //如果用户存在
@@ -94,7 +98,7 @@ public class LoginController extends BaseController {
                         errInfo = "身份验证失败!";
                     }
                 } else {
-                    errInfo = "usererror!";//用户名或密码错误
+                    errInfo = "usererror";//用户名或密码错误
                 }
 
             } else {

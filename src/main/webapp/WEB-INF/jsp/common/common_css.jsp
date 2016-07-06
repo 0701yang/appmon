@@ -6,7 +6,6 @@
 <meta content="" name="description">
 <meta content="" name="author">
 
-<link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css">
 <link href="${pageContext.request.contextPath}/Metronic/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 <link href="${pageContext.request.contextPath}/Metronic/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css">
 <link href="${pageContext.request.contextPath}/Metronic/css/bootstrap.min.css" rel="stylesheet" type="text/css">
