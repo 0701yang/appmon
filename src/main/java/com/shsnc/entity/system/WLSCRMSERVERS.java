@@ -1,6 +1,8 @@
 package com.shsnc.entity.system;
 
-public class WlscrmServers {
+import java.io.Serializable;
+
+public class WlscrmServers implements Serializable {
     private String iscollect;
 
     private String app;

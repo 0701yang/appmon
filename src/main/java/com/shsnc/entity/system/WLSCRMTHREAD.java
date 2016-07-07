@@ -1,8 +1,9 @@
 package com.shsnc.entity.system;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class WlscrmThread extends WlscrThreadKey {
+public class WlscrmThread extends WlscrThreadKey implements Serializable {
     private Short threadtotal;
 
     private Short threadidle;

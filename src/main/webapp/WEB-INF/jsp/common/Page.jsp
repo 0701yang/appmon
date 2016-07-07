@@ -123,7 +123,6 @@ lastItem -对应页最后一行的索引值
 <%--页面选择页码--%>
 <script type="text/javascript">
     function selectPagesize(field) {
-        alert(document.getElementById("firstPage").href + "&pageSize=" + field.value);
         window.location = document.getElementById("firstPage").href + "&pageSize=" + field.value;
     }
 </script>

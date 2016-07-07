@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="WlscrmThreadMapper">
+    <cache type="org.mybatis.caches.ehcache.LoggingEhcache"/>
 
     <resultMap id="BaseResultMap" type="WlscrmThread">
         <id column="TIME" property="time" jdbcType="TIMESTAMP"/>
@@ -29,11 +30,12 @@
             #{app}
         </foreach>
         AND svr.SERVER != 'AdminServer'
+        AND (trd.threadrun >=svr.threadthreshold OR trd.threadrun = -1 )
         /*AND trd.TIME &gt;= to_date(to_char(sysdate - 1 / 24 / 60, 'yyyy-mm-dd hh24:mi:ss'), 'yyyy-mm-dd hh24:mi:ss')
         AND trd.TIME &lt;= to_date(to_char(sysdate , 'yyyy-mm-dd hh24:mi:ss'), 'yyyy-mm-dd hh24:mi:ss')*/
 
-               AND trd.TIME &gt;= to_date('2015-10-30 11:59:00', 'yyyy-mm-dd hh24:mi:ss')
-                AND trd.TIME &lt;= to_date('2015-11-01 0:00:48', 'yyyy-mm-dd hh24:mi:ss')
+        AND trd.TIME &gt;= to_date('2015-10-30 11:59:00', 'yyyy-mm-dd hh24:mi:ss')
+        AND trd.TIME &lt;= to_date('2015-11-01 0:00:48', 'yyyy-mm-dd hh24:mi:ss')
     </select>
 
     <!--计数OSB-->
@@ -46,11 +48,10 @@
               AND svr.PORT = trd.PORT
               AND rds.NAME = svr.APP
               AND svr.MODULE = #{module}
-              /*AND trd.TIME &gt;= to_date(to_char(sysdate - 1 / 24 / 60, 'yyyy-mm-dd hh24:mi:ss'), 'yyyy-mm-dd hh24:mi:ss')
-              AND trd.TIME &lt;= to_date(to_char(sysdate , 'yyyy-mm-dd hh24:mi:ss'), 'yyyy-mm-dd hh24:mi:ss')
-*/
-              AND trd.TIME &gt;= to_date('2015-10-30 11:59:00', 'yyyy-mm-dd hh24:mi:ss')
-              AND trd.TIME &lt;= to_date('2015-11-01 0:00:48', 'yyyy-mm-dd hh24:mi:ss')
+              AND (trd.threadrun >= svr.threadthreshold OR trd.threadrun = -1)
+              AND trd.TIME &gt;= to_date(to_char(sysdate - 1 / 24 / 60, 'yyyy-mm-dd hh24:mi:ss'), 'yyyy-mm-dd hh24:mi:ss')
+              AND trd.TIME &lt;= to_date(to_char(sysdate, 'yyyy-mm-dd hh24:mi:ss'), 'yyyy-mm-dd hh24:mi:ss')
+
     </select>
 
     <!--查询CRM-APP的数据-->
@@ -78,12 +79,10 @@
             #{app}
         </foreach>
         AND svr.SERVER != 'AdminServer'
-        /*AND trd.TIME &gt;= to_date(to_char(sysdate - 1 / 24 / 60, 'yyyy-mm-dd hh24:mi:ss'), 'yyyy-mm-dd hh24:mi:ss')
-        AND trd.TIME &lt;= to_date(to_char(sysdate , 'yyyy-mm-dd hh24:mi:ss'), 'yyyy-mm-dd hh24:mi:ss')*/
+        AND (trd.threadrun >=svr.threadthreshold OR trd.threadrun = -1 )
+        AND trd.TIME &gt;= to_date(to_char(sysdate - 1 / 24 / 60, 'yyyy-mm-dd hh24:mi:ss'), 'yyyy-mm-dd hh24:mi:ss')
+        AND trd.TIME &lt;= to_date(to_char(sysdate , 'yyyy-mm-dd hh24:mi:ss'), 'yyyy-mm-dd hh24:mi:ss')
 
-
-        AND trd.TIME &gt;= to_date('2015-10-30 11:59:00', 'yyyy-mm-dd hh24:mi:ss')
-        AND trd.TIME &lt;= to_date('2015-11-01 0:00:48', 'yyyy-mm-dd hh24:mi:ss')
     </select>
 
     <!--查询OSB的数据-->
@@ -108,36 +107,27 @@
               AND svr.PORT = trd.PORT
               AND rds.NAME = svr.APP
               AND svr.MODULE = #{module}
-              /*AND trd.TIME &gt;= to_date(to_char(sysdate - 1 / 24 / 60, 'yyyy-mm-dd hh24:mi:ss'), 'yyyy-mm-dd hh24:mi:ss')
-              AND trd.TIME &lt;= to_date(to_char(sysdate , 'yyyy-mm-dd hh24:mi:ss'), 'yyyy-mm-dd hh24:mi:ss')*/
-
-
-              AND trd.TIME &gt;= to_date('2015-10-30 11:59:00', 'yyyy-mm-dd hh24:mi:ss')
-              AND trd.TIME &lt;= to_date('2015-11-01 0:00:48', 'yyyy-mm-dd hh24:mi:ss')
+              AND (trd.threadrun >= svr.threadthreshold OR trd.threadrun = -1)
+              AND trd.TIME &gt;= to_date(to_char(sysdate - 1 / 24 / 60, 'yyyy-mm-dd hh24:mi:ss'), 'yyyy-mm-dd hh24:mi:ss')
+              AND trd.TIME &lt;= to_date(to_char(sysdate, 'yyyy-mm-dd hh24:mi:ss'), 'yyyy-mm-dd hh24:mi:ss')
     </select>
 
     <!--历史信息-->
     <select id="history" resultType="WlscrmThread" parameterType="java.util.Map">
         SELECT *
-        FROM ZCJ_WLSCRM_THREAD t
-        WHERE t.IP = #{ip} AND t.PORT = #{port}
-        /*AND t.TIME &gt;= to_date(to_char(sysdate - 180 / 24 / 60, 'yyyy-mm-dd hh24:mi:ss'), 'yyyy-mm-dd hh24:mi:ss')
-        AND t.time &lt;= to_date(to_char(sysdate,'yyyy-mm-dd hh24:mi:ss'),'yyyy-mm-dd hh24:mi:ss')
-*/
+        FROM ZCJ_WLSCRM_THREAD trd
+        WHERE trd.IP = #{ip} AND trd.PORT = #{port}
+              AND trd.TIME &gt;= to_date(to_char(sysdate - 180 / 24 / 60, 'yyyy-mm-dd hh24:mi:ss'), 'yyyy-mm-dd hh24:mi:ss')
+              AND trd.time &lt;= to_date(to_char(sysdate, 'yyyy-mm-dd hh24:mi:ss'), 'yyyy-mm-dd hh24:mi:ss')
 
-              AND t.TIME &gt;= to_date('2015-10-30 11:59:00', 'yyyy-mm-dd hh24:mi:ss')
-              AND t.TIME &lt;= to_date('2015-11-01 0:00:48', 'yyyy-mm-dd hh24:mi:ss')
     </select>
 
     <select id="countHistory" resultType="java.lang.Integer" parameterType="java.util.Map">
         SELECT count(1)
-        FROM ZCJ_WLSCRM_THREAD t
-        WHERE t.IP = #{ip} AND t.PORT = #{port}
-             /* AND t.TIME &gt;= to_date(to_char(sysdate - 180 / 24 / 60, 'yyyy-mm-dd hh24:mi:ss'), 'yyyy-mm-dd hh24:mi:ss')
-              AND t.time &lt;= to_date(to_char(sysdate,'yyyy-mm-dd hh24:mi:ss'),'yyyy-mm-dd hh24:mi:ss')*/
+        FROM ZCJ_WLSCRM_THREAD trd
+        WHERE trd.IP = #{ip} AND trd.PORT = #{port}
+              AND trd.TIME &gt;= to_date(to_char(sysdate - 180 / 24 / 60, 'yyyy-mm-dd hh24:mi:ss'), 'yyyy-mm-dd hh24:mi:ss')
+              AND trd.time &lt;= to_date(to_char(sysdate, 'yyyy-mm-dd hh24:mi:ss'), 'yyyy-mm-dd hh24:mi:ss')
 
-
-              AND t.TIME &gt;= to_date('2015-10-30 11:59:00', 'yyyy-mm-dd hh24:mi:ss')
-              AND t.TIME &lt;= to_date('2015-11-01 0:00:48', 'yyyy-mm-dd hh24:mi:ss')
     </select>
 </mapper>
