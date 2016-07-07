@@ -1,6 +1,8 @@
 package com.shsnc.entity.system;
 
-public class Radios {
+import java.io.Serializable;
+
+public class Radios implements Serializable {
     private Long id;
 
     private String name;

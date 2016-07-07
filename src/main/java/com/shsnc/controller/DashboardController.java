@@ -55,8 +55,7 @@ public class DashboardController extends BaseController {
             }
             list.add(msg);
         }
-        Collections.sort(list, new ListMapSortComparator("crmtotal", "asc") {
-        });//根据渠道的总分数进行排序
+        Collections.sort(list, new ListMapSortComparator("crmtotal", "asc"));//根据渠道的总分数进行排序
         //shiro管理的session
         Subject currentUser = SecurityUtils.getSubject();
         Session session = currentUser.getSession();

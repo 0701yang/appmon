@@ -23,7 +23,7 @@ public class Const {
 	public static final String OSB4 = "esb-selfvoice";
 	//互联网渠道
 	public static final String[] MSG5 ={"CRM-APP-G12", "CRM-APP-G13", "CRM-APP-G14", "CRM-APP-G15"};
-	public static final String OSB5 = " esb-selfservice";
+	public static final String OSB5 = "esb-selfservice";
 	//短信渠道
 	public static final String[] MSG6 ={"CRM-APP-G12", "CRM-APP-G13", "CRM-APP-G14", "CRM-APP-G15"};
 	public static final String OSB6 = "esb-sms";

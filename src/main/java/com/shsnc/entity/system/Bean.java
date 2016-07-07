@@ -1,11 +1,12 @@
 package com.shsnc.entity.system;
 
 
+import java.io.Serializable;
 
 /**
  * 历史信息
  */
-public class Bean {
+public class Bean implements Serializable {
     private String app;
     private String module;
     private Short threadthreshold;

@@ -36,6 +36,7 @@ public class WeblogicController extends BaseController{
         ModelAndView mv = this.getModelAndView();
         String[] a =Const.maprcrm().get(crm);
         Pager<Bean> bean = zcjWlscrmService.findCrm(a);
+
         mv.addObject("bean", bean);
         mv.addObject("list",crm);
         mv.setViewName("system/weblogic/list");

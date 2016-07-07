@@ -1,6 +1,8 @@
 package com.shsnc.entity.system;
 
-public class Privilege {
+import java.io.Serializable;
+
+public class Privilege implements Serializable {
     private String id;
 
     private String url;

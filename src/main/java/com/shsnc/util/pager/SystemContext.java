@@ -3,7 +3,7 @@ package com.shsnc.util.pager;
 
 /**
  * 用来传递列表对象的ThreadLocal数据
- * @author Administrator
+ * @author
  *
  */
 public class SystemContext {
@@ -35,13 +35,21 @@ public class SystemContext {
         SystemContext.realPath.set(_realPath);
     }
     public static Integer getPageSize() {
-        return pageSize.get();
+        Integer ps =  pageSize.get();
+        if(ps == null){
+            return Integer.MAX_VALUE;//它代表int所能表示的最大值 0x7FFFFFFF
+        }
+        return ps;
     }
     public static void setPageSize(Integer _pageSize) {
         pageSize.set(_pageSize);
     }
     public static Integer getPageOffset() {
-        return pageOffset.get();
+        Integer of = pageOffset.get();
+        if(of==null){
+            return  0;
+        }
+        return of;
     }
     public static void setPageOffset(Integer _pageOffset) {
         pageOffset.set(_pageOffset);

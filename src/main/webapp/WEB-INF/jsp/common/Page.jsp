@@ -1,16 +1,7 @@
-<%@page import="com.shsnc.util.pager.SystemContext" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="pg" uri="http://jsptags.com/tags/navigation/pager" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
-<!--[if IE 8]><html lang="en" class="ie8 no-js"><![endif]-->
-<!--[if IE 9]><html lang="en" class="ie9 no-js"><![endif]-->
-<!--[if !IE]><!-->
-<html lang="en" class="no-js">
-<head>
-    <link href="${pageContext.request.contextPath}/Metronic/css/dataTables.bootstrap.css" rel="stylesheet" type="text/css">
-</head>
-<body>
+
 <%--
 Offset：传过来的值是偏移量，是选择的页面的页数。
         比如你的记录/页pageSize=3，那么传过来的offset应该如下处理：offset/3+1
@@ -36,7 +27,8 @@ lastItem -对应页最后一行的索引值
 
 <pg:pager export="curPage=pageNumber"
           items="${param.totalRecord }"
-          maxPageItems="<%=SystemContext.getPageSize() %>"
+          maxPageItems="${param.pagesize}"
+          maxIndexPages="10"
           url="${param.url }">
 
     <c:forEach items="${param.params }" var="p">
@@ -47,12 +39,13 @@ lastItem -对应页最后一行的索引值
         <div class="dataTables_info">
             共 <pg:last>
             <strong style="color: red">${pageNumber }</strong>页
+        </pg:last>
+            当前页第<strong style="color: red">${curPage}</strong>页
             &nbsp;
-            每页显示<strong style="color: red"><%=SystemContext.getPageSize()%></strong>条
+            每页显示<strong style="color: red">${param.pagesize}
+        </strong>条
             &nbsp;
             共<strong style="color: red">${param.totalRecord }</strong>条记录
-
-        </pg:last>
         </div>
     </div>
 
@@ -60,18 +53,9 @@ lastItem -对应页最后一行的索引值
         <div class="dataTables_paginate paging_simple_numbers">
             <ul class="pagination">
                 <pg:first>
-                    <c:choose>
-                        <c:when test="${curPage eq 1}">
-                            <li class="paginate_button previous disabled">
-                                <a href="javascript:;">首页</a>
-                            </li>
-                        </c:when>
-                        <c:otherwise>
-                            <li class="paginate_button previous">
-                                <a href="${pageUrl }">首页</a>
-                            </li>
-                        </c:otherwise>
-                    </c:choose>
+                    <li class="paginate_button previous">
+                        <a id="firstPage" href="${pageUrl }">首页</a>
+                    </li>
                 </pg:first>
                 <pg:prev>
                     <li class="paginate_button ">
@@ -110,9 +94,37 @@ lastItem -对应页最后一行的索引值
                         </c:otherwise>
                     </c:choose>
                 </pg:last>
+
+                <label>
+                    <select name="pagesize" onchange="selectPagesize(this)" class="form-control input-xsmall input-inline select2-offscreen">
+
+                        <option value="10"
+                                <c:if test="${param.pagesize eq 10}">selected</c:if>>
+                            10
+                        </option>
+
+                        <option value="50"
+                                <c:if test="${param.pagesize eq 50}">selected</c:if>>
+                            50
+                        </option>
+
+                        <option value="${param.totalRecord }"
+                                <c:if test="${param.totalRecord eq param.pagesize}">selected</c:if>>
+                            ALL
+                        </option>
+
+                    </select>
+                </label>
+
             </ul>
         </div>
     </div>
 </pg:pager>
-</body>
-</html>
+<%--页面选择页码--%>
+<script type="text/javascript">
+    function selectPagesize(field) {
+        alert(document.getElementById("firstPage").href + "&pageSize=" + field.value);
+        window.location = document.getElementById("firstPage").href + "&pageSize=" + field.value;
+    }
+</script>
+

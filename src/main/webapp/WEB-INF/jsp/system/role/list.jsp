@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@page import="com.shsnc.util.pager.SystemContext" %>
 <!DOCTYPE html>
 <!--[if IE 8]><html lang="en" class="ie8 no-js"><![endif]-->
 <!--[if IE 9]><html lang="en" class="ie9 no-js"><![endif]-->
@@ -69,7 +70,7 @@
                         </tr>
                         </thead>
                         <tbody>
-
+<c:if test="${!empty roleList.datas}">
                         <c:forEach items="${roleList.datas}" var="role" varStatus="i">
                             <tr>
                                 <td>${i.index+1}</td>
@@ -90,15 +91,22 @@
                                 </td>
                             </tr>
                         </c:forEach>
+</c:if>
+<c:if test="${empty roleList.datas}">
+    <tr>
+        <td colspan="4" align="center" bgcolor="#EFF3F7">
+            没有找到相应的记录
+        </td>
+    </tr>
+</c:if>
                         </tbody>
                     </table>
                     <div class="row">
-                        <c:if test="${roleList.total > 0}">
                             <jsp:include page="../../common/Page.jsp">
                                 <jsp:param value="${roleList.total }" name="totalRecord"/>
                                 <jsp:param value="list" name="url"/>
+                                <jsp:param value="<%=SystemContext.getPageSize()%>" name="pagesize"/>
                             </jsp:include>
-                        </c:if>
                     </div>
 
                 </div>

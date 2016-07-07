@@ -3,15 +3,14 @@ package com.shsnc.service;
 import com.github.miemiedev.mybatis.paginator.domain.PageBounds;
 import com.shsnc.entity.system.Bean;
 import com.shsnc.entity.system.WlscrmThread;
+import com.shsnc.util.ListMapSortComparator;
 import com.shsnc.util.pager.PageBoundsUtil;
 import com.shsnc.util.pager.Pager;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Service("zcjWlscrmService")
 public class ZcjWlscrmService {

@@ -1,8 +1,9 @@
 package com.shsnc.entity.system;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class WlscrmMark {
+public class WlscrmMark implements Serializable {
     private Date time ;
     private String ip ;
     private String port ;

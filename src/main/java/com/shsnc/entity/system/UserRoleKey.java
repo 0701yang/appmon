@@ -1,6 +1,8 @@
 package com.shsnc.entity.system;
 
-public class UserRoleKey {
+import java.io.Serializable;
+
+public class UserRoleKey implements Serializable {
     private String roleid;
 
     private String userid;

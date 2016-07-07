@@ -1,21 +1,16 @@
 package com.shsnc.util.pager;
 
 
-import java.io.IOException;
-import javax.servlet.Filter;
-import javax.servlet.FilterChain;
-import javax.servlet.FilterConfig;
-import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
+import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
 
 
 public class SystemContextFilter implements Filter {
-    private Integer pageSize;
 
     @Override
     public void destroy() {
+
 
     }
 
@@ -23,9 +18,12 @@ public class SystemContextFilter implements Filter {
     public void doFilter(ServletRequest req, ServletResponse resp,
                          FilterChain chain) throws IOException, ServletException {
         Integer offset = 0;
+        Integer pageSize = 10;
+
         try {
             offset = Integer.parseInt(req.getParameter("pager.offset"));
-        } catch (NumberFormatException e) {
+            pageSize = Integer.parseInt(req.getParameter("pageSize"));
+        } catch (NumberFormatException ignored) {
         }
         try {
             SystemContext.setOrder(req.getParameter("order"));
@@ -33,6 +31,7 @@ public class SystemContextFilter implements Filter {
             SystemContext.setPageOffset(offset);
             SystemContext.setPageSize(pageSize);
             SystemContext.setRealPath(((HttpServletRequest) req).getSession().getServletContext().getRealPath("/"));
+
             chain.doFilter(req, resp);
         } finally {
             SystemContext.removeOrder();
@@ -45,11 +44,6 @@ public class SystemContextFilter implements Filter {
 
     @Override
     public void init(FilterConfig cfg) throws ServletException {
-        try {
-            pageSize = Integer.parseInt(cfg.getInitParameter("pageSize"));
-        } catch (NumberFormatException e) {
-            pageSize = 10;
-        }
     }
 
 }

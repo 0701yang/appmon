@@ -9,6 +9,7 @@
 <!--<![endif]-->
 <head>
     <jsp:include page="../common/common_css.jsp"/>
+    <meta http-equiv="refresh" content="60">
 </head>
 <body>
 <div>

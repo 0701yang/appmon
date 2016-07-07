@@ -16,5 +16,6 @@
 <link href="${pageContext.request.contextPath}/Metronic/css/layout.css" rel="stylesheet" type="text/css">
 <link href="${pageContext.request.contextPath}/Metronic/css/default.css" rel="stylesheet" type="text/css" id="style_color">
 <link href="${pageContext.request.contextPath}/Metronic/css/custom.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath}/Metronic/css/dataTables.bootstrap.css" rel="stylesheet" type="text/css">
 <!-- END THEME STYLES -->
 <link rel="shortcut icon" href="${pageContext.request.contextPath}/Metronic/img/favicon.ico">

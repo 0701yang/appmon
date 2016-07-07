@@ -7,7 +7,7 @@ import java.util.List;
  * 分页对象
  *
  * @param <T> 传递的泛型对象
- * @author 邵震a
+ * @author
  */
 public class Pager<T> {
     /**
