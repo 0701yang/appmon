@@ -150,13 +150,13 @@ public class WeblogicController extends BaseController {
         map.put("value",value);
         map.put("name",name);
         map.put("bug",bug);
-        map.put("nowtime",time);
+        map.put("time",time);
         map.put("start",start);
         map.put("end",end);
         Pager<Bean> bean = zcjWlscrmService.findByButton(map);
 
         mv.addObject("bean", bean);
-        mv.setViewName("system/weblogic/list");
+        mv.setViewName("system/weblogic/buttonlist");
         return mv;
     }
 

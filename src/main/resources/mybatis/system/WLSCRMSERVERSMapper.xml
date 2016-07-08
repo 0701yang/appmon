@@ -1,22 +1,122 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="WlscrmServersMapper" >
-  <cache type="org.mybatis.caches.ehcache.LoggingEhcache" />
+<mapper namespace="WlscrmServersMapper">
+    <cache type="org.mybatis.caches.ehcache.LoggingEhcache"/>
 
-  <resultMap id="BaseResultMap" type="WlscrmServers" >
-    <result column="ISCOLLECT" property="iscollect" jdbcType="VARCHAR" />
-    <result column="APP" property="app" jdbcType="VARCHAR" />
-    <result column="MODULE" property="module" jdbcType="VARCHAR" />
-    <result column="PROTOCOL" property="protocol" jdbcType="VARCHAR" />
-    <result column="IP" property="ip" jdbcType="VARCHAR" />
-    <result column="PORT" property="port" jdbcType="VARCHAR" />
-    <result column="USERNAME" property="username" jdbcType="VARCHAR" />
-    <result column="PASSWORD" property="password" jdbcType="VARCHAR" />
-    <result column="THREADTHRESHOLD" property="threadthreshold" jdbcType="DECIMAL" />
-    <result column="MONGROUP" property="mongroup" jdbcType="VARCHAR" />
-    <result column="STATE" property="state" jdbcType="VARCHAR" />
-    <result column="SERVER" property="server" jdbcType="VARCHAR" />
+    <resultMap id="BaseResultMap" type="WlscrmServers">
+        <result column="ISCOLLECT" property="iscollect" jdbcType="VARCHAR"/>
+        <result column="APP" property="app" jdbcType="VARCHAR"/>
+        <result column="MODULE" property="module" jdbcType="VARCHAR"/>
+        <result column="PROTOCOL" property="protocol" jdbcType="VARCHAR"/>
+        <result column="IP" property="ip" jdbcType="VARCHAR"/>
+        <result column="PORT" property="port" jdbcType="VARCHAR"/>
+        <result column="USERNAME" property="username" jdbcType="VARCHAR"/>
+        <result column="PASSWORD" property="password" jdbcType="VARCHAR"/>
+        <result column="THREADTHRESHOLD" property="threadthreshold" jdbcType="DECIMAL"/>
+        <result column="MONGROUP" property="mongroup" jdbcType="VARCHAR"/>
+        <result column="STATE" property="state" jdbcType="VARCHAR"/>
+        <result column="SERVER" property="server" jdbcType="VARCHAR"/>
 
-  </resultMap>
+    </resultMap>
 
+    <select id="counttotal" resultType="java.lang.Integer">
+        SELECT
+        count(1)
+        FROM ZCJ_WLSCRM_SERVERS svr, ZCJ_WLSCRM_THREAD trd, ZCJ_SHSNC_RADIOS rds
+        WHERE svr.ip = trd.ip AND svr.port = trd.port AND rds.name = svr.app
+        <if test="(system == null or system == '') and (value == null or value == '') and (name == null or name =='') ">
+            AND svr.iscollect = 'Y'
+        </if>
+
+        <if test="system != null and system != '' ">
+            and rds.system like concat('%' ,#{system},'%')
+        </if>
+
+        <if test="value != null and value != '' ">
+            and rds.value like like concat('%' ,#{value},'%')
+        </if>
+
+        <if test="name != null and name != '' ">
+            and rds.name like like concat('%' ,#{name},'%')
+        </if>
+
+        <if test="bug != null and bug != '' ">
+            and (trd.threadrun >=svr.threadthreshold or trd.threadrun = -1 )
+        </if>
+
+        <if test="time == 'nowtime'.toString() ">
+            and trd.time &gt;= to_date(to_char(sysdate-1/24/60,'yyyy-mm-dd hh24:mi:ss'),'yyyy-mm-dd hh24:mi:ss')
+            and trd.time &lt;=to_date(to_char(sysdate,'yyyy-mm-dd hh24:mi:ss'),'yyyy-mm-dd hh24:mi:ss')
+        </if>
+
+        <if test="time == 'zdtime'.toString() ">
+            and trd.time &gt;= to_date(#{start},'yyyy-mm-dd hh24:mi:ss')
+            and trd.time &lt;=to_date(#{end},'yyyy-mm-dd hh24:mi:ss')
+        </if>
+    </select>
+
+    <!--查询按钮:查询历史信息-->
+    <select id="findByButton" resultType="Bean" parameterType="java.util.Map">
+        SELECT
+        svr.app,
+        svr.module,
+        svr.threadthreshold,
+        svr.ip,
+        svr.port,
+        svr.server,
+        trd.threadtotal,
+        trd.threadidle,
+        trd.threadrun,
+        rds.value,
+        rds.system,
+        rds.name
+        FROM ZCJ_WLSCRM_SERVERS svr, ZCJ_WLSCRM_THREAD trd, ZCJ_SHSNC_RADIOS rds
+        WHERE svr.ip = trd.ip AND svr.port = trd.port AND rds.name = svr.app
+        <if test="(system == null or system == '') and (value == null or value == '') and (name == null or name =='') ">
+            AND svr.iscollect = 'Y'
+        </if>
+
+        <if test="system != null and system != '' ">
+            and rds.system like concat('%' ,#{system},'%')
+        </if>
+
+        <if test="value != null and value != '' ">
+            and rds.value like like concat('%' ,#{value},'%')
+        </if>
+
+        <if test="name != null and name != '' ">
+            and rds.name like like concat('%' ,#{name},'%')
+        </if>
+
+        <if test="bug != null and bug != '' ">
+            and (trd.threadrun >=svr.threadthreshold or trd.threadrun = -1 )
+        </if>
+
+        <if test="time == 'nowtime'.toString() ">
+            and trd.time &gt;= to_date(to_char(sysdate-1/24/60,'yyyy-mm-dd hh24:mi:ss'),'yyyy-mm-dd hh24:mi:ss')
+            and trd.time &lt;=to_date(to_char(sysdate,'yyyy-mm-dd hh24:mi:ss'),'yyyy-mm-dd hh24:mi:ss')
+        </if>
+
+        <if test="time == 'zdtime'.toString() ">
+            and trd.time &gt;= to_date(#{start},'yyyy-mm-dd hh24:mi:ss')
+            and trd.time &lt;=to_date(#{end},'yyyy-mm-dd hh24:mi:ss')
+        </if>
+
+        ORDER BY svr.app,svr.module,svr.ip,svr.port
+    </select>
+
+    <!--查询处所有的system-->
+    <select id="findBySystemAll" resultType="java.lang.String">
+        SELECT DISTINCT p.system FROM ZCJ_SHSNC_RADIOS p WHERE p.system IS NOT NULL ORDER BY p.system ASC
+    </select>
+
+    <!--根据system查询处所有的value-->
+    <select id="findByValueAll" resultType="java.lang.String" parameterType="java.lang.String">
+        SELECT DISTINCT p.value FROM ZCJ_SHSNC_RADIOS p WHERE p.value IS NOT NULL and p.system=#{system}  ORDER BY p.value ASC
+    </select>
+
+    <!--根据value查询处所有的name-->
+    <select id="findByNameAll" resultType="java.lang.String" parameterType="java.lang.String">
+        SELECT DISTINCT p.name FROM ZCJ_SHSNC_RADIOS p WHERE p.name IS NOT NULL and p.value=#{value} ORDER BY p.name ASC
+    </select>
 </mapper>

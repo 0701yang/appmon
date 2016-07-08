@@ -181,12 +181,19 @@
 <!--loading -->
 <script src="${pageContext.request.contextPath}/Metronic/js/spin.min.js"></script>
 <!--导入charts-->
-<%--<script type="text/javascript" src="${pageContext.request.contextPath}/Metronic/js/highcharts.js"></script>--%>
-<%--<script type="text/javascript" src="${pageContext.request.contextPath}/Metronic/js/exporting.js"></script>--%>
+<script type="text/javascript" src="${pageContext.request.contextPath}/Metronic/js/highcharts.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/Metronic/js/exporting.js"></script>
 <!--时间-->
 <script type="text/javascript" src="${pageContext.request.contextPath}/Metronic/plugins/bootstrap-daterangepicker/moment.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/Metronic/plugins/bootstrap-daterangepicker/daterangepicker.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/Metronic/js/components-pickers.js"></script>
+
+<!--当modal关闭时，即把数据清除即可：-->
+<script>
+    $('#weblogic_history_charts').on("hidden.bs.modal", function () {
+        $(this).removeData("bs.modal");
+    });
+</script>
 
 <!--下拉框-->
 <script type="text/javascript">
@@ -256,7 +263,6 @@
             start: start,
             end: end
         }, function (response, status, xhr) {
-            alert(status);
             if (status == "error") {
                 var msg = "有错误：";
                 $("#error").html(msg + xhr.status + " " + xhr.statusText+" "+ response);
@@ -276,7 +282,8 @@
 <script type="text/javascript">
     function weblogic_history_charts(ip, port) {
         var chart;
-        $.post('weblogic_charts.action', {
+
+        $.post("${pageContext.request.contextPath}/weblogic/charts", {
             "ip": ip,
             "port": port
         }, function (data) {

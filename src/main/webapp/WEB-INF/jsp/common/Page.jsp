@@ -53,9 +53,19 @@ lastItem -对应页最后一行的索引值
         <div class="dataTables_paginate paging_simple_numbers">
             <ul class="pagination">
                 <pg:first>
-                    <li class="paginate_button previous">
-                        <a id="firstPage" href="${pageUrl }">首页</a>
-                    </li>
+                    <c:choose>
+                            <c:when test="${param.totalRecord eq 0 }">
+                                <li class="paginate_button previous active">
+                                    <a href="javascript:;">首页</a>
+                                </li>
+                            </c:when>
+                            <c:otherwise>
+                                <li class="paginate_button previous">
+                                    <a id="firstPage" href="${pageUrl}">首页</a>
+                                </li>
+                            </c:otherwise>
+                    </c:choose>
+
                 </pg:first>
                 <pg:prev>
                     <li class="paginate_button ">
@@ -82,7 +92,7 @@ lastItem -对应页最后一行的索引值
 
                 <pg:last>
                     <c:choose>
-                        <c:when test="${pageNumber eq 1}">
+                        <c:when test="${pageNumber eq 1 or param.totalRecord eq 0}">
                             <li class="paginate_button previous disabled">
                                 <a href="javascript:;">尾页</a>
                             </li>
