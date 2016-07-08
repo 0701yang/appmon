@@ -703,6 +703,7 @@ body {
 .md-checkbox-inline .md-checkbox {
   display: inline-block;
   margin-right: 20px;
+  margin-left: 15px;
 }
 .md-checkbox-inline .md-checkbox:last-child {
   margin-right: 0;

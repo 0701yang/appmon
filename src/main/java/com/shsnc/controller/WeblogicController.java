@@ -22,29 +22,31 @@ import java.util.*;
  */
 @Controller
 @RequestMapping(value = "/weblogic")
-public class WeblogicController extends BaseController{
+public class WeblogicController extends BaseController {
     @Resource(name = "zcjWlscrmService")
     private ZcjWlscrmService zcjWlscrmService;
 
     /**
      * CRM
+     *
      * @return
      * @throws Exception
      */
     @RequestMapping(value = "/crm/{crm}")
     public ModelAndView crm(@PathVariable("crm") String crm) throws Exception {
         ModelAndView mv = this.getModelAndView();
-        String[] a =Const.maprcrm().get(crm);
+        String[] a = Const.maprcrm().get(crm);
         Pager<Bean> bean = zcjWlscrmService.findCrm(a);
 
         mv.addObject("bean", bean);
-        mv.addObject("list",crm);
+        mv.addObject("list", crm);
         mv.setViewName("system/weblogic/list");
         return mv;
     }
 
     /**
      * OSB
+     *
      * @return
      * @throws Exception
      */
@@ -54,29 +56,31 @@ public class WeblogicController extends BaseController{
 
         Pager<Bean> bean = zcjWlscrmService.findOsb(Const.maposb().get(osb));
         mv.addObject("bean", bean);
-        mv.addObject("list",osb);
+        mv.addObject("list", osb);
         mv.setViewName("system/weblogic/list");
         return mv;
     }
 
     /**
      * 历史信息查询
+     *
      * @return
      * @throws Exception
      */
     @RequestMapping(value = "/history")
-    public ModelAndView history(@RequestParam("ip")String ip , @RequestParam("port")String port ) throws Exception{
+    public ModelAndView history(@RequestParam("ip") String ip, @RequestParam("port") String port) throws Exception {
         ModelAndView mv = this.getModelAndView();
         Pager<WlscrmThread> historyList = zcjWlscrmService.findHistory(ip, port);
-        mv.addObject("historyList" ,historyList);
-        mv.addObject("ip" , ip);
-        mv.addObject("port" , port);
+        mv.addObject("historyList", historyList);
+        mv.addObject("ip", ip);
+        mv.addObject("port", port);
         mv.setViewName("system/weblogic/history");
         return mv;
     }
 
     /**
      * 曲线
+     *
      * @param ip
      * @param port
      * @return
@@ -84,9 +88,9 @@ public class WeblogicController extends BaseController{
      */
     @RequestMapping(value = "/charts")
     @ResponseBody
-    public List<Map> charts(@RequestParam("ip")String ip , @RequestParam("port")String port) throws Exception{
+    public List<Map> charts(@RequestParam("ip") String ip, @RequestParam("port") String port) throws Exception {
 
-        Pager<WlscrmThread> wlscrmThreadPager =zcjWlscrmService.findHistory(ip , port);
+        Pager<WlscrmThread> wlscrmThreadPager = zcjWlscrmService.findHistory(ip, port);
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         List<Map> list = new ArrayList<>();
         for (WlscrmThread bean : wlscrmThreadPager.getDatas()) {
@@ -103,5 +107,81 @@ public class WeblogicController extends BaseController{
         return list;
     }
 
+    /**
+     * WebLogic性能监控 页面
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping(value = "/list")
+    public ModelAndView list() throws  Exception{
+        ModelAndView mv = this.getModelAndView();
+        List<String> systems = zcjWlscrmService.findBySystemAll(); // 查询所有的信息
+
+        mv.addObject("systems" , systems);
+        mv.setViewName("system/weblogic/button");
+        return mv;
+    }
+
+    /**
+     * 根据按钮查询出所有的信息
+     *
+     * @param system
+     * @param value
+     * @param name
+     * @param time
+     * @param start
+     * @param end
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping(value = "/button")
+    public ModelAndView buttonFindHistory(
+            @RequestParam("system") String system,
+            @RequestParam("value") String value,
+            @RequestParam("name") String name,
+            @RequestParam("bug") String bug,
+            @RequestParam("time") String time,
+            @RequestParam("start") String start,
+            @RequestParam("end") String end
+    ) throws Exception {
+        ModelAndView mv = this.getModelAndView();
+        Map<String , String> map = new HashMap<>();
+        map.put("system",system);
+        map.put("value",value);
+        map.put("name",name);
+        map.put("bug",bug);
+        map.put("nowtime",time);
+        map.put("start",start);
+        map.put("end",end);
+        Pager<Bean> bean = zcjWlscrmService.findByButton(map);
+
+        mv.addObject("bean", bean);
+        mv.setViewName("system/weblogic/list");
+        return mv;
+    }
+
+    /**
+     * 第二个下拉框
+     * @param systemValue
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping(value = "/findValue")
+    @ResponseBody
+    public List<String> findValue(@RequestParam("systemValue") String systemValue) throws  Exception{
+        return zcjWlscrmService.findByValueAll(systemValue);
+    }
+
+    /**
+     * 第3个下拉框
+     * @param systemName
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping(value = "/findName")
+    @ResponseBody
+    public List<String> findName(@RequestParam("systemName") String systemName) throws  Exception{
+        return zcjWlscrmService.findByNameAll(systemName);
+    }
 
 }
