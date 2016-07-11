@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="MrdMapper">
+    <cache type="org.mybatis.caches.ehcache.LoggingEhcache"/>
+
+    <!--根据name查询所有的信息-->
+    <select id="findByName" resultType="MonRecordDatasource" parameterType="java.lang.String">
+        SELECT
+            MRD.SERVER_NAME,
+            MRD.DS,
+            MRD.MAX_IDLE,
+            MRD.NUM_ACTIVE,
+            MRD.IDLE,
+            MRD.RUN_TIME,
+            MRD.MAX_ACTIVE,
+            MRD.USAGE,
+            MRD.STATE
+        FROM MON_RECORD_DATASOURCE MRD
+        WHERE MRD.SERVER_NAME = #{server_name}
+    </select>
+</mapper>

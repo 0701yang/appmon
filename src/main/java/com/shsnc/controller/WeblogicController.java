@@ -1,7 +1,9 @@
 package com.shsnc.controller;
 
 import com.shsnc.entity.system.Bean;
+import com.shsnc.entity.system.MonRecordDatasource;
 import com.shsnc.entity.system.WlscrmThread;
+import com.shsnc.service.MrdService;
 import com.shsnc.service.ZcjWlscrmService;
 import com.shsnc.util.Const;
 import com.shsnc.util.pager.Pager;
@@ -26,6 +28,8 @@ public class WeblogicController extends BaseController {
     @Resource(name = "zcjWlscrmService")
     private ZcjWlscrmService zcjWlscrmService;
 
+    @Resource(name = "mrdService")
+    private MrdService mrdService;
     /**
      * CRM
      *
@@ -106,6 +110,44 @@ public class WeblogicController extends BaseController {
         }
         return list;
     }
+
+    /**
+     * crm图表
+     * @param name
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping(value = "/crmCharts")
+    @ResponseBody
+    public List<Map<Object, Object>> crmCharts(@RequestParam("name")String name ) throws Exception{
+        List<MonRecordDatasource> mrdList = mrdService.findByName(name);
+        List<String> snlist = new ArrayList<String>();
+        List<Map<Object, Object>> list = new ArrayList<Map<Object, Object>>();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        for (MonRecordDatasource bean : mrdList){
+            snlist.add(bean.getDs());//名字
+        }
+        HashSet<String> hs = new HashSet<String>(snlist); //去掉重复的数据保存在hashset中
+
+        for (String str : hs) {
+            Map<Object, Object> map = new HashMap<Object, Object>();
+            List<Integer> aa= new ArrayList<>();
+            List<String> bb = new ArrayList<>();
+            map.put("cname" , str);
+            for (MonRecordDatasource mrd : mrdList){
+                if(str.equals(mrd.getDs())){
+                    int b = Integer.parseInt(mrd.getNumActive());
+                    aa.add(b);
+                    bb.add(DateFormat.getTimeInstance().format(sdf.parse(mrd.getRunTime().toString())));
+                }
+            }
+            map.put("cnumber" , aa);
+            map.put("ctime" , bb) ;
+            list.add(map);
+        }
+    return list;
+
+}
 
     /**
      * WebLogic性能监控 页面

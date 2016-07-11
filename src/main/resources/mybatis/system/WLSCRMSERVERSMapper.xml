@@ -29,15 +29,15 @@
         </if>
 
         <if test="system != null and system != '' ">
-            and rds.system like concat('%' ,#{system},'%')
+            and rds.system = #{system}
         </if>
 
         <if test="value != null and value != '' ">
-            and rds.value like like concat('%' ,#{value},'%')
+            and rds.value = #{value}
         </if>
 
         <if test="name != null and name != '' ">
-            and rds.name like like concat('%' ,#{name},'%')
+            and rds.name = #{name}
         </if>
 
         <if test="bug != null and bug != '' ">
@@ -45,8 +45,10 @@
         </if>
 
         <if test="time == 'nowtime'.toString() ">
-            and trd.time &gt;= to_date(to_char(sysdate-1/24/60,'yyyy-mm-dd hh24:mi:ss'),'yyyy-mm-dd hh24:mi:ss')
-            and trd.time &lt;=to_date(to_char(sysdate,'yyyy-mm-dd hh24:mi:ss'),'yyyy-mm-dd hh24:mi:ss')
+
+
+            AND trd.TIME &gt;= to_date('2015-10-30 11:59:00', 'yyyy-mm-dd hh24:mi:ss')
+            AND trd.TIME &lt;= to_date('2015-11-01 0:00:48', 'yyyy-mm-dd hh24:mi:ss')
         </if>
 
         <if test="time == 'zdtime'.toString() ">
@@ -77,15 +79,15 @@
         </if>
 
         <if test="system != null and system != '' ">
-            and rds.system like concat('%' ,#{system},'%')
+            and rds.system = #{system}
         </if>
 
         <if test="value != null and value != '' ">
-            and rds.value like like concat('%' ,#{value},'%')
+            and rds.value =  #{value}
         </if>
 
         <if test="name != null and name != '' ">
-            and rds.name like like concat('%' ,#{name},'%')
+            and rds.name =  #{name}
         </if>
 
         <if test="bug != null and bug != '' ">
@@ -93,8 +95,12 @@
         </if>
 
         <if test="time == 'nowtime'.toString() ">
-            and trd.time &gt;= to_date(to_char(sysdate-1/24/60,'yyyy-mm-dd hh24:mi:ss'),'yyyy-mm-dd hh24:mi:ss')
-            and trd.time &lt;=to_date(to_char(sysdate,'yyyy-mm-dd hh24:mi:ss'),'yyyy-mm-dd hh24:mi:ss')
+
+
+            AND trd.TIME &gt;= to_date('2015-10-30 11:59:00', 'yyyy-mm-dd hh24:mi:ss')
+            AND trd.TIME &lt;= to_date('2015-11-01 0:00:48', 'yyyy-mm-dd hh24:mi:ss')
+
+
         </if>
 
         <if test="time == 'zdtime'.toString() ">

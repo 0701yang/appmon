@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="SqlDialectMappings">
+    <file url="file://$PROJECT_DIR$/src/main/resources/mybatis/sd1/MrdMapper.xml" dialect="Oracle" />
     <file url="file://$PROJECT_DIR$/src/main/resources/mybatis/system/PrivilegeMapper.xml" dialect="Oracle" />
     <file url="file://$PROJECT_DIR$/src/main/resources/mybatis/system/RadiosMapper.xml" dialect="Oracle" />
     <file url="file://$PROJECT_DIR$/src/main/resources/mybatis/system/RoleMapper.xml" dialect="Oracle" />

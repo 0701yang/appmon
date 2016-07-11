@@ -146,7 +146,7 @@
             </div>
             <div class="modal-body">
                 <div class="row">
-                    <div id="weblogic_history_charts" class="col-md-11"></div>
+                        <div id="weblogic_history_charts" class="col-md-11"></div>
                 </div>
             </div>
             <div class="modal-footer">
@@ -166,7 +166,7 @@
             </div>
             <div class="modal-body">
                 <div class="row">
-                    <div id="crm_app_charts" class="col-md-11"></div>
+                        <div id="crm_app_charts" style="min-width:400px;height:400px">></div>
                 </div>
             </div>
             <div class="modal-footer">
@@ -191,6 +191,10 @@
 <!--当modal关闭时，即把数据清除即可：-->
 <script>
     $('#weblogic_history_charts').on("hidden.bs.modal", function () {
+        $(this).removeData("bs.modal");
+    });
+
+    $('#crm-app-modal').on("hidden.bs.modal", function () {
         $(this).removeData("bs.modal");
     });
 </script>
@@ -265,7 +269,7 @@
         }, function (response, status, xhr) {
             if (status == "error") {
                 var msg = "有错误：";
-                $("#error").html(msg + xhr.status + " " + xhr.statusText+" "+ response);
+                $("#error").html(msg + xhr.status + " " + xhr.statusText + " " + response);
                 Metronic.unblockUI('#block');
             }
             if (status == "success") {
@@ -362,7 +366,7 @@
                 useUTC: false
             }
         });
-        $.post('crm_charts.action', {
+        $.post('${pageContext.request.contextPath}/weblogic/crmCharts', {
             "name": name
         }, function (data) {
             //声明数组

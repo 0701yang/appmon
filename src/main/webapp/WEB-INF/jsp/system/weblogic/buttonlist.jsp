@@ -30,7 +30,9 @@
                                         <td>${bean.module}</td>
                                         <td>${bean.ip}</td>
                                         <td class="label-danger">${bean.port}</td>
-                                        <td class="label-danger">${bean.server}</td>
+                                        <td class="label-danger">
+                                            <a onclick="crm_app_charts('${bean.server}');" data-toggle="modal" data-target="#crm-app-modal">${bean.server}</a>
+                                        </td>
                                         <td class="label-danger">&nbsp;&nbsp;</td>
                                         <td class="label-danger">&nbsp;&nbsp;</td>
                                         <td class="label-danger">DOWN or HANG</td>
@@ -47,7 +49,9 @@
                                         <td>${bean.module}</td>
                                         <td>${bean.ip}</td>
                                         <td class="label-warning">${bean.port}</td>
-                                        <td class="label-warning">${bean.server}</td>
+                                        <td class="label-warning">
+                                            <a onclick="crm_app_charts('${bean.server}');" data-toggle="modal" data-target="#crm-app-modal">${bean.server}</a>
+                                        </td>
                                         <td class="label-warning">${bean.threadtotal}</td>
                                         <td class="label-warning">${bean.threadidle}</td>
                                         <td class="label-warning">${bean.threadrun}</td>
@@ -66,7 +70,9 @@
                                         <td>${bean.module}</td>
                                         <td>${bean.ip}</td>
                                         <td>${bean.port}</td>
-                                        <td>${bean.server}</td>
+                                        <td>
+                                            <a onclick="crm_app_charts('${bean.server}');" data-toggle="modal" data-target="#crm-app-modal">${bean.server}</a>
+                                       </td>
                                         <td>${bean.threadtotal}</td>
                                         <td>${bean.threadidle}</td>
                                         <td>${bean.threadrun}</td>

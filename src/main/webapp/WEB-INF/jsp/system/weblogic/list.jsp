@@ -161,7 +161,7 @@
     function weblogic_history_charts(ip, port) {
         var chart;
 
-        $.post('/weblogic/charts', {
+        $.post('${pageContext.request.contextPath}/weblogic/charts', {
             "ip": ip,
             "port": port
         }, function (data) {
