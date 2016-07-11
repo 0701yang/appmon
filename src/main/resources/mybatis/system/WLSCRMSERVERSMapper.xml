@@ -45,10 +45,8 @@
         </if>
 
         <if test="time == 'nowtime'.toString() ">
-
-
-            AND trd.TIME &gt;= to_date('2015-10-30 11:59:00', 'yyyy-mm-dd hh24:mi:ss')
-            AND trd.TIME &lt;= to_date('2015-11-01 0:00:48', 'yyyy-mm-dd hh24:mi:ss')
+            AND trd.TIME &gt;= to_date(to_char(sysdate - 1 / 24 / 60, 'yyyy-mm-dd hh24:mi:ss'), 'yyyy-mm-dd hh24:mi:ss')
+            AND trd.TIME &lt;= to_date(to_char(sysdate, 'yyyy-mm-dd hh24:mi:ss'), 'yyyy-mm-dd hh24:mi:ss')
         </if>
 
         <if test="time == 'zdtime'.toString() ">
@@ -95,12 +93,8 @@
         </if>
 
         <if test="time == 'nowtime'.toString() ">
-
-
-            AND trd.TIME &gt;= to_date('2015-10-30 11:59:00', 'yyyy-mm-dd hh24:mi:ss')
-            AND trd.TIME &lt;= to_date('2015-11-01 0:00:48', 'yyyy-mm-dd hh24:mi:ss')
-
-
+            AND trd.TIME &gt;= to_date(to_char(sysdate - 1 / 24 / 60, 'yyyy-mm-dd hh24:mi:ss'), 'yyyy-mm-dd hh24:mi:ss')
+            AND trd.TIME &lt;= to_date(to_char(sysdate, 'yyyy-mm-dd hh24:mi:ss'), 'yyyy-mm-dd hh24:mi:ss')
         </if>
 
         <if test="time == 'zdtime'.toString() ">

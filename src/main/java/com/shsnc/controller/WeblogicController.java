@@ -74,7 +74,7 @@ public class WeblogicController extends BaseController {
     @RequestMapping(value = "/history")
     public ModelAndView history(@RequestParam("ip") String ip, @RequestParam("port") String port) throws Exception {
         ModelAndView mv = this.getModelAndView();
-        Pager<WlscrmThread> historyList = zcjWlscrmService.findHistory(ip, port);
+        List<WlscrmThread> historyList = zcjWlscrmService.findHistory(ip, port);
         mv.addObject("historyList", historyList);
         mv.addObject("ip", ip);
         mv.addObject("port", port);
@@ -94,10 +94,10 @@ public class WeblogicController extends BaseController {
     @ResponseBody
     public List<Map> charts(@RequestParam("ip") String ip, @RequestParam("port") String port) throws Exception {
 
-        Pager<WlscrmThread> wlscrmThreadPager = zcjWlscrmService.findHistory(ip, port);
+        List<WlscrmThread> wlscrmThreadPager = zcjWlscrmService.findHistory(ip, port);
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         List<Map> list = new ArrayList<>();
-        for (WlscrmThread bean : wlscrmThreadPager.getDatas()) {
+        for (WlscrmThread bean : wlscrmThreadPager) {
             Date date = bean.getTime();
             String s = sdf.format(date);
             Date date2 = sdf.parse(s);

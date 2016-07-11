@@ -1,7 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@page import="com.shsnc.util.pager.SystemContext" %>
 <!DOCTYPE html>
 <!--[if IE 8]><html lang="en" class="ie8 no-js"><![endif]-->
 <!--[if IE 9]><html lang="en" class="ie9 no-js"><![endif]-->
@@ -26,7 +25,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <c:forEach items="${historyList.datas}" var="his">
+                    <c:forEach items="${historyList}" var="his">
                         <tr>
                             <c:choose>
                                 <c:when test="${his.threadtotal eq -1 || his.threadidle eq -1 || his.threadrun eq -1 }">
@@ -46,15 +45,6 @@
                     </c:forEach>
                     </tbody>
                 </table>
-
-                <div class="row">
-                        <jsp:include page="../../common/Page.jsp">
-                            <jsp:param value="${historyList.total }" name="totalRecord"/>
-                            <jsp:param value="history?ip=${ip}&port=${port}" name="url"/>
-                            <jsp:param value="<%=SystemContext.getPageSize()%>" name="pagesize"/>
-                        </jsp:include>
-                </div>
-
             </div>
         </div>
     </div>

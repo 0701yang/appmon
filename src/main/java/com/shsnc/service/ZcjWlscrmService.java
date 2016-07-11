@@ -52,15 +52,11 @@ public class ZcjWlscrmService {
      * @return
      * @throws Exception
      */
-    public Pager<WlscrmThread> findHistory(String ip , String port) throws Exception{
-        PageBounds pageBounds = PageBoundsUtil.pageBoundsOrderExtend("time.asc");
+    public List<WlscrmThread> findHistory(String ip , String port) throws Exception{
         Map<String , Object> map = new HashMap<String , Object>();
         map.put("ip" , ip);
         map.put("port" , port);
-        int count = sqlSessionTemplate.selectOne("WlscrmThreadMapper.countHistory" , map);
-        List<WlscrmThread> list = sqlSessionTemplate.selectList("WlscrmThreadMapper.history", map, pageBounds);
-
-        return new Pager<WlscrmThread>(count, list);
+        return sqlSessionTemplate.selectList("WlscrmThreadMapper.history", map);
    }
 
     /**

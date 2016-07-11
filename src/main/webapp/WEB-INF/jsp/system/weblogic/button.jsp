@@ -166,7 +166,7 @@
             </div>
             <div class="modal-body">
                 <div class="row">
-                        <div id="crm_app_charts" style="min-width:400px;height:400px">></div>
+                        <div id="crm_app_charts" style="min-width:400px;height:400px"></div>
                 </div>
             </div>
             <div class="modal-footer">

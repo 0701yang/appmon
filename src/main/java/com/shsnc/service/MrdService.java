@@ -1,5 +1,6 @@
 package com.shsnc.service;
 
+import com.shsnc.dataSource.DatabaseContextHolder;
 import com.shsnc.entity.system.MonRecordDatasource;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Service;
@@ -20,8 +21,8 @@ public class MrdService {
      * @throws Exception
      */
     public List<MonRecordDatasource> findByName(String name) throws Exception{
-        List<MonRecordDatasource> list = sqlSessionTemplate.selectList("MrdMapper.findByName",name);
-        return list;
+        DatabaseContextHolder.setCustomerType("dataSource_sd1");
+        return sqlSessionTemplate.selectList("MrdMapper.findByName",name);
     }
 
 
