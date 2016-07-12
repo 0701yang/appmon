@@ -366,7 +366,7 @@
                 useUTC: false
             }
         });
-        $.post('${pageContext.request.contextPath}/weblogic/crmCharts', {
+        $.post("${pageContext.request.contextPath}/weblogic/crmCharts", {
             "name": name
         }, function (data) {
             //声明数组

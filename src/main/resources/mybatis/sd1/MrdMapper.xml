@@ -17,5 +17,7 @@
             MRD.STATE
         FROM MON_RECORD_DATASOURCE MRD
         WHERE MRD.SERVER_NAME = #{server_name}
+        AND trunc(sysdate) = trunc(MRD.RUN_TIME)
+        ORDER BY MRD.RUN_TIME ASC
     </select>
 </mapper>

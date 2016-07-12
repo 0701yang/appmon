@@ -31,11 +31,8 @@
         </foreach>
         AND svr.SERVER != 'AdminServer'
         AND (trd.threadrun >=svr.threadthreshold OR trd.threadrun = -1 )
-        /*AND trd.TIME &gt;= to_date(to_char(sysdate - 1 / 24 / 60, 'yyyy-mm-dd hh24:mi:ss'), 'yyyy-mm-dd hh24:mi:ss')
-        AND trd.TIME &lt;= to_date(to_char(sysdate , 'yyyy-mm-dd hh24:mi:ss'), 'yyyy-mm-dd hh24:mi:ss')*/
-
-        AND trd.TIME &gt;= to_date('2015-10-30 11:59:00', 'yyyy-mm-dd hh24:mi:ss')
-        AND trd.TIME &lt;= to_date('2015-11-01 0:00:48', 'yyyy-mm-dd hh24:mi:ss')
+        AND trd.TIME &gt;= to_date(to_char(sysdate - 1 / 24 / 60, 'yyyy-mm-dd hh24:mi:ss'), 'yyyy-mm-dd hh24:mi:ss')
+        AND trd.TIME &lt;= to_date(to_char(sysdate , 'yyyy-mm-dd hh24:mi:ss'), 'yyyy-mm-dd hh24:mi:ss')
     </select>
 
     <!--计数OSB-->
@@ -119,7 +116,7 @@
         WHERE trd.IP = #{ip} AND trd.PORT = #{port}
               AND trd.TIME &gt;= to_date(to_char(sysdate - 180 / 24 / 60, 'yyyy-mm-dd hh24:mi:ss'), 'yyyy-mm-dd hh24:mi:ss')
               AND trd.time &lt;= to_date(to_char(sysdate, 'yyyy-mm-dd hh24:mi:ss'), 'yyyy-mm-dd hh24:mi:ss')
-
+              ORDER BY trd.TIME ASC
     </select>
 
     <select id="countHistory" resultType="java.lang.Integer" parameterType="java.util.Map">

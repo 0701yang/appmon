@@ -16,7 +16,7 @@
 
         <!--数据库连接 -->
         <jdbcConnection driverClass="oracle.jdbc.OracleDriver"
-                        connectionURL="jdbc:oracle:thin:@10.70.195.65:1521:shsnc"
+                        connectionURL="jdbc:oracle:thin:@192.168.56.101:1521:shsnc"
                         userId="mon"
                         password="mon_123">
         </jdbcConnection>
@@ -42,15 +42,8 @@
         </javaClientGenerator>
 
         <!--对应数据库表 mysql可以加入主键自增 字段命名 忽略某字段等-->
-        <table tableName="ZCJ_SHSNC_USER" domainObjectName="User" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
-        <table tableName="ZCJ_SHSNC_ROLE" domainObjectName="Role" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
-        <table tableName="ZCJ_SHSNC_PRIVILEGE" domainObjectName="Privilege" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
-        <table tableName="ZCJ_SHSNC_DEPARTMENT" domainObjectName="Department" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
-        <table tableName="ZCJ_SHSNC_USER_ROLE" domainObjectName="UserRole" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
-        <table tableName="ZCJ_SHSNC_ROLE_PRIVILEGE" domainObjectName="RolePrivilege" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
-        <table tableName="ZCJ_SHSNC_RADIOS" domainObjectName="Radios" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
-        <table tableName="ZCJ_WLSCRM_SERVERS" domainObjectName="WLSCRMSERVERS" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
-        <table tableName="ZCJ_WLSCRM_THREAD" domainObjectName="WLSCRMTHREAD" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
+
+        <table tableName="MON_RECORD_DATASOURCE" domainObjectName="WLSCRMTHREAD" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
 
 
     </context>

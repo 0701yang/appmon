@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
+import javax.xml.crypto.Data;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -98,14 +99,9 @@ public class WeblogicController extends BaseController {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         List<Map> list = new ArrayList<>();
         for (WlscrmThread bean : wlscrmThreadPager) {
-            Date date = bean.getTime();
-            String s = sdf.format(date);
-            Date date2 = sdf.parse(s);
-            DateFormat dFormat = DateFormat.getTimeInstance();
-            int threadrun = bean.getThreadrun().intValue();
             Map<Object, Object> map = new HashMap<>();
-            map.put("time", dFormat.format(date2));
-            map.put("threadrun", threadrun);
+            map.put("time", DateFormat.getTimeInstance().format(sdf.parse(sdf.format(bean.getTime()))));
+            map.put("threadrun", bean.getThreadrun().intValue());
             list.add(map);
         }
         return list;
@@ -136,9 +132,9 @@ public class WeblogicController extends BaseController {
             map.put("cname" , str);
             for (MonRecordDatasource mrd : mrdList){
                 if(str.equals(mrd.getDs())){
-                    int b = Integer.parseInt(mrd.getNumActive());
+                    int b = Integer.parseInt(mrd.getNum_active());
                     aa.add(b);
-                    bb.add(DateFormat.getTimeInstance().format(sdf.parse(mrd.getRunTime().toString())));
+                    bb.add(DateFormat.getTimeInstance().format(sdf.parse(sdf.format(mrd.getRun_time()))));
                 }
             }
             map.put("cnumber" , aa);
