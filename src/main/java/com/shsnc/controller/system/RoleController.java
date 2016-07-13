@@ -1,10 +1,11 @@
-package com.shsnc.controller;
+package com.shsnc.controller.system;
 
+import com.shsnc.controller.base.BaseController;
 import com.shsnc.entity.system.Privilege;
 import com.shsnc.entity.system.Role;
 import com.shsnc.entity.system.RolePrivilegeKey;
-import com.shsnc.service.PrivilegeService;
-import com.shsnc.service.RoleService;
+import com.shsnc.service.system.PrivilegeService;
+import com.shsnc.service.system.RoleService;
 import com.shsnc.util.pager.Pager;
 import net.sf.json.JSONArray;
 import org.springframework.stereotype.Controller;

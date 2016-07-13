@@ -1,4 +1,4 @@
-package com.shsnc.controller;
+package com.shsnc.controller.base;
 
 
 import javax.servlet.http.HttpServletRequest;

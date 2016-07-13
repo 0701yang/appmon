@@ -1,4 +1,4 @@
-package com.shsnc.service;
+package com.shsnc.service.system;
 
 import com.shsnc.entity.system.Privilege;
 import com.shsnc.entity.system.RolePrivilegeKey;

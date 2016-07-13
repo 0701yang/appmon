@@ -1,7 +1,7 @@
-package com.shsnc.service;
+package com.shsnc.service.weblogic;
 
 import com.shsnc.dataSource.DatabaseContextHolder;
-import com.shsnc.entity.system.MonRecordDatasource;
+import com.shsnc.entity.weblogic.MonRecordDatasource;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Service;
 

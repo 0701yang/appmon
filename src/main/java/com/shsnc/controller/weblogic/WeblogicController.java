@@ -1,10 +1,11 @@
-package com.shsnc.controller;
+package com.shsnc.controller.weblogic;
 
-import com.shsnc.entity.system.Bean;
-import com.shsnc.entity.system.MonRecordDatasource;
-import com.shsnc.entity.system.WlscrmThread;
-import com.shsnc.service.MrdService;
-import com.shsnc.service.ZcjWlscrmService;
+import com.shsnc.controller.base.BaseController;
+import com.shsnc.entity.weblogic.Bean;
+import com.shsnc.entity.weblogic.MonRecordDatasource;
+import com.shsnc.entity.weblogic.WlscrmThread;
+import com.shsnc.service.weblogic.MrdService;
+import com.shsnc.service.weblogic.ZcjWlscrmService;
 import com.shsnc.util.Const;
 import com.shsnc.util.pager.Pager;
 import org.springframework.stereotype.Controller;
@@ -15,7 +16,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
-import javax.xml.crypto.Data;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;

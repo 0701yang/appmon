@@ -1,6 +1,7 @@
-package com.shsnc.controller;
+package com.shsnc.controller.weblogic;
 
-import com.shsnc.service.ZcjWlscrmMarkService;
+import com.shsnc.controller.base.BaseController;
+import com.shsnc.service.weblogic.ZcjWlscrmMarkService;
 import com.shsnc.util.Const;
 import com.shsnc.util.ListMapSortComparator;
 import org.apache.shiro.SecurityUtils;

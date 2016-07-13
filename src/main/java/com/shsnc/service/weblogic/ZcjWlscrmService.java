@@ -1,8 +1,8 @@
-package com.shsnc.service;
+package com.shsnc.service.weblogic;
 
 import com.github.miemiedev.mybatis.paginator.domain.PageBounds;
-import com.shsnc.entity.system.Bean;
-import com.shsnc.entity.system.WlscrmThread;
+import com.shsnc.entity.weblogic.Bean;
+import com.shsnc.entity.weblogic.WlscrmThread;
 import com.shsnc.util.pager.PageBoundsUtil;
 import com.shsnc.util.pager.Pager;
 import org.mybatis.spring.SqlSessionTemplate;

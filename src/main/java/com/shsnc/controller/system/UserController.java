@@ -1,9 +1,10 @@
-package com.shsnc.controller;
+package com.shsnc.controller.system;
 
+import com.shsnc.controller.base.BaseController;
 import com.shsnc.entity.system.Role;
 import com.shsnc.entity.system.User;
-import com.shsnc.service.RoleService;
-import com.shsnc.service.UserService;
+import com.shsnc.service.system.RoleService;
+import com.shsnc.service.system.UserService;
 import com.shsnc.util.pager.Pager;
 import org.apache.shiro.crypto.hash.SimpleHash;
 import org.springframework.stereotype.Controller;

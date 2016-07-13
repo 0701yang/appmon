@@ -1,4 +1,4 @@
-package com.shsnc.service;
+package com.shsnc.service.weblogic;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Service;

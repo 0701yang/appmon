@@ -23,14 +23,14 @@
         <typeAlias type="com.shsnc.entity.system.UserRoleKey" alias="UserRoleKey"/>
         <!--用户模块 结束-->
         <!--weblogic模块-->
-        <typeAlias type="com.shsnc.entity.system.WlscrmServers" alias="WlscrmServers"/>
-        <typeAlias type="com.shsnc.entity.system.WlscrmThread" alias="WlscrmThread"/>
-        <typeAlias type="com.shsnc.entity.system.WlscrmMark" alias="WlscrmMark"/>
-        <typeAlias type="com.shsnc.entity.system.MonRecordDatasource" alias="MonRecordDatasource"/>
+        <typeAlias type="com.shsnc.entity.weblogic.WlscrmServers" alias="WlscrmServers"/>
+        <typeAlias type="com.shsnc.entity.weblogic.WlscrmThread" alias="WlscrmThread"/>
+        <typeAlias type="com.shsnc.entity.weblogic.WlscrmMark" alias="WlscrmMark"/>
+        <typeAlias type="com.shsnc.entity.weblogic.MonRecordDatasource" alias="MonRecordDatasource"/>
 
         <!--结束-->
 
-        <typeAlias type="com.shsnc.entity.system.Bean" alias="Bean"/>
+        <typeAlias type="com.shsnc.entity.weblogic.Bean" alias="Bean"/>
         <typeAlias type="com.shsnc.util.pager.Pager" alias="pager"/>
     </typeAliases>
 

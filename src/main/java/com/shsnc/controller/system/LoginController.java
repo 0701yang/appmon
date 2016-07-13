@@ -1,10 +1,11 @@
-package com.shsnc.controller;
+package com.shsnc.controller.system;
 
+import com.shsnc.controller.base.BaseController;
 import com.shsnc.entity.system.Privilege;
 import com.shsnc.entity.system.RolePrivilegeKey;
 import com.shsnc.entity.system.User;
-import com.shsnc.service.PrivilegeService;
-import com.shsnc.service.UserService;
+import com.shsnc.service.system.PrivilegeService;
+import com.shsnc.service.system.UserService;
 import com.shsnc.util.Tools;
 import com.shsnc.util.pager.Pager;
 import org.apache.shiro.SecurityUtils;
@@ -14,7 +15,6 @@ import org.apache.shiro.crypto.hash.SimpleHash;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;

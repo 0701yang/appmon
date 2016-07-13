@@ -1,4 +1,4 @@
-package com.shsnc.entity.system;
+package com.shsnc.entity.weblogic;
 
 
 import java.io.Serializable;

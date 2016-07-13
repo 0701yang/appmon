@@ -1,4 +1,4 @@
-package com.shsnc.service;
+package com.shsnc.service.system;
 
 import com.github.miemiedev.mybatis.paginator.domain.PageBounds;
 import com.shsnc.entity.system.User;
