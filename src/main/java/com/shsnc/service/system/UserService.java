@@ -41,8 +41,7 @@ public class UserService {
         PageBounds pageBounds = PageBoundsUtil.pageBoundsOrderExtend("ID.ASC");
         List<User> list = sqlSessionTemplate.selectList("UserMapper.findByName", name, pageBounds);
         int count = sqlSessionTemplate.selectOne("UserMapper.countByName",name);
-        Pager<User> pages = new Pager<User>(count, list);
-        return pages;
+        return new Pager<User>(count, list);
     }
 
     /**

@@ -30,7 +30,7 @@
                                                 </div>
                                                 <div class="details">
                                                     <div class="number">
-                                                        <span class="uppercase font-lg font-red-flamingo">${count.crm}分</span>
+                                                        <span class="uppercase font-lg" style="color:${count.crmcolor}">${count.crm}分</span>
                                                     </div>
                                                     <div class="desc"> CRM-APP : <a href="${pageContext.request.contextPath}/weblogic/crm/${count.url}">288</a></div>
                                                 </div>
@@ -42,7 +42,7 @@
                                                 </div>
                                                 <div class="details">
                                                     <div class="number">
-                                                        <span class="uppercase font-lg font-red-flamingo">${count.osb}分</span>
+                                                        <span class="uppercase font-lg" style="color:${count.osbcolor}">${count.osb}分</span>
                                                     </div>
                                                     <div class="desc"> OSB : <a href="${pageContext.request.contextPath}/weblogic/osb/${count.url}">48</a></div>
                                                 </div>

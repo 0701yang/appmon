@@ -27,7 +27,7 @@
         <typeAlias type="com.shsnc.entity.weblogic.WlscrmThread" alias="WlscrmThread"/>
         <typeAlias type="com.shsnc.entity.weblogic.WlscrmMark" alias="WlscrmMark"/>
         <typeAlias type="com.shsnc.entity.weblogic.MonRecordDatasource" alias="MonRecordDatasource"/>
-
+        <typeAlias type="com.shsnc.entity.weblogic.CrmAppMark" alias="CrmAppMark"/>
         <!--结束-->
 
         <typeAlias type="com.shsnc.entity.weblogic.Bean" alias="Bean"/>

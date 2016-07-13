@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="SqlDialectMappings">
-    <file url="file://$PROJECT_DIR$/src/main/resources/mybatis/mon/system/PrivilegeMapper.xml" dialect="Oracle" />
-    <file url="file://$PROJECT_DIR$/src/main/resources/mybatis/mon/system/RoleMapper.xml" dialect="Oracle" />
-    <file url="file://$PROJECT_DIR$/src/main/resources/mybatis/mon/system/RolePrivilegeMapper.xml" dialect="Oracle" />
-    <file url="file://$PROJECT_DIR$/src/main/resources/mybatis/mon/system/UserMapper.xml" dialect="Oracle" />
-    <file url="file://$PROJECT_DIR$/src/main/resources/mybatis/mon/system/UserRoleMapper.xml" dialect="Oracle" />
-    <file url="file://$PROJECT_DIR$/src/main/resources/mybatis/mon/weblogic/RadiosMapper.xml" dialect="Oracle" />
-    <file url="file://$PROJECT_DIR$/src/main/resources/mybatis/mon/weblogic/WlscrmMarkMapper.xml" dialect="Oracle" />
-    <file url="file://$PROJECT_DIR$/src/main/resources/mybatis/mon/weblogic/WlscrmServersMapper.xml" dialect="Oracle" />
-    <file url="file://$PROJECT_DIR$/src/main/resources/mybatis/mon/weblogic/WlscrmThreadMapper.xml" dialect="Oracle" />
-    <file url="file://$PROJECT_DIR$/src/main/resources/mybatis/sd1/MrdMapper.xml" dialect="Oracle" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/mybatis/mapper/mon/system/PrivilegeMapper.xml" dialect="Oracle" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/mybatis/mapper/mon/system/RoleMapper.xml" dialect="Oracle" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/mybatis/mapper/mon/system/RolePrivilegeMapper.xml" dialect="Oracle" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/mybatis/mapper/mon/system/UserMapper.xml" dialect="Oracle" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/mybatis/mapper/mon/system/UserRoleMapper.xml" dialect="Oracle" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/mybatis/mapper/mon/weblogic/CrmAppMarkMapper.xml" dialect="Oracle" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/mybatis/mapper/mon/weblogic/RadiosMapper.xml" dialect="Oracle" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/mybatis/mapper/mon/weblogic/WlscrmMarkMapper.xml" dialect="Oracle" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/mybatis/mapper/mon/weblogic/WlscrmServersMapper.xml" dialect="Oracle" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/mybatis/mapper/mon/weblogic/WlscrmThreadMapper.xml" dialect="Oracle" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/mybatis/mapper/sd1/mrd/MrdMapper.xml" dialect="Oracle" />
   </component>
 </project>

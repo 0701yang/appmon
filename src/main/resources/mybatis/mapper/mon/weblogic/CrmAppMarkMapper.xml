@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="CrmAppMarkMapper">
+    <cache type="org.mybatis.caches.ehcache.LoggingEhcache"/>
+
+    <!--查询所有小于60分的个数-->
+    <select id="findAllSix" resultType="int">
+        SELECT COUNT(1)
+        FROM ZCJ_WLSCRM_CRMAPP_MARK ZWCM
+        WHERE ZWCM.CRMAPP_MARK &lt; 60
+    </select>
+
+    <!--都大于60分,求平均数-->
+    <select id="findSixByCrm" resultType="java.lang.Integer">
+        SELECT avg(ZWCM.CRMAPP_MARK)
+        FROM ZCJ_WLSCRM_CRMAPP_MARK ZWCM
+        WHERE substr(ZWCM.SERVERNAME, 0, 11) IN
+        <foreach collection="array" item="servername" index="index" open="(" separator="," close=")">
+            #{servername}
+        </foreach>
+    </select>
+
+    <!--有小于60分,查询所有个数-->
+    <select id="findAll" resultType="int">
+        SELECT count(1) FROM ZCJ_WLSCRM_CRMAPP_MARK ZWCM
+    </select>
+
+
+
+</mapper>

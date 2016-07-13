@@ -32,7 +32,7 @@
                                                         </div>
                                                         <div class="details">
                                                             <div class="number">
-                                                                <span class="uppercase font-lg font-red-flamingo">${list.crmtotal}分</span>
+                                                                <span class="uppercase font-lg" style="color:${list.color}">${list.total}分</span>
                                                             </div>
                                                             <div class="desc">
                                                             ${list.name}
@@ -40,11 +40,11 @@
                                                         </div>
                                                     </a>
                                                     <a class="more" href="javascript:;">
-                                                        CRM-App : <span class="uppercase font-lg font-red-flamingo ">${list.crm}分</span>
+                                                        CRM-App : <span class="uppercase font-lg" style="color:${list.crmcolor}">${list.crm}分</span>
                                                         <i class="m-icon-swapright m-icon-white"></i>
                                                     </a>
                                                     <a class="more" href="javascript:;">
-                                                        OSB : <span class="uppercase font-lg font-red-flamingo">${list.osb}分</span>
+                                                        OSB : <span class="uppercase font-lg" style="color:${list.osbcolor}">${list.osb}分</span>
                                                         <i class="m-icon-swapright m-icon-white"></i>
                                                     </a>
                                                 </div>

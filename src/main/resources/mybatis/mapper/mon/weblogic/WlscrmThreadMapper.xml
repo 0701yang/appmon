@@ -30,7 +30,7 @@
             #{app}
         </foreach>
         AND svr.SERVER != 'AdminServer'
-        AND (trd.threadrun >=svr.threadthreshold OR trd.threadrun = -1 )
+        AND (trd.threadrun >=10 OR trd.threadrun = -1 )
         AND trd.TIME &gt;= to_date(to_char(sysdate - 1 / 24 / 60, 'yyyy-mm-dd hh24:mi:ss'), 'yyyy-mm-dd hh24:mi:ss')
         AND trd.TIME &lt;= to_date(to_char(sysdate , 'yyyy-mm-dd hh24:mi:ss'), 'yyyy-mm-dd hh24:mi:ss')
     </select>
@@ -45,7 +45,7 @@
               AND svr.PORT = trd.PORT
               AND rds.NAME = svr.APP
               AND svr.MODULE = #{module}
-              AND (trd.threadrun >= svr.threadthreshold OR trd.threadrun = -1)
+              AND (trd.threadrun >= 10 OR trd.threadrun = -1)
               AND trd.TIME &gt;= to_date(to_char(sysdate - 1 / 24 / 60, 'yyyy-mm-dd hh24:mi:ss'), 'yyyy-mm-dd hh24:mi:ss')
               AND trd.TIME &lt;= to_date(to_char(sysdate, 'yyyy-mm-dd hh24:mi:ss'), 'yyyy-mm-dd hh24:mi:ss')
 
@@ -76,7 +76,7 @@
             #{app}
         </foreach>
         AND svr.SERVER != 'AdminServer'
-        AND (trd.threadrun >=svr.threadthreshold OR trd.threadrun = -1 )
+        AND (trd.threadrun >=10 OR trd.threadrun = -1 )
         AND trd.TIME &gt;= to_date(to_char(sysdate - 1 / 24 / 60, 'yyyy-mm-dd hh24:mi:ss'), 'yyyy-mm-dd hh24:mi:ss')
         AND trd.TIME &lt;= to_date(to_char(sysdate , 'yyyy-mm-dd hh24:mi:ss'), 'yyyy-mm-dd hh24:mi:ss')
 
@@ -104,7 +104,7 @@
               AND svr.PORT = trd.PORT
               AND rds.NAME = svr.APP
               AND svr.MODULE = #{module}
-              AND (trd.threadrun >= svr.threadthreshold OR trd.threadrun = -1)
+              AND (trd.threadrun >= 10 OR trd.threadrun = -1)
               AND trd.TIME &gt;= to_date(to_char(sysdate - 1 / 24 / 60, 'yyyy-mm-dd hh24:mi:ss'), 'yyyy-mm-dd hh24:mi:ss')
               AND trd.TIME &lt;= to_date(to_char(sysdate, 'yyyy-mm-dd hh24:mi:ss'), 'yyyy-mm-dd hh24:mi:ss')
     </select>
