@@ -124,7 +124,7 @@
             </div>
             <div class="modal-body">
                 <div class="row">
-                    <div id="weblogic_history_charts" class="col-md-12"></div>
+                    <div id="weblogic_history_charts" style="padding-left: 15px;"></div>
                 </div>
             </div>
             <div class="modal-footer">
@@ -156,6 +156,16 @@
 
     });
 </script>
+
+<!--修改图表宽度-->
+<script>
+    $(window).resize(function () {
+        var width_web = $("#weblogic_history_modal").width();
+        //动态修改容器大小
+        $("#weblogic_history_modal").width(width_web / 2 + 300);
+    });
+</script>
+
 <!--曲线-->
 <script type="text/javascript">
     function weblogic_history_charts(ip, port) {

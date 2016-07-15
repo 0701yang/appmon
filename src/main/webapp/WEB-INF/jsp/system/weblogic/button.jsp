@@ -146,7 +146,7 @@
             </div>
             <div class="modal-body">
                 <div class="row">
-                        <div id="weblogic_history_charts" class="col-md-11"></div>
+                    <div id="weblogic_history_charts" style="padding-left: 15px;"></div>
                 </div>
             </div>
             <div class="modal-footer">
@@ -165,8 +165,8 @@
                 <h4 id="myLargeModalLabel2" class="modal-title">连接池曲线</h4>
             </div>
             <div class="modal-body">
-                <div class="row">
-                        <div id="crm_app_charts" style="min-width:400px;height:400px"></div>
+                <div id="row2" class="row">
+                    <div id="crm_app_charts" style="padding-left: 15px;"></div>
                 </div>
             </div>
             <div class="modal-footer">
@@ -284,6 +284,7 @@
 
 <!--曲线-->
 <script type="text/javascript">
+
     function weblogic_history_charts(ip, port) {
         var chart;
 
@@ -351,9 +352,7 @@
                 arry.push(data[i].threadrun)
             });
             chart.series[0].setData(arry);
-
         });
-
     }
 </script>
 
@@ -461,10 +460,22 @@
                     data: arry
                 }, false);
             });
-            chart.redraw();
+            chart.redraw();//重绘
         });
     }
 </script>
+
+<!--修改图表宽度-->
+<script>
+    $(window).resize(function () {
+        var width_web = $("#weblogic_history_modal").width();
+        var width_app = $("#crm-app-modal").width();
+        //动态修改容器大小
+        $("#weblogic_history_charts").width(width_web / 2 + 300);
+        $("#crm-app-modal").width(width_web / 2 + 300);
+    });
+</script>
+
 
 <script>
     jQuery(document).ready(function () {

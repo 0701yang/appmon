@@ -1,9 +1,12 @@
 package com.shsnc.service.weblogic;
 
+import org.apache.commons.collections.CollectionUtils;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Service("zcjWlscrmMarkService")
@@ -18,7 +21,9 @@ public class ZcjWlscrmMarkService {
      * @return
      */
     public Integer markcrmone(String[] string){
-        return  sqlSessionTemplate.selectOne("WlscrmMarkMapper.markcrmone",string);
+        List<String> apacheList = new ArrayList<String>();
+        CollectionUtils.addAll(apacheList, string);
+        return  sqlSessionTemplate.selectOne("WlscrmMarkMapper.markcrmone",apacheList);
     }
 
     /**
@@ -27,7 +32,9 @@ public class ZcjWlscrmMarkService {
      * @return
      */
     public Integer markcrmtwo(String[] string){
-        return  sqlSessionTemplate.selectOne("WlscrmMarkMapper.markcrmtwo",string);
+        List<String> apacheList = new ArrayList<String>();
+        CollectionUtils.addAll(apacheList, string);
+        return  sqlSessionTemplate.selectOne("WlscrmMarkMapper.markcrmtwo",apacheList);
     }
 
     /**
@@ -36,7 +43,9 @@ public class ZcjWlscrmMarkService {
      * @return
      */
     public Integer crmerror(String[] string){
-        return  sqlSessionTemplate.selectOne("WlscrmMarkMapper.crmerror",string);
+        List<String> apacheList = new ArrayList<String>();
+        CollectionUtils.addAll(apacheList, string);
+        return  sqlSessionTemplate.selectOne("WlscrmMarkMapper.crmerror",apacheList);
     }
 
     /**

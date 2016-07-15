@@ -11,7 +11,7 @@
     </select>
 
     <!--都大于60分,求平均数-->
-    <select id="findSixByCrm" resultType="java.lang.Integer">
+    <select id="findSixByCrm" resultType="java.lang.Integer" >
         SELECT avg(ZWCM.CRMAPP_MARK)
         FROM ZCJ_WLSCRM_CRMAPP_MARK ZWCM
         WHERE substr(ZWCM.SERVERNAME, 0, 11) IN

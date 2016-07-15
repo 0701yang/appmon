@@ -15,7 +15,7 @@
     </resultMap>
 
     <!--情况一:查询分数crm-->
-    <select id="markcrmone" resultType="java.lang.Integer">
+    <select id="markcrmone" resultType="java.lang.Integer"  parameterType="java.util.List">
         SELECT avg(trd.mark)
         FROM
         ZCJ_WLSCRM_SERVERS svr,
@@ -27,14 +27,14 @@
         AND rds.NAME = svr.APP
         AND svr.APP
         IN
-        <foreach collection="array" item="app" index="index" open="(" separator="," close=")">
+        <foreach collection="list" item="app" index="index" open="(" separator="," close=")">
             #{app}
         </foreach>
         AND svr.SERVER != 'AdminServer'
     </select>
 
     <!--情况二:查询分数CRM-->
-    <select id="markcrmtwo" resultType="java.lang.Integer">
+    <select id="markcrmtwo" resultType="java.lang.Integer"  parameterType="java.util.List">
         SELECT count(1)
         FROM (SELECT
         count(1) GESHU,
@@ -44,7 +44,7 @@
         AND svr.PORT = trd.PORT
         AND rds.NAME = svr.APP
         AND svr.APP IN
-        <foreach collection="array" item="app" index="index" open="(" separator="," close=")">
+        <foreach collection="list" item="app" index="index" open="(" separator="," close=")">
             #{app}
         </foreach>
         AND svr.SERVER != 'AdminServer'
@@ -54,14 +54,14 @@
     </select>
 
     <!--CRM异常的个数-->
-    <select id="crmerror" resultType="java.lang.Integer">
+    <select id="crmerror" resultType="java.lang.Integer"  parameterType="java.util.List">
         SELECT count(1)
         FROM zcj_wlscrm_servers svr, zcj_wlscrm_mark trd, zcj_shsnc_radios rds
         WHERE svr.ip = trd.ip
         AND svr.port = trd.port
         AND rds.name = svr.app
         AND svr.APP IN
-        <foreach collection="array" item="app" index="index" open="(" separator="," close=")">
+        <foreach collection="list" item="app" index="index" open="(" separator="," close=")">
             #{app}
         </foreach>
         AND trd.threadrun NOT BETWEEN 1 AND 20

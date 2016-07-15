@@ -11,7 +11,7 @@
 <link href="${pageContext.request.contextPath}/Metronic/css/bootstrap.min.css" rel="stylesheet" type="text/css">
 <link href="${pageContext.request.contextPath}/Metronic/js/jquery/uniform/css/uniform.default.min.css" rel="stylesheet" type="text/css">
 
-<link href="${pageContext.request.contextPath}/Metronic/css/components-rounded.css" id="style_components" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath}/Metronic/css/components-rounded.css" rel="stylesheet" type="text/css">
 <link href="${pageContext.request.contextPath}/Metronic/css/plugins.css" rel="stylesheet" type="text/css">
 <link href="${pageContext.request.contextPath}/Metronic/css/layout.css" rel="stylesheet" type="text/css">
 <link href="${pageContext.request.contextPath}/Metronic/css/default.css" rel="stylesheet" type="text/css" id="style_color">

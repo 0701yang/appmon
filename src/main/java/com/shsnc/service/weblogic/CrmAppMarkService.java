@@ -1,9 +1,13 @@
 package com.shsnc.service.weblogic;
 
+import org.apache.commons.collections.CollectionUtils;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service("crmAppMarkService")
 public class CrmAppMarkService {
@@ -36,7 +40,9 @@ public class CrmAppMarkService {
      * @throws Exception
      */
     public Integer findSixByCrm(String[] strings) throws Exception{
-        return sqlSessionTemplate.selectOne("CrmAppMarkMapper.findSixByCrm",strings);
+        List<String> apacheList = new ArrayList<String>();
+         CollectionUtils.addAll(apacheList, strings);
+        return sqlSessionTemplate.selectOne("CrmAppMarkMapper.findSixByCrm",apacheList);
     }
 
 

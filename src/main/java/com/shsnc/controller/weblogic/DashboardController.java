@@ -5,7 +5,6 @@ import com.shsnc.service.weblogic.CrmAppMarkService;
 import com.shsnc.service.weblogic.ZcjWlscrmMarkService;
 import com.shsnc.util.Const;
 import com.shsnc.util.ListMapSortComparator;
-import javafx.beans.binding.When;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
@@ -53,7 +52,7 @@ public class DashboardController extends BaseController {
             if(b==0){//如果小于60的不存在
                 markcrmone = crmAppMarkService.findSixByCrm(s) == null ? 0 : crmAppMarkService.findSixByCrm(s);//根据crm进行查询个数
             }else {
-                markcrmone = 60-(60/a)/b;
+                markcrmone = 60-(60/a)*b;
             }
             int markosb = zcjWlscrmMarkService.markosb(osbmap.get(entry.getKey()))==null ? 0 : zcjWlscrmMarkService.markosb(osbmap.get(entry.getKey()));//osb的分数
             int total = markosb >= markcrmone ? markcrmone : markosb;//总分

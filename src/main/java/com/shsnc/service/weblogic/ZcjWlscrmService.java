@@ -5,10 +5,12 @@ import com.shsnc.entity.weblogic.Bean;
 import com.shsnc.entity.weblogic.WlscrmThread;
 import com.shsnc.util.pager.PageBoundsUtil;
 import com.shsnc.util.pager.Pager;
+import org.apache.commons.collections.CollectionUtils;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -27,7 +29,9 @@ public class ZcjWlscrmService {
     public Pager<Bean> findCrm(String[] string) throws Exception {
         PageBounds pageBounds = PageBoundsUtil.pageBoundsOrderExtend("APP,MODULE,IP,PORT");
         int count = sqlSessionTemplate.selectOne("WlscrmThreadMapper.countcrm",string);
-        List<Bean> list = sqlSessionTemplate.selectList("WlscrmThreadMapper.findHistoryCrm", string, pageBounds);
+        List<String> apacheList = new ArrayList<String>();
+        CollectionUtils.addAll(apacheList, string);
+        List<Bean> list = sqlSessionTemplate.selectList("WlscrmThreadMapper.findHistoryCrm", apacheList, pageBounds);
 
         return new Pager<Bean>(count, list);
     }

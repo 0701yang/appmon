@@ -50,6 +50,9 @@
         Layout.init(); // init layout
         Demo.init(); // init demo features
         QuickSidebar.init(); // init quick sidebar
+        //监听窗体大小变更事件
+        $(window).resize(startInit('mainFrame', 560));
+        $(document).resize(startInit('mainFrame', 560));
     });
 </script>
 </body>

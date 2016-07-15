@@ -14,7 +14,7 @@
     </resultMap>
 
     <!--计数CRM-APP-->
-    <select id="countcrm" resultType="java.lang.Integer">
+    <select id="countcrm" resultType="java.lang.Integer"  parameterType="java.util.List">
         SELECT count(1)
         FROM
         ZCJ_WLSCRM_SERVERS svr,
@@ -26,11 +26,11 @@
         AND rds.NAME = svr.APP
         AND svr.APP
         IN
-        <foreach collection="array" item="app" index="index" open="(" separator="," close=")">
+        <foreach collection="list" item="app" index="index" open="(" separator="," close=")">
             #{app}
         </foreach>
         AND svr.SERVER != 'AdminServer'
-        AND (trd.threadrun >=10 OR trd.threadrun = -1 )
+        AND (trd.threadrun &gt;=10 OR trd.threadrun = -1 )
         AND trd.TIME &gt;= to_date(to_char(sysdate - 1 / 24 / 60, 'yyyy-mm-dd hh24:mi:ss'), 'yyyy-mm-dd hh24:mi:ss')
         AND trd.TIME &lt;= to_date(to_char(sysdate , 'yyyy-mm-dd hh24:mi:ss'), 'yyyy-mm-dd hh24:mi:ss')
     </select>
@@ -45,14 +45,14 @@
               AND svr.PORT = trd.PORT
               AND rds.NAME = svr.APP
               AND svr.MODULE = #{module}
-              AND (trd.threadrun >= 10 OR trd.threadrun = -1)
+              AND (trd.threadrun &gt;= 10 OR trd.threadrun = -1)
               AND trd.TIME &gt;= to_date(to_char(sysdate - 1 / 24 / 60, 'yyyy-mm-dd hh24:mi:ss'), 'yyyy-mm-dd hh24:mi:ss')
               AND trd.TIME &lt;= to_date(to_char(sysdate, 'yyyy-mm-dd hh24:mi:ss'), 'yyyy-mm-dd hh24:mi:ss')
 
     </select>
 
     <!--查询CRM-APP的数据-->
-    <select id="findHistoryCrm" resultType="Bean">
+    <select id="findHistoryCrm" resultType="Bean"  parameterType="java.util.List">
         SELECT
         svr.APP,
         svr.MODULE,
@@ -72,11 +72,11 @@
         AND rds.NAME = svr.APP
         AND svr.APP
         IN
-        <foreach collection="array" item="app" index="index" open="(" separator="," close=")">
+        <foreach collection="list" item="app" index="index" open="(" separator="," close=")">
             #{app}
         </foreach>
         AND svr.SERVER != 'AdminServer'
-        AND (trd.threadrun >=10 OR trd.threadrun = -1 )
+        AND (trd.threadrun &gt;=10 OR trd.threadrun = -1 )
         AND trd.TIME &gt;= to_date(to_char(sysdate - 1 / 24 / 60, 'yyyy-mm-dd hh24:mi:ss'), 'yyyy-mm-dd hh24:mi:ss')
         AND trd.TIME &lt;= to_date(to_char(sysdate , 'yyyy-mm-dd hh24:mi:ss'), 'yyyy-mm-dd hh24:mi:ss')
 
@@ -104,7 +104,7 @@
               AND svr.PORT = trd.PORT
               AND rds.NAME = svr.APP
               AND svr.MODULE = #{module}
-              AND (trd.threadrun >= 10 OR trd.threadrun = -1)
+              AND (trd.threadrun &gt;= 10 OR trd.threadrun = -1)
               AND trd.TIME &gt;= to_date(to_char(sysdate - 1 / 24 / 60, 'yyyy-mm-dd hh24:mi:ss'), 'yyyy-mm-dd hh24:mi:ss')
               AND trd.TIME &lt;= to_date(to_char(sysdate, 'yyyy-mm-dd hh24:mi:ss'), 'yyyy-mm-dd hh24:mi:ss')
     </select>
