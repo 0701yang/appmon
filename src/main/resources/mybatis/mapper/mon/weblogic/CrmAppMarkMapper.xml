@@ -4,18 +4,22 @@
     <cache type="org.mybatis.caches.ehcache.LoggingEhcache"/>
 
     <!--查询所有小于60分的个数-->
-    <select id="findAllSix" resultType="int">
+    <select id="findAllSix" resultType="int" parameterType="java.util.List">
         SELECT COUNT(1)
         FROM ZCJ_WLSCRM_CRMAPP_MARK ZWCM
-        WHERE ZWCM.CRMAPP_MARK &lt; 60
+        WHERE substr(ZWCM.SERVERNAME, 0, 11) IN
+        <foreach collection="list" item="servername" index="index" open="(" separator="," close=")">
+            #{servername}
+        </foreach>
+            AND ZWCM.CRMAPP_MARK &lt; 60
     </select>
 
     <!--都大于60分,求平均数-->
-    <select id="findSixByCrm" resultType="java.lang.Integer" >
+    <select id="findSixByCrm" resultType="java.lang.Integer" parameterType="java.util.List">
         SELECT avg(ZWCM.CRMAPP_MARK)
         FROM ZCJ_WLSCRM_CRMAPP_MARK ZWCM
         WHERE substr(ZWCM.SERVERNAME, 0, 11) IN
-        <foreach collection="array" item="servername" index="index" open="(" separator="," close=")">
+        <foreach collection="list" item="servername" index="index" open="(" separator="," close=")">
             #{servername}
         </foreach>
     </select>

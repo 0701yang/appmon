@@ -115,16 +115,15 @@
     </div>
 </div>
 <!--model曲线-->
-<div id="weblogic_history_modal" class="modal fade bs-example-modal-lg" aria-labelledby="myLargeModalLabel" role="dialog" tabindex="-1"
-     style="display: none;">
-    <div class="modal-dialog modal-lg">
+<div id="weblogic_history_modal" class="modal fade bs-example-modal-lg" aria-labelledby="myLargeModalLabel" role="dialog" tabindex="-1" style="display: none;">
+    <div id="modal" class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h4 id="myLargeModalLabel" class="modal-title">曲线</h4>
             </div>
             <div class="modal-body">
                 <div class="row">
-                    <div id="weblogic_history_charts" style="padding-left: 15px;"></div>
+                    <div id="weblogic_history_charts" style="padding-left: 15px;padding-right: 15px"></div>
                 </div>
             </div>
             <div class="modal-footer">
@@ -145,24 +144,6 @@
 <script>
     $('#weblogic_history_charts').on("hidden.bs.modal", function () {
         $(this).removeData("bs.modal");
-    });
-</script>
-
-<script type="text/javascript">
-    jQuery(document).ready(function () {
-        Metronic.init();
-        Layout.init();
-        Demo.init();
-
-    });
-</script>
-
-<!--修改图表宽度-->
-<script>
-    $(window).resize(function () {
-        var width_web = $("#weblogic_history_modal").width();
-        //动态修改容器大小
-        $("#weblogic_history_modal").width(width_web / 2 + 300);
     });
 </script>
 
@@ -240,6 +221,30 @@
 
     }
 </script>
+
+
+<!--修改图表宽度-->
+<script>
+    function updateChartSize() {
+        var width_web = $("#modal").width();
+        //动态修改容器大小
+        $("#weblogic_history_charts").width(width_web-50);
+    }
+</script>
+
+<script type="text/javascript">
+    jQuery(document).ready(function () {
+        Metronic.init();
+        Layout.init();
+        Demo.init();
+        updateChartSize();
+        //监听窗体大小变更事件
+        $(window).resize(updateChartSize);
+        $(document).resize(updateChartSize);
+    });
+</script>
+
+
 </body>
 </html>
 

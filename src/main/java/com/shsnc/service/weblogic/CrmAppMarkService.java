@@ -5,7 +5,6 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,8 +19,10 @@ public class CrmAppMarkService {
      * @return
      * @throws Exception
      */
-    public int findAllSix() throws Exception{
-        return sqlSessionTemplate.selectOne("CrmAppMarkMapper.findAllSix");
+    public Integer findAllSix(String[] strings) throws Exception{
+        List<String> apacheList = new ArrayList<String>();
+        CollectionUtils.addAll(apacheList, strings);
+        return sqlSessionTemplate.selectOne("CrmAppMarkMapper.findAllSix",apacheList);
     }
 
     /**
@@ -29,7 +30,7 @@ public class CrmAppMarkService {
      * @return
      * @throws Exception
      */
-    public int findAll() throws Exception{
+    public Integer findAll() throws Exception{
         return sqlSessionTemplate.selectOne("CrmAppMarkMapper.findAll");
     }
 
@@ -41,7 +42,7 @@ public class CrmAppMarkService {
      */
     public Integer findSixByCrm(String[] strings) throws Exception{
         List<String> apacheList = new ArrayList<String>();
-         CollectionUtils.addAll(apacheList, strings);
+        CollectionUtils.addAll(apacheList, strings);
         return sqlSessionTemplate.selectOne("CrmAppMarkMapper.findSixByCrm",apacheList);
     }
 

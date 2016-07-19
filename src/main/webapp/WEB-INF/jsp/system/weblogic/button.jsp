@@ -137,16 +137,15 @@
     </div>
 </div>
 <!--model曲线-->
-<div id="weblogic_history_modal" class="modal fade bs-example-modal-lg" aria-labelledby="myLargeModalLabel" role="dialog" tabindex="-1"
-     style="display: none;">
-    <div class="modal-dialog modal-lg">
+<div id="weblogic_history_modal" class="modal fade bs-example-modal-lg" aria-labelledby="myLargeModalLabel" role="dialog" tabindex="-1" style="display: none;">
+    <div id="row" class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h4 id="myLargeModalLabel" class="modal-title">曲线</h4>
             </div>
             <div class="modal-body">
                 <div class="row">
-                    <div id="weblogic_history_charts" style="padding-left: 15px;"></div>
+                    <div id="weblogic_history_charts" style="padding-left: 15px; padding-right: 15px"></div>
                 </div>
             </div>
             <div class="modal-footer">
@@ -159,14 +158,14 @@
 
 <!--model曲线-->
 <div id="crm-app-modal" class="modal fade bs-example-modal-lg" aria-labelledby="myLargeModalLabel" role="dialog" tabindex="-1" style="display: none;">
-    <div class="modal-dialog modal-lg">
+    <div id="row2" class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h4 id="myLargeModalLabel2" class="modal-title">连接池曲线</h4>
             </div>
             <div class="modal-body">
-                <div id="row2" class="row">
-                    <div id="crm_app_charts" style="padding-left: 15px;"></div>
+                <div class="row">
+                    <div id="crm_app_charts" style="padding-left: 15px; padding-right: 15px"></div>
                 </div>
             </div>
             <div class="modal-footer">
@@ -467,19 +466,24 @@
 
 <!--修改图表宽度-->
 <script>
-    $(window).resize(function () {
-        var width_web = $("#weblogic_history_modal").width();
-        var width_app = $("#crm-app-modal").width();
-        //动态修改容器大小
-        $("#weblogic_history_charts").width(width_web / 2 + 300);
-        $("#crm-app-modal").width(width_web / 2 + 300);
-    });
-</script>
+    function updateChartSize() {
+        var width_web = $("#row").width();
+        var width_app = $("#row2").width();
 
+        //动态修改容器大小
+        $("#weblogic_history_charts").width(width_web - 50);
+        $("#crm_app_charts").width(width_web - 50);
+
+    }
+</script>
 
 <script>
     jQuery(document).ready(function () {
         ComponentsPickers.init();
+        updateChartSize();
+        //监听窗体大小变更事件
+        $(window).resize(updateChartSize);
+        $(document).resize(updateChartSize);
     });
 </script>
 </body>

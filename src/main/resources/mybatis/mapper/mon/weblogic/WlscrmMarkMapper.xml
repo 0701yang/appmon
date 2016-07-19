@@ -3,69 +3,6 @@
 <mapper namespace="WlscrmMarkMapper">
     <cache type="org.mybatis.caches.ehcache.LoggingEhcache" />
 
-    <resultMap id="mark" type="WlscrmMark">
-        <result column="﻿TIME" property="﻿time" jdbcType="TIMESTAMP"/>
-        <result column="IP" property="ip" jdbcType="VARCHAR"/>
-        <result column="PORT" property="port" jdbcType="VARCHAR"/>
-        <result column="﻿THREADTOTAL" property="﻿threadtotal" jdbcType="DECIMAL"/>
-        <result column="﻿THREADIDLE" property="﻿threadidle" jdbcType="DECIMAL"/>
-        <result column="﻿THREADSTANDBY" property="﻿threadstandby" jdbcType="DECIMAL"/>
-        <result column="﻿THREADRUN" property="﻿threadrun" jdbcType="DECIMAL"/>
-        <result column="﻿MARK" property="﻿mark" jdbcType="DECIMAL"/>
-    </resultMap>
-
-    <!--情况一:查询分数crm-->
-    <select id="markcrmone" resultType="java.lang.Integer"  parameterType="java.util.List">
-        SELECT avg(trd.mark)
-        FROM
-        ZCJ_WLSCRM_SERVERS svr,
-        ZCJ_WLSCRM_MARK trd,
-        ZCJ_SHSNC_RADIOS rds
-        WHERE
-        svr.IP = trd.IP
-        AND svr.PORT = trd.PORT
-        AND rds.NAME = svr.APP
-        AND svr.APP
-        IN
-        <foreach collection="list" item="app" index="index" open="(" separator="," close=")">
-            #{app}
-        </foreach>
-        AND svr.SERVER != 'AdminServer'
-    </select>
-
-    <!--情况二:查询分数CRM-->
-    <select id="markcrmtwo" resultType="java.lang.Integer"  parameterType="java.util.List">
-        SELECT count(1)
-        FROM (SELECT
-        count(1) GESHU,
-        svr.MODULE
-        FROM zcj_wlscrm_servers svr, zcj_wlscrm_mark trd, zcj_shsnc_radios rds
-        WHERE svr.IP = trd.IP
-        AND svr.PORT = trd.PORT
-        AND rds.NAME = svr.APP
-        AND svr.APP IN
-        <foreach collection="list" item="app" index="index" open="(" separator="," close=")">
-            #{app}
-        </foreach>
-        AND svr.SERVER != 'AdminServer'
-        AND trd.THREADRUN NOT BETWEEN 1 AND 20
-        GROUP BY svr.MODULE) a
-        WHERE a.geshu > 16
-    </select>
-
-    <!--CRM异常的个数-->
-    <select id="crmerror" resultType="java.lang.Integer"  parameterType="java.util.List">
-        SELECT count(1)
-        FROM zcj_wlscrm_servers svr, zcj_wlscrm_mark trd, zcj_shsnc_radios rds
-        WHERE svr.ip = trd.ip
-        AND svr.port = trd.port
-        AND rds.name = svr.app
-        AND svr.APP IN
-        <foreach collection="list" item="app" index="index" open="(" separator="," close=")">
-            #{app}
-        </foreach>
-        AND trd.threadrun NOT BETWEEN 1 AND 20
-    </select>
 
     <!--osb分数-->
     <select id="markosb" resultType="java.lang.Integer" parameterType="java.lang.String">
@@ -76,17 +13,5 @@
               AND rds.name = svr.app
               AND svr.module = #{module}
     </select>
-
-    <!--osb异常的个数-->
-    <select id="osberror" resultType="java.lang.Integer" parameterType="java.lang.String">
-        SELECT count(1)
-        FROM zcj_wlscrm_servers svr, zcj_wlscrm_mark trd, zcj_shsnc_radios rds
-        WHERE svr.ip = trd.ip
-              AND svr.port = trd.port
-              AND rds.name = svr.app
-              AND svr.module = #{module}
-              AND trd.threadrun NOT BETWEEN 1 AND 20
-    </select>
-
 
 </mapper>

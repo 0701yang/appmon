@@ -2,7 +2,7 @@
 <div class="page-header-top">
     <div class="container">
         <div class="page-logo">
-            <a href="#"><img src="${pageContext.request.contextPath}/Metronic/img/logo-default.png" alt="logo" class="logo-default"></a>
+            <a href="${pageContext.request.contextPath}/main/index"><img src="${pageContext.request.contextPath}/Metronic/img/logo-default.png" alt="logo" class="logo-default"></a>
         </div>
         <a href="javascript:;" class="menu-toggler"></a>
         <div class="top-menu">

@@ -47,7 +47,7 @@ public class DashboardController extends BaseController {
         for (Map.Entry<String, String[]> entry : maps.entrySet()) {
             String[] s = entry.getValue();
             int a = crmAppMarkService.findAll();//查询处所有个数
-            int b = crmAppMarkService.findAllSix();//查询处所有的小于60的分数的个数
+            int b = crmAppMarkService.findAllSix(s) == null ? 0 : crmAppMarkService.findAllSix(s);//查询所在渠道小于60的分数的个数
             int markcrmone;
             if(b==0){//如果小于60的不存在
                 markcrmone = crmAppMarkService.findSixByCrm(s) == null ? 0 : crmAppMarkService.findSixByCrm(s);//根据crm进行查询个数

@@ -26,9 +26,8 @@ public class UserService {
         PageBounds pageBounds = PageBoundsUtil.pageBoundsOrderExtend("ID.ASC");
         List<User> list = sqlSessionTemplate.selectList("UserMapper.listAllUser", null, pageBounds);
         int count = sqlSessionTemplate.selectOne("UserMapper.count");
-        Pager<User> pages = new Pager<User>(count, list);
 
-        return pages;
+        return new Pager<User>(count, list);
     }
 
     /**
@@ -89,8 +88,7 @@ public class UserService {
      * @throws Exception
      */
     public User findByUserNameAndPassword(User user) throws Exception{
-        User u = sqlSessionTemplate.selectOne("UserMapper.findByUserNameAndPassword",user);
-        return u;
+        return sqlSessionTemplate.selectOne("UserMapper.findByUserNameAndPassword",user);
     }
 
 

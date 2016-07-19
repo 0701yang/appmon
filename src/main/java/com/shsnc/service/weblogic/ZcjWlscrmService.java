@@ -28,9 +28,9 @@ public class ZcjWlscrmService {
      */
     public Pager<Bean> findCrm(String[] string) throws Exception {
         PageBounds pageBounds = PageBoundsUtil.pageBoundsOrderExtend("APP,MODULE,IP,PORT");
-        int count = sqlSessionTemplate.selectOne("WlscrmThreadMapper.countcrm",string);
         List<String> apacheList = new ArrayList<String>();
         CollectionUtils.addAll(apacheList, string);
+        int count = sqlSessionTemplate.selectOne("WlscrmThreadMapper.countcrm",apacheList);
         List<Bean> list = sqlSessionTemplate.selectList("WlscrmThreadMapper.findHistoryCrm", apacheList, pageBounds);
 
         return new Pager<Bean>(count, list);

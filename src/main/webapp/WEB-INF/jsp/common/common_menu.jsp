@@ -21,8 +21,8 @@
                                                     <c:if test="${(!empty sub.url) && (fn:trim(sub.url) ne 'http://10.78.136.42/dashboard/db/gdash')}">${pageContext.request.contextPath}${sub.url}</c:if>
                                                     <c:if test="${fn:trim(sub.url) eq 'http://10.78.136.42/dashboard/db/gdash'}" >http://10.78.136.42/dashboard/db/gdash</c:if>
                                                     "
-                                                    target="mainFrame">
-                                                ${sub.name} </a>
+                                               target="mainFrame">
+                                                    ${sub.name} </a>
                                             <ul class="dropdown-menu">
                                                 <c:forEach items="${userpriviegeList}" var="c">
                                                     <c:if test="${c.parentid eq sub.id}">

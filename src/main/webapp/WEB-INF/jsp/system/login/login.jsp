@@ -38,13 +38,11 @@
             </div>
         </div>
         <div class="form-actions">
-            <a onclick="saveCheck();" class="btn blue pull-right">登录<i class="m-icon-swapright m-icon-white"></i></a>
+            <a onclick="saveCheck();" class="btn blue pull-right" onkeydown="onkeydown();">登录<i class="m-icon-swapright m-icon-white"></i></a>
         </div>
         <div class="forget-password">
-
         </div>
         <div class="create-account">
-
         </div>
     </form>
 </div>
@@ -143,6 +141,15 @@
    }
 </script>
 
+<script>
+    //按下回车触发
+    document.onkeydown = function(event) {
+         var e = event ? event : (window.event ? window.event : null);
+        if (e.keyCode == 13) {
+            saveCheck();
+        }
+    }
+</script>
 <script>
     jQuery(document).ready(
             function () {

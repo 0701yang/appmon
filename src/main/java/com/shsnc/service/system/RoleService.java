@@ -2,7 +2,6 @@ package com.shsnc.service.system;
 
 import com.github.miemiedev.mybatis.paginator.domain.PageBounds;
 import com.shsnc.entity.system.Role;
-import com.shsnc.entity.system.User;
 import com.shsnc.util.pager.PageBoundsUtil;
 import com.shsnc.util.pager.Pager;
 import org.mybatis.spring.SqlSessionTemplate;
@@ -27,9 +26,8 @@ public class RoleService {
         PageBounds pageBounds = PageBoundsUtil.pageBoundsOrderExtend("ID.ASC");
         List<Role> list = sqlSessionTemplate.selectList("RoleMapper.listAllRole",null,pageBounds);
         int count = sqlSessionTemplate.selectOne("RoleMapper.count");
-        Pager<Role> pages = new Pager<Role>(count, list);
 
-        return pages;
+        return new Pager<Role>(count, list);
     }
 
     /**
@@ -51,8 +49,7 @@ public class RoleService {
         PageBounds pageBounds = PageBoundsUtil.pageBoundsExtend();
         List<Role> list = sqlSessionTemplate.selectList("RoleMapper.findByName", name, pageBounds);
         int count = sqlSessionTemplate.selectOne("RoleMapper.countByName",name);
-        Pager<Role> pages = new Pager<Role>(count, list);
-        return pages;
+        return new Pager<Role>(count, list);
     }
 
     /**
@@ -83,8 +80,7 @@ public class RoleService {
         PageBounds pageBounds = PageBoundsUtil.pageBoundsOrderExtend("ID.ASC");
         List<Role> list = sqlSessionTemplate.selectList("RoleMapper.findById", id, pageBounds);
         int count = sqlSessionTemplate.selectOne("RoleMapper.countById",id);
-        Pager<Role> pages = new Pager<Role>(count, list);
-        return pages;
+        return new Pager<Role>(count, list);
     }
 
 

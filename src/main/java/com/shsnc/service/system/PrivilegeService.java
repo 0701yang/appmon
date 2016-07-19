@@ -20,8 +20,7 @@ public class PrivilegeService {
      * @throws Exception
      */
     public List<Privilege> findAll() throws Exception{
-        List<Privilege> list = sqlSessionTemplate.selectList("PrivilegeMapper.findAll");
-        return list;
+        return sqlSessionTemplate.selectList("PrivilegeMapper.findAll");
     }
 
     /**
@@ -30,8 +29,7 @@ public class PrivilegeService {
      * @throws Exception
      */
     public List<RolePrivilegeKey> findByRoleId(String id) throws Exception{
-        List<RolePrivilegeKey> list = sqlSessionTemplate.selectList("RolePrivilegeMapper.findByRoleId",id);
-        return list;
+        return sqlSessionTemplate.selectList("RolePrivilegeMapper.findByRoleId",id);
     }
 
     /**
@@ -58,8 +56,7 @@ public class PrivilegeService {
      * @throws Exception
      */
     public List<RolePrivilegeKey> findKey() throws Exception{
-        List<RolePrivilegeKey> list = sqlSessionTemplate.selectList("RolePrivilegeMapper.findKey");
-        return list;
+        return sqlSessionTemplate.selectList("RolePrivilegeMapper.findKey");
     }
 
 
