@@ -13,27 +13,26 @@
 </head>
 <body>
 
-<div>
-
-    <ul class="page-breadcrumb breadcrumb">
-        <li>
-            <a href="#">主页</a>
-            <i class="fa fa-circle"></i>
-        </li>
-        <li>
-            <a href="#">基础模块</a>
-            <i class="fa fa-circle"></i>
-        </li>
-        <li>
-            <a href="#">系统管理</a>
-            <i class="fa fa-circle"></i>
-        </li>
-        <li class="active"> 角色管理</li>
-    </ul>
-
-
-    <div>
-        <div class="col-md-12">
+<div class="page-container">
+    <div class="page-head">
+        <div class="container">
+            <div class="page-title">
+                <h1>
+                    基础模块
+                    <small>角色列表</small>
+                </h1>
+            </div>
+            <div class="page-toolbar">
+                <div class="btn-group btn-theme-panel">
+                    <a class="btn dropdown-toggle" type="button" href="javascript:history.go(-1);">
+                        <i class="fa fa-reply"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="page-content">
+        <div class="container">
             <div class="portlet light">
                 <div class="portlet-title">
                     <div class="caption">
@@ -70,43 +69,43 @@
                         </tr>
                         </thead>
                         <tbody>
-<c:if test="${!empty roleList.datas}">
-                        <c:forEach items="${roleList.datas}" var="role" varStatus="i">
+                        <c:if test="${!empty roleList.datas}">
+                            <c:forEach items="${roleList.datas}" var="role" varStatus="i">
+                                <tr>
+                                    <td>${i.index+1}</td>
+                                    <td>${role.name}</td>
+                                    <td>${role.description}</td>
+                                    <td>
+                                        <a class="btn btn-icon-only btn-circle red"
+                                           href="${pageContext.request.contextPath}/role/toEdit?id=${role.id}"
+                                           data-toggle="tooltip" data-placement="top" title="编辑" target="mainFrame"><i class="fa fa-edit"></i> </a>
+                                        <a class="btn btn-icon-only btn-circle purple"
+                                           href="${pageContext.request.contextPath}/role/del?id=${role.id} "
+                                           data-toggle="tooltip" data-placement="top" title="删除"
+                                           onclick="return window.confirm('您确定要删除吗？')" target="mainFrame"><i class="fa fa-times"></i> </a>
+                                        <a class="btn btn-icon-only btn-circle grey-cascade"
+                                           href="${pageContext.request.contextPath}/role/setPrivilege?id=${role.id}"
+                                           data-toggle="tooltip"
+                                           data-placement="top" title="设置权限" target="mainFrame"><i class="fa fa-link"></i> </a>
+                                    </td>
+                                </tr>
+                            </c:forEach>
+                        </c:if>
+                        <c:if test="${empty roleList.datas}">
                             <tr>
-                                <td>${i.index+1}</td>
-                                <td>${role.name}</td>
-                                <td>${role.description}</td>
-                                <td>
-                                    <a class="btn btn-icon-only btn-circle red"
-                                       href="${pageContext.request.contextPath}/role/toEdit?id=${role.id}"
-                                       data-toggle="tooltip" data-placement="top" title="编辑" target="mainFrame"><i class="fa fa-edit"></i> </a>
-                                    <a class="btn btn-icon-only btn-circle purple"
-                                       href="${pageContext.request.contextPath}/role/del?id=${role.id} "
-                                       data-toggle="tooltip" data-placement="top" title="删除"
-                                       onclick="return window.confirm('您确定要删除吗？')" target="mainFrame"><i class="fa fa-times"></i> </a>
-                                    <a class="btn btn-icon-only btn-circle grey-cascade"
-                                       href="${pageContext.request.contextPath}/role/setPrivilege?id=${role.id}"
-                                       data-toggle="tooltip"
-                                       data-placement="top" title="设置权限" target="mainFrame"><i class="fa fa-link"></i> </a>
+                                <td colspan="4" align="center" bgcolor="#EFF3F7">
+                                    没有找到相应的记录
                                 </td>
                             </tr>
-                        </c:forEach>
-</c:if>
-<c:if test="${empty roleList.datas}">
-    <tr>
-        <td colspan="4" align="center" bgcolor="#EFF3F7">
-            没有找到相应的记录
-        </td>
-    </tr>
-</c:if>
+                        </c:if>
                         </tbody>
                     </table>
                     <div class="row">
-                            <jsp:include page="../../common/Page.jsp">
-                                <jsp:param value="${roleList.total }" name="totalRecord"/>
-                                <jsp:param value="list" name="url"/>
-                                <jsp:param value="<%=SystemContext.getPageSize()%>" name="pagesize"/>
-                            </jsp:include>
+                        <jsp:include page="../../common/Page.jsp">
+                            <jsp:param value="${roleList.total }" name="totalRecord"/>
+                            <jsp:param value="list" name="url"/>
+                            <jsp:param value="<%=SystemContext.getPageSize()%>" name="pagesize"/>
+                        </jsp:include>
                     </div>
 
                 </div>

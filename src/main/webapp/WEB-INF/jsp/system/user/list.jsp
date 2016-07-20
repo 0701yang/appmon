@@ -13,38 +13,31 @@
 </head>
 <body>
 
-<div>
-
-    <ul class="page-breadcrumb breadcrumb">
-        <li>
-            <a href="#">主页</a>
-            <i class="fa fa-circle"></i>
-        </li>
-        <li>
-            <a href="#">基础模块</a>
-            <i class="fa fa-circle"></i>
-        </li>
-        <li>
-            <a href="#">系统管理</a>
-            <i class="fa fa-circle"></i>
-        </li>
-        <li class="active"> 用户管理</li>
-    </ul>
-
-
-    <div>
-        <div class="col-md-12">
+<div class="page-container">
+    <div class="page-head">
+        <div class="container">
+            <div class="page-title">
+                <h1>
+                    基础模块
+                    <small>用户列表</small>
+                </h1>
+            </div>
+            <div class="page-toolbar">
+                <div class="btn-group btn-theme-panel">
+                    <a class="btn dropdown-toggle" type="button" href="javascript:history.go(-1);" >
+                        <i class="fa fa-reply"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="page-content">
+        <div class="container">
             <div class="portlet light">
                 <div class="portlet-title">
                     <div class="caption">
                         <i class="fa fa-cogs font-green-sharp"></i>
                         <span class="caption-subject font-green-sharp bold uppercase">用户列表</span>
-                    </div>
-                    <div class="actions btn-set">
-                        <a type="botton" class="btn green-haze btn-circle" href="javascript:history.go(-1);">
-                            <i class="fa fa-check-circle"></i>
-                            返回
-                        </a>
                     </div>
                     <div class="actions btn-set">
                         <a type="botton" class="btn green-haze btn-circle" href="${pageContext.request.contextPath}/user/add">
@@ -128,6 +121,7 @@
         </div>
     </div>
 </div>
+
 
 <jsp:include page="../../common/common_js.jsp"/>
 <script src="${pageContext.request.contextPath}/Metronic/js/tooltip.js" type="text/javascript"></script>

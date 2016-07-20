@@ -11,25 +11,26 @@
     <jsp:include page="../../common/common_css.jsp"/>
 </head>
 <body>
-<div>
-    <ul class="page-breadcrumb breadcrumb">
-        <li>
-            <a href="#">主页</a>
-            <i class="fa fa-circle"></i>
-        </li>
-        <li>
-            <a href="#">基础模块</a>
-            <i class="fa fa-circle"></i>
-        </li>
-        <li>
-            <a href="#">系统管理</a>
-            <i class="fa fa-circle"></i>
-        </li>
-        <li class="active"> 角色管理</li>
-    </ul>
-
-    <div>
-        <div class="col-md-12">
+<div class="page-container">
+    <div class="page-head">
+        <div class="container">
+            <div class="page-title">
+                <h1>
+                    基础模块
+                    <small>角色添加</small>
+                </h1>
+            </div>
+            <div class="page-toolbar">
+                <div class="btn-group btn-theme-panel">
+                    <a class="btn dropdown-toggle" type="button" href="javascript:history.go(-1);" >
+                        <i class="fa fa-reply"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="page-content">
+        <div class="container">
             <div class="portlet light">
                 <div class="portlet-title">
                     <div class="caption">

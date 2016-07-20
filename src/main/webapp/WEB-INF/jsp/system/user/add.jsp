@@ -11,25 +11,26 @@
     <jsp:include page="../../common/common_css.jsp"/>
 </head>
 <body>
-<div>
-    <ul class="page-breadcrumb breadcrumb">
-        <li>
-            <a href="#">主页</a>
-            <i class="fa fa-circle"></i>
-        </li>
-        <li>
-            <a href="#">基础模块</a>
-            <i class="fa fa-circle"></i>
-        </li>
-        <li>
-            <a href="#">系统管理</a>
-            <i class="fa fa-circle"></i>
-        </li>
-        <li class="active"> 用户管理</li>
-    </ul>
-
-    <div>
-        <div class="col-md-12">
+<div class="page-container">
+    <div class="page-head">
+        <div class="container">
+            <div class="page-title">
+                <h1>
+                    基础模块
+                    <small>用户添加</small>
+                </h1>
+            </div>
+            <div class="page-toolbar">
+                <div class="btn-group btn-theme-panel">
+                    <a class="btn dropdown-toggle" type="button" href="javascript:history.go(-1);">
+                        <i class="fa fa-reply"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="page-content">
+        <div class="container">
             <div class="portlet light">
                 <div class="portlet-title">
                     <div class="caption">
@@ -39,7 +40,7 @@
                 </div>
                 <div class="portlet-body form">
                     <!-- 开始表单-->
-                    <form id="userForm" class="form-horizontal" method="post"  action="/user/${msg}">
+                    <form id="userForm" class="form-horizontal" method="post" action="/user/${msg}">
                         <input type="hidden" name="id" id="user_id" value="${user.id }"/>
                         <div class="form-body">
                             <div class="form-group">
@@ -51,8 +52,9 @@
                                     <select class="form-control" name="roleid" id="role_id">
                                         <option value="">请选择职位...</option>
                                         <c:forEach items="${roleList.datas}" var="role">
-                                            <option value="${role.id}"  <c:if test="${role.id == user.roleid}">selected</c:if> >
-                                                ${role.name}
+                                            <option value="${role.id}"
+                                                    <c:if test="${role.id == user.roleid}">selected</c:if> >
+                                                    ${role.name}
                                             </option>
                                         </c:forEach>
                                     </select>
@@ -128,7 +130,7 @@
                         <div class="form-actions">
                             <div class="row">
                                 <div class="col-md-offset-3 col-md-9">
-                                    <a  onclick="save();" class="btn green" >确定</a>
+                                    <a onclick="save();" class="btn green">确定</a>
                                     <a href="javascript:history.go(-1);" class="btn default" type="submit">返回</a>
                                 </div>
                             </div>
@@ -152,7 +154,7 @@
     });
 
     //保存
-    function save(){
+    function save() {
         if ($("#role_id").val() == "") {
             $("#role_id").tips({
                 side: 3,
@@ -249,9 +251,9 @@
             $("#re_password").focus();
             return false;
         }
-        if($("#user_id").val()==""){
+        if ($("#user_id").val() == "") {
             hasU();
-        }else{
+        } else {
             $("#userForm").submit();
         }
     }

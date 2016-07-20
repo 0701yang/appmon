@@ -5,7 +5,6 @@
     <div class="col-md-12">
         <div class="portlet light">
             <div class="portlet-body">
-
                 <table class="table table-striped table-hover table-bordered">
                     <thead>
                     <tr>

@@ -18,7 +18,7 @@
         SELECT count(1)
         FROM
         ZCJ_WLSCRM_SERVERS svr,
-        ZCJ_WLSCRM_THREAD trd,
+        ZCJ_WLSCRM_MARK trd,
         ZCJ_SHSNC_RADIOS rds
         WHERE
         svr.IP = trd.IP
@@ -39,7 +39,7 @@
     <select id="countosb" resultType="java.lang.Integer" parameterType="java.lang.String">
         SELECT count(1)
         FROM zcj_wlscrm_servers svr,
-            zcj_wlscrm_Thread trd,
+            ZCJ_WLSCRM_MARK trd,
             zcj_shsnc_radios rds
         WHERE svr.IP = trd.IP
               AND svr.PORT = trd.PORT
@@ -66,7 +66,7 @@
         rds.VALUE,
         rds.SYSTEM,
         rds.NAME
-        FROM ZCJ_WLSCRM_SERVERS svr, ZCJ_WLSCRM_THREAD trd, ZCJ_SHSNC_RADIOS rds
+        FROM ZCJ_WLSCRM_SERVERS svr, ZCJ_WLSCRM_MARK trd, ZCJ_SHSNC_RADIOS rds
         WHERE svr.IP = trd.IP
         AND svr.PORT = trd.PORT
         AND rds.NAME = svr.APP
@@ -98,7 +98,7 @@
             rds.SYSTEM,
             rds.NAME
         FROM zcj_wlscrm_servers svr,
-            zcj_wlscrm_Thread trd,
+            ZCJ_WLSCRM_MARK trd,
             zcj_shsnc_radios rds
         WHERE svr.IP = trd.IP
               AND svr.PORT = trd.PORT
@@ -112,7 +112,7 @@
     <!--历史信息-->
     <select id="history" resultType="WlscrmThread" parameterType="java.util.Map">
         SELECT *
-        FROM ZCJ_WLSCRM_THREAD trd
+        FROM ZCJ_WLSCRM_MARK trd
         WHERE trd.IP = #{ip} AND trd.PORT = #{port}
               AND trd.TIME &gt;= to_date(to_char(sysdate - 180 / 24 / 60, 'yyyy-mm-dd hh24:mi:ss'), 'yyyy-mm-dd hh24:mi:ss')
               AND trd.time &lt;= to_date(to_char(sysdate, 'yyyy-mm-dd hh24:mi:ss'), 'yyyy-mm-dd hh24:mi:ss')
@@ -121,7 +121,7 @@
 
     <select id="countHistory" resultType="java.lang.Integer" parameterType="java.util.Map">
         SELECT count(1)
-        FROM ZCJ_WLSCRM_THREAD trd
+        FROM ZCJ_WLSCRM_MARK trd
         WHERE trd.IP = #{ip} AND trd.PORT = #{port}
               AND trd.TIME &gt;= to_date(to_char(sysdate - 180 / 24 / 60, 'yyyy-mm-dd hh24:mi:ss'), 'yyyy-mm-dd hh24:mi:ss')
               AND trd.time &lt;= to_date(to_char(sysdate, 'yyyy-mm-dd hh24:mi:ss'), 'yyyy-mm-dd hh24:mi:ss')

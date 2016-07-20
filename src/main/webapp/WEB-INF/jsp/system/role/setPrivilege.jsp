@@ -10,24 +10,26 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/Metronic/js/jquery/zTree_v3-master/css/zTreeStyle/zTreeStyle.css" type="text/css">
 </head>
 <body>
-<div id="role">
-    <ul class="page-breadcrumb breadcrumb">
-        <li>
-            <a href="#">主页</a>
-            <i class="fa fa-circle"></i>
-        </li>
-        <li>
-            <a href="#">基础模块</a>
-            <i class="fa fa-circle"></i>
-        </li>
-        <li>
-            <a href="#">系统管理</a>
-            <i class="fa fa-circle"></i>
-        </li>
-        <li class="active"> 角色管理</li>
-    </ul>
-    <div>
-        <div class="col-md-12">
+<div id="role" class="page-container">
+    <div class="page-head">
+        <div class="container">
+            <div class="page-title">
+                <h1>
+                    健康度检查
+                    <small>营业厅渠道</small>
+                </h1>
+            </div>
+            <div class="page-toolbar">
+                <div class="btn-group btn-theme-panel">
+                    <a class="btn dropdown-toggle" type="button" href="javascript:history.go(-1);">
+                        <i class="fa fa-reply"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="page-content">
+        <div class="container">
             <div class="portlet light">
                 <div class="portlet-title">
                     <div class="caption">
@@ -43,7 +45,7 @@
                     <div class="form-actions">
                         <div class="row">
                             <div class="col-md-offset-3 col-md-9">
-                                <a  onclick="save();" class="btn green" >确定</a>
+                                <a onclick="save();" class="btn green">确定</a>
                                 <a href="javascript:history.go(-1);" class="btn default" type="submit">返回</a>
                             </div>
                         </div>
@@ -89,16 +91,16 @@
 </script>
 <script type="text/javascript">
 
-    function save(){
+    function save() {
 
         var nodes = zTree.getCheckedNodes();
         var tmpNode;
         var ids = "";
-        for(var i=0; i<nodes.length; i++){
+        for (var i = 0; i < nodes.length; i++) {
             tmpNode = nodes[i];
-            if(i!=nodes.length-1){
-                ids += tmpNode.id+",";
-            }else{
+            if (i != nodes.length - 1) {
+                ids += tmpNode.id + ",";
+            } else {
                 ids += tmpNode.id;
             }
         }
@@ -106,9 +108,9 @@
         var roleId = "${roleid}";
         var url = "${pageContext.request.contextPath}/role/saveSetPriv";
         var postData;
-        postData = {"roleid":roleId,"menuIds":ids};
+        postData = {"roleid": roleId, "menuIds": ids};
 
-        $.post(url,postData,function(data){
+        $.post(url, postData, function (data) {
             $("#role").html(data);
         });
     }

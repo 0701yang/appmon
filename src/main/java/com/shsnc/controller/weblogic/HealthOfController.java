@@ -42,4 +42,11 @@ public class HealthOfController extends BaseController {
         mv.setViewName("system/healthof/list");
         return mv;
     }
+
+
+
+
+
+
+
 }
