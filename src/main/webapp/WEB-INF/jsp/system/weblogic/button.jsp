@@ -16,8 +16,8 @@
         <div class="container">
             <div class="page-title">
                 <h1>
-                    健康度检查
-                    <small>营业厅渠道</small>
+                    Weblogic性能监控
+                    <small>查询</small>
                 </h1>
             </div>
             <div class="page-toolbar">
