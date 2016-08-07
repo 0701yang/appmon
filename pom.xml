@@ -307,11 +307,14 @@
             <version>2.6.11</version>
         </dependency>
         <!--缓存 结束-->
+
+        <!--
         <dependency>
             <groupId>pce</groupId>
             <artifactId>pce</artifactId>
             <version>1.0</version>
         </dependency>
+        -->
 
     </dependencies>
 

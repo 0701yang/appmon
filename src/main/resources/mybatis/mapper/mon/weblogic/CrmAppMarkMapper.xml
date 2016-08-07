@@ -2,7 +2,6 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="CrmAppMarkMapper">
     <cache type="org.mybatis.caches.ehcache.LoggingEhcache"/>
-
     <!--查询所有小于60分的个数-->
     <select id="findAllSix" resultType="int" parameterType="java.util.List">
         SELECT COUNT(1)

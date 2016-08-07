@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="MonTreeMapper">
+    <cache type="org.mybatis.caches.ehcache.LoggingEhcache"/>
+
+    <resultMap id="tree" type="MonTree">
+        <id column="tree_id" property="treeId" jdbcType="NUMERIC"></id>
+        <result column="name" property="name" jdbcType="VARCHAR"></result>
+        <result column="tree_type" property="treeType" jdbcType="VARCHAR"></result>
+        <result column="parent_id" property="parentId" jdbcType="NUMERIC"></result>
+        <result column="state" property="state" jdbcType="VARCHAR"></result>
+        <result column="remarks" property="remarks" jdbcType="VARCHAR"></result>
+    </resultMap>
+
+    <select id="findRootNodes" resultMap="tree" parameterType="java.lang.Integer" >
+         select tree_id, name, tree_type, parent_id, state, remarks from mon_tree where parent_id=#{id} ORDER BY tree_id DESC
+    </select>
+
+</mapper>

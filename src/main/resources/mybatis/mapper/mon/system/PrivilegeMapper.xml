@@ -15,7 +15,6 @@
     <select id="count" resultType="java.lang.Integer">
         SELECT count(1)
         FROM ZCJ_SHSNC_PRIVILEGE
-
     </select>
     <!--查询所有权限信息-->
     <select id="findAll" resultMap="p" >

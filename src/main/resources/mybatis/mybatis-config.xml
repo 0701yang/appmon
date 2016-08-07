@@ -32,6 +32,11 @@
 
         <typeAlias type="com.shsnc.entity.weblogic.Bean" alias="Bean"/>
         <typeAlias type="com.shsnc.util.pager.Pager" alias="pager"/>
+
+        <!--serverswitch模块-->
+        <typeAlias type="com.shsnc.entity.serverswitch.MonTree" alias="MonTree"></typeAlias>
+        <typeAlias type="com.shsnc.entity.serverswitch.MonNode" alias="MonNode"></typeAlias>
+        <typeAlias type="com.shsnc.entity.serverswitch.MonServer" alias="MonServer"></typeAlias>
     </typeAliases>
 
 

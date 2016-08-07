@@ -8,10 +8,12 @@
 <head>
     <jsp:include page="../common/common_css.jsp"/>
 </head>
+
 <body>
 <div class="page-header">
     <jsp:include page="../common/common_top.jsp"/>
     <jsp:include page="../common/common_menu.jsp"/>
+
 </div>
 <div>
     <iframe name="mainFrame" id="mainFrame" src="${pageContext.request.contextPath}/dashboard/index"

@@ -19,6 +19,8 @@
         <property name="dataSource" ref="dynamicDataSource"/>
     </bean>
 
+
+
     <tx:advice id="txAdvice" transaction-manager="transactionManager">
         <tx:attributes>
             <tx:method name="delete*" propagation="REQUIRED" read-only="false" rollback-for="java.lang.Exception"/>
@@ -31,7 +33,7 @@
     <aop:aspectj-autoproxy proxy-target-class="true"/>
     <!-- 事物处理 -->
     <aop:config>
-        <aop:pointcut id="pc" expression="execution(* com.shsnc.service..*(..))"/>
+        <aop:pointcut id="pc" expression="execution(* com.shsnc.service..*.*(..))"/>
         <aop:advisor pointcut-ref="pc" advice-ref="txAdvice"/>
     </aop:config>
 

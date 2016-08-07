@@ -8,7 +8,9 @@
         <param-name>contextConfigLocation</param-name>
         <param-value>
             classpath:spring/spring-content.xml,
+            classpath:spring/spring-object.xml,
             classpath:spring/spring-dataSource-mon.xml,
+
             classpath:spring/spring-dataSource-sd1.xml,
             classpath:spring/spring-mybatis.xml,
             classpath:spring/spring-transaction.xml,
@@ -102,4 +104,12 @@
     <!--<session-config>-->
         <!--<session-timeout>15</session-timeout>-->
     <!--</session-config>-->
+    <servlet>
+        <servlet-name>CentralControlServlet</servlet-name>
+        <servlet-class>com.shsnc.service.serverswitch.servlet.CentralControlServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CentralControlServlet</servlet-name>
+        <url-pattern>/business/*</url-pattern>
+    </servlet-mapping>
 </web-app>

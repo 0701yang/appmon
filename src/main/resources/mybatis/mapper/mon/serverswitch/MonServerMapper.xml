@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="MonServerMapper">
+    <cache type="org.mybatis.caches.ehcache.LoggingEhcache"/>
+
+    <resultMap id="server" type="MonServer">
+        <id column="server_id" property="serverId" jdbcType="NUMERIC"></id>
+        <result column="remarks" property="remarks" jdbcType="VARCHAR"></result>
+        <result column="name" property="name" jdbcType="VARCHAR"></result>
+        <result column="locator" property="locator" jdbcType="VARCHAR"></result>
+        <result column="state" property="state" jdbcType="VARCHAR"></result>
+        <result column="server_type" property="serverType" jdbcType="VARCHAR"></result>
+    </resultMap>
+    <select id="findWebServer" resultMap="server" >
+       select server_id, name, locator, state, remarks, server_type from mon_server  where server_type in ('CRM-WEB','KF-WEB','CHANNEL-WEB') and state='U'
+    </select>
+
+    <select id="findInterServer" resultMap="server" >
+        select server_id, name, locator, state, remarks, server_type from mon_server  where server_type in ('ATMI_INTER','INNER_WS_INTER','LL_BANK_INTER','505_VC_INTER','INNER_HTTP_INTER','CCS_INTER','ICBC_INTER','OSB_CRM_HTTP') and state='U'
+    </select>
+
+    <select id="findAppServer" resultMap="server" parameterType="java.lang.String">
+         select server_id, name, locator, state, remarks, server_type from mon_server  where server_type=#{serverType} and state='U'
+    </select>
+
+    <select id="findServerByServerId" resultMap="server" parameterType="java.lang.Integer">
+        select server_id, name, locator, state, remarks, server_type from mon_server  where server_id=#{serverId} and state='U'
+    </select>
+
+</mapper>

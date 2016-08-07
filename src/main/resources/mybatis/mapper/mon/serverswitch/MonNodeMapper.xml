@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="MonNodeMapper">
+    <cache type="org.mybatis.caches.ehcache.LoggingEhcache"/>
+
+    <resultMap id="node" type="MonNode">
+        <id column="node_id" property="nodeId" jdbcType="NUMERIC"></id>
+        <result column="name" property="name" jdbcType="VARCHAR"></result>
+        <result column="url" property="url" jdbcType="VARCHAR"></result>
+        <result column="nodeImg" property="modeImg" jdbcType="VARCHAR"></result>
+        <result column="tree_parent_id" property="treeParentId" jdbcType="NUMERIC"></result>
+        <result column="state" property="state" jdbcType="VARCHAR"></result>
+        <result column="remarks" property="remarks" jdbcType="VARCHAR"></result>
+        <result column="page_id" property="pageId" jdbcType="NUMERIC"></result>
+    </resultMap>
+    <select id="findChildrenNodes" resultMap="node" parameterType="java.lang.Integer" >
+       select node_id, name, url, node_img, node_type, tree_parent_id, state, remarks, page_id from mon_node where tree_parent_id=#{treeparentid}
+    </select>
+
+</mapper>

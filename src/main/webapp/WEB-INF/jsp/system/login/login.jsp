@@ -19,7 +19,7 @@
 <div class="menu-toggler sidebar-toggler"></div>
 <div class="content" id="loginbox">
     <!-- 开始登入表单 -->
-    <form class="login-form" action="" method="post">
+    <form class="login-form" action="" method="post" enctype="multipart/form-data”>
         <h3 class="form-title">登入您的账户</h3>
         <div class="form-group">
             <label class="control-label visible-ie8 visible-ie9">用户名</label>
