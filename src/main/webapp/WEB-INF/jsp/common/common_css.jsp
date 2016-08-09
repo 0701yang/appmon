@@ -19,3 +19,5 @@
 <link href="${pageContext.request.contextPath}/Metronic/css/dataTables.bootstrap.css" rel="stylesheet" type="text/css">
 <!-- END THEME STYLES -->
 <link rel="shortcut icon" href="${pageContext.request.contextPath}/Metronic/img/favicon.ico">
+
+<link href="${pageContext.request.contextPath}/Metronic/css/selectdiv.css" rel="stylesheet" type="text/css">

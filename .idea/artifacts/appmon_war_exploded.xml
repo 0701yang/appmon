@@ -66,8 +66,7 @@
           <element id="library" level="project" name="Maven: org.mybatis:mybatis-oscache:1.0.0" />
           <element id="library" level="project" name="Maven: opensymphony:oscache:2.4" />
           <element id="library" level="project" name="Maven: net.sf.ehcache:ehcache-core:2.6.11" />
-          <element id="library" level="project" name="promon" />
-          <element id="file-copy" path="E:/JarPackages/pce.jar" />
+          <element id="library" level="project" name="proappmon" />
         </element>
       </element>
       <element id="directory" name="META-INF">

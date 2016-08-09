@@ -12,6 +12,7 @@
 
 <%@ taglib uri="/WEB-INF/ajax-tags.tld" prefix="ajax"%>
 
+<script language="javascript" src="<%=request.getContextPath()%>/Metronic/js/jquery/jquery.min.js"></script>
 <script language="javascript" src="<%=request.getContextPath()%>/Metronic/js/serverswitch/dhtmlxcommon.js"></script>
 <script language="javascript" src="<%=request.getContextPath()%>/Metronic/js/serverswitch/dhtmlxtree.js"></script>
 <script language="javascript" src="<%=request.getContextPath()%>/Metronic/js/serverswitch/ajax.jsp"></script>

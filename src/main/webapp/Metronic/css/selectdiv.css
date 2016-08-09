@@ -1,0 +1,23 @@
+.inputcla{
+  width:100px;
+  margin-left:20px;
+}
+.divcla{
+
+  width:100px;
+  margin-left:20px;
+  position:absolute;
+  background-color: #fff;
+}
+.ulcla{
+  list-style: none;
+  margin:0px;
+  padding:0px;
+
+}
+.controlhide{
+  display:none;
+}
+.controlshow{
+  display:block;
+}

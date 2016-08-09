@@ -14,6 +14,7 @@
 <head>
     <jsp:include page="../../common/common_css.jsp"/>
     <link href="${pageContext.request.contextPath}/Metronic/css/pricing-table.css" rel="stylesheet" type="text/css">
+
 </head>
 <body>
 <%
@@ -86,20 +87,19 @@
                         }
                         sb.append("<br/>");
 
-                        out.print("<td>　<input type='hidden' id='gw_" + appClusterName + "_serverList' value='" + org.apache.commons.lang.StringUtils.join(list.iterator(), ",") + "'/><div align='left'>" + sb.toString() + "</div></td>\n");
+                        out.print("<td>　<input type='hidden' class='inputcla' id='gw_" + appClusterName + "_serverList' value='" + org.apache.commons.lang.StringUtils.join(list.iterator(), ",") + "'/><div align='left'>" + sb.toString() + "</div></td>\n");
                         ;
-                        out.print("<td>　<select size=\"1\" id='gw_sel_" + appClusterName + "'>");
+
+                       out.print("<td><input type='text' class='inputcla' id='gw_sel_"+appClusterName+"' value='"+appClusterName+"'/>");
+                        out.print("<div class='divcla controlhide'><ul class='ulcla'>");
                         HashMap tmp = (HashMap) canSelectedMap.get(appClusterName);
                         String[] str2 = (String[]) tmp.keySet().toArray(new String[0]);
                         java.util.Arrays.sort(str2, new com.shsnc.util.appswitch.StringNumberCompator());
                         for (int i = 0; i < str2.length; i++) {
-                            if (str2[i].equalsIgnoreCase(appClusterName)) {
-                                out.print("<option value=\"" + str2[i] + "\" selected>" + str2[i] + "</option>");
-                            } else {
-                                out.print("<option value=\"" + str2[i] + "\">" + str2[i] + "</option>");
-                            }
+
+                                out.print("<li >" + str2[i] + "</li>");
                         }
-                        out.print("</select> </td>\n");
+                        out.print("</ul></div> </td>\n");
 
                         out.print("<td align='center'><input class='formButton' onclick=\"switchGroupApp('" + appClusterName + "')\" type='button' value='批量切换集群'/></td>");
                         out.print("</tr>\n");
@@ -109,8 +109,8 @@
             </table>
 
             <script type="text/javascript">
-                function switchGroupApp(appClusterName) {
 
+                function switchGroupApp(appClusterName) {
                     var oldApp = document.getElementById('gw_' + appClusterName).value;
                     var newApp = document.getElementById("gw_sel_" + appClusterName).value;
 
@@ -169,12 +169,15 @@
                                 } else {
                                     out.print("<td>　 <input type=\"checkbox\" id='" + objMonServer[i].getName() + "' value='" + objMonServer[i].getName() + "' disabled> </td>\n");
                                 }
-                                out.print("<td>　<select size=\"2\" id='sel_" + objMonServer[i].getName() + "'>");
+
+
+                                out.print("<td><input type='text' class='inputcla' id='gw_sel_"+objConnectApp[i].currentAppCluster+"' value='"+objConnectApp[i].currentAppCluster+"'/>");
+                                out.print("<div class='divcla controlhide'><ul class='ulcla'>");
                                 String[] tmp = objConnectApp[i].canSelectAppCluster;
                                 for (int j = 0; j < tmp.length; j++) {
-                                    out.print("<option value=\"" + tmp[j] + "\">" + tmp[j] + "</option>");
+                                    out.print("<li value=\"" + tmp[j] + "\">" + tmp[j] + "</li>");
                                 }
-                                out.print("</select> </td>\n");
+                                out.print("</ul></div> </td>\n");
                                 out.print("</tr>\n");
                             }
 
@@ -232,4 +235,48 @@
         alert("切换集群执行情况\n" + rtn);
         location.reload();
     }
+</script>
+<script type="text/javascript">
+    $(function(){
+
+
+        $(".inputcla").focus(function () {
+
+            $(this).select();
+            $(this).next().removeClass("controlhide");
+            $(this).next().addClass("controlshow");
+
+            $(this).next().find("ul").children().hover(function () {
+                $(this).css("background-color", "#1E90FF");
+            }, function () {
+                $(this).css("background-color", "");
+            });
+            $(this).next().find("ul").children().click(function () {
+                var inner = $(this).context;
+                $(this).parent().parent().val(inner.innerHTML);
+                $(this).parent().parent().removeClass("controlshow");
+                $(this).parent().parent().addClass("controlhide");
+
+            });
+            $(this).keydown(function (event) {
+                if (event.keyCode == 13) {
+                    var conval = $(this).val();
+                    var content = $(this).next().find("ul").children();
+                    for (var i = 0; i < content.length; i++) {
+                        if (content[i].innerHTML.indexOf(conval) != -1) {
+                            $(this).val(content[i].innerHTML);
+                            $(this).next().removeClass("controlshow");
+                            $(this).next().addClass("controlhide");
+                            break;
+                        }
+                    }
+                }
+            });
+        });
+
+
+
+
+    });
+
 </script>

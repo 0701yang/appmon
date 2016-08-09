@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="proappmon">
+    <CLASSES>
+      <root url="file://D:/Projects/JarPackages/proappmon" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+    <jarDirectory url="file://D:/Projects/JarPackages/proappmon" recursive="false" />
+  </library>
+</component>
